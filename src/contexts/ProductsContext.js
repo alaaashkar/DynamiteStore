@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useMemo, useState } from "react";
-import getItems from "../services/items";
+// import getItems from "../services/http";
 import backUp from '../services/backup.json'
 
 const ProductsContext = createContext()
@@ -7,7 +7,6 @@ const ProductsContext = createContext()
 export const ProductsProvider = ({ children }) => {
   const [productsList, setProductsList] = useState(backUp)
   // const [filteredProducts, setFilteredProducts] = useState([])
-
 
 
   const value = useMemo(() => ({

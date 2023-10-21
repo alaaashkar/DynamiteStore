@@ -1,0 +1,46 @@
+@mixin ad {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  position: relative;
+  margin-bottom: 20px
+}
+
+.halloween-ad {
+  @include ad;
+  background: linear-gradient(280deg, black, rgb(80, 79, 79));
+
+
+  .halloween-ad-title {
+    font-size: 2.5rem;
+    color: white !important;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    margin: 0 0 15px 0 !important;
+  }
+
+  .ad-description1 {
+    color: white !important;
+    font-size: 0.8em;
+  }
+
+  .ad-description2 {
+    color: white !important;
+    font-size: 0.8em;
+    white-space: nowrap;
+  }
+}
+
+.discount-ad {
+  @include ad;
+  background-color: rgba(244, 217, 189, 0.446);
+
+
+  .discount-ad-title {
+    color: red;
+    font-weight: 500;
+    font-size: 2.3em;
+  }
+}

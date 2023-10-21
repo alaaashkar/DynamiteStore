@@ -1,0 +1,19 @@
+.button {
+  position: absolute;
+  bottom: 6%;
+  padding: 9px 15px;
+  background-color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(232, 232, 232);
+  }
+
+  &:active {
+    color: white;
+  }
+}

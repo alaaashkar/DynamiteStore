@@ -2,10 +2,10 @@ import React from "react";
 import './App.scss'
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from "./components/Layout/Layout";
-import { CustomerService } from "./components/CustomerService/CustomerService";
-import { News } from "./components/News/News";
-import { Store } from "./components/Store/Store";
-import { Home } from "./components/Home/Home";
+import { CustomerService } from "./views/CustomerService/CustomerService";
+import { News } from "./views/News/News";
+import { Store } from "./views/Store/Store";
+import { Home } from "./views/Home/Home";
 
 
 const App = () => {

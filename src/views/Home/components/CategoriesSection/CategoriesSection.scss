@@ -1,0 +1,13 @@
+  .categories-wrapper {
+
+    .categories {
+      display: flex;
+      justify-content: space-around;
+
+      img {
+        width: 99px;
+        object-fit: cover;
+        height: 99px;
+      }
+    }
+  }

@@ -1,0 +1,14 @@
+.magazine {
+  background-color: rgba(244, 217, 189, 0.446);
+  max-width: none !important;
+  height: 528px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  h1 {
+    font-size: 3.5rem;
+    color: #222222;
+    margin: 50px 0 0px ;
+  }
+}

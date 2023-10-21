@@ -1,0 +1,33 @@
+  .new-products {
+    &>h1 {
+      margin: 18px 0;
+    }
+
+    &>ul {
+      display: flex;
+      padding: 0;
+      gap: 20px;
+      list-style: none;
+      justify-content: start;
+
+      &>li {
+
+        &>button {
+          border: black solid 1px;
+          width: 80px;
+          background: 0 0;
+          padding: 13px;
+          border-radius: 20px;
+          font-weight: 600;
+          font-size: 1.1rem;
+          cursor: pointer;
+
+          &.clicked {
+            background-color: rgb(255, 0, 0);
+            color: white;
+            border: none;
+          }
+        }
+      }
+    }
+  }

@@ -1,0 +1,41 @@
+.flow-campaign {
+  position: relative;
+  margin-bottom: 20px;
+
+  .image-container {
+    height: 640px;
+    overflow: hidden;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto !important;
+  }
+
+  h1 {
+    position: absolute;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    right: 50%;
+    transform: translateX(50%);
+    font-size: 6.5rem;
+    letter-spacing: 40px;
+    text-shadow: 0 0 60px rgba(255, 255, 255, 0.7);
+  }
+
+  font {
+    position: absolute;
+    bottom: 23%;
+    right: 50%;
+    transform: translateX(50%);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white !important;
+    font-size: 1.1rem;
+    text-shadow: 0 0 60px rgba(255, 255, 255, 0.7);
+  }
+
+  .button {
+    right: 50%;
+    transform: translateX(50%);
+    bottom: 10%;
+  }
+}

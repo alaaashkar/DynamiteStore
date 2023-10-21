@@ -1,0 +1,23 @@
+  .elevate-campaign {
+    position: relative;
+    margin-bottom: 20px;
+
+    &>img {
+      max-width: 100%;
+    }
+
+    &>h1 {
+      position: absolute;
+      right: auto;
+      transform: translateX(20%);
+      bottom: 13%;
+    }
+
+    &>button {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 9%;
+
+    }
+  }
