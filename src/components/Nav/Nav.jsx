@@ -1,13 +1,19 @@
 import './Nav.scss'
+import cn from 'classnames'
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVenus, faMars, faChild, faBaby } from '@fortawesome/free-solid-svg-icons';
+import { useMenu } from 'contexts/MenuContext';
 
 export const Nav = () => {
+  const { isMenuClicked } = useMenu()
   return (
     <nav>
-
-      <ul>
+      <ul className={cn(
+        '',
+        { 'mobile-show': isMenuClicked },
+        { 'mobile-hide': !isMenuClicked }
+      )}>
         <li>
           <Link>
             Woman

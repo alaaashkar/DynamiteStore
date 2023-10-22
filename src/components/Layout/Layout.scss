@@ -5,3 +5,9 @@
   animation: fadeIn 0.5s forwards;
   animation-delay: 0.5s;
 }
+
+@media (max-width:700px) {
+  .container {
+    padding: 0 20px;
+  }
+}

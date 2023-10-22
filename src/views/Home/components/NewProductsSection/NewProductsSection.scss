@@ -31,3 +31,11 @@
       }
     }
   }
+
+  @media (max-width:700px) {
+    .new-products {
+      &>ul {
+        justify-content: center;
+      }
+    }
+  }

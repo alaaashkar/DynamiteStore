@@ -71,6 +71,10 @@
   text-decoration: none;
 }
 
+.close-menu {
+  display: none;
+}
+
 
 
 
@@ -92,7 +96,7 @@
 
 
   .headerNav__middle>a>.logo {
-    display: none;
+    width: 90px;
   }
 
   .headerNav__right {
@@ -108,5 +112,18 @@
   .headerNav__right__button-text {
     display: none;
 
+  }
+
+  .burger-menu {
+    cursor: pointer;
+    padding: 10px;
+    margin-left: -10px;
+  }
+
+  .close-menu {
+    display: block;
+    cursor: pointer;
+    font-size: 1.2rem;
+    // margin-right: 8px;
   }
 }

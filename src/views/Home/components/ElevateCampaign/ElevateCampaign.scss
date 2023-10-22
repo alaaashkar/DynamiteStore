@@ -1,23 +1,36 @@
-  .elevate-campaign {
-    position: relative;
-    margin-bottom: 20px;
+.elevate-campaign {
+  position: relative;
+  margin-bottom: 20px;
+  text-align: center;
 
+  &>img {
+    max-width: 100%;
+  }
+
+  &>h1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 13%;
+  }
+
+  &>button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 9%;
+  }
+}
+
+@media (max-width: 700px) {
+  .elevate-campaign {
     &>img {
-      max-width: 100%;
+      filter: blur(1px);
     }
 
     &>h1 {
-      position: absolute;
-      right: auto;
-      transform: translateX(20%);
-      bottom: 13%;
-    }
-
-    &>button {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 9%;
-
+      font-size: 2rem;
+      bottom: 25%;
     }
   }
+}

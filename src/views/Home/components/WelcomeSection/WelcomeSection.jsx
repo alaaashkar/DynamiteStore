@@ -41,7 +41,16 @@ export const WelcomeSection = () => {
         )}
       </ul>
 
-      <Carousel showArrows={false} enableAutoPlay={true} autoPlaySpeed={3000} pagination={false} transitionMs={1500} enableMouseSwipe={false} >
+      <Carousel
+        showArrows={false}
+        enableAutoPlay={true}
+        autoPlaySpeed={3000}
+        pagination={false}
+        transitionMs={1500}
+        enableMouseSwipe={false}
+        enableSwipe={false}
+      >
+
         <WelcomeImages img={img1} title={'unusual beige'} />
         <WelcomeImages img={img2} title={'rabanne jersey'} />
         <WelcomeImages img={img5} title={'mohair blend'} />

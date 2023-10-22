@@ -8,7 +8,7 @@ export const FlowCampaign = () => {
       <div className='image-container'>
         <img src={flowImage} alt="flow" />
       </div>
-      <h1 className='playing-images-title'>Flow</h1>
+      <h1 className='playing-images-title flow-title'>Flow</h1>
       {/* <BuyButton /> */}
       <font>Power up your workouts with new Move pieces.</font>
       <Button text={'Take a tour'} />

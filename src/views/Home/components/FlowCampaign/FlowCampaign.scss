@@ -39,3 +39,32 @@
     bottom: 10%;
   }
 }
+
+@media (max-width:700px) {
+  .flow-campaign {
+    &>font {
+      display: none;
+    }
+
+    img {
+      filter: blur(1px);
+    }
+  }
+
+  .image-container {
+    height: unset !important;
+  }
+
+  .flow-title {
+    left: -30% !important;
+    bottom: 12% !important;
+  }
+
+  .image-container>font {
+    display: none;
+  }
+
+  .button {
+    display: none;
+  }
+}

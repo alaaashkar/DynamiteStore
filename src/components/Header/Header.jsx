@@ -5,15 +5,18 @@ import './Header.scss';
 import dynamite from './../../assets/images/logo.png'
 import PersonIcon from '@mui/icons-material/Person';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink, Link } from 'react-router-dom';
+import { useMenu } from "contexts/MenuContext";
 
 
 export const Header = () => {
+  const { setIsMenuClicked, isMenuClicked } = useMenu()
+
   return (
-    <div className="headerNav">
+    <header className='headerNav'>
       <div className="headerNav__left">
         <ul>
           <li>
@@ -40,9 +43,26 @@ export const Header = () => {
             </button>
           </li>
 
-          <li>
-            <FontAwesomeIcon icon={faBars} className="burger-menu" />
-          </li>
+          {isMenuClicked ? (
+            <li>
+              <FontAwesomeIcon icon={faX}
+                className="close-menu"
+                onClick={() => setIsMenuClicked(false)}
+              />
+
+            </li>
+          ) : (
+            <li>
+              <FontAwesomeIcon
+                icon={faBars}
+                className="burger-menu"
+                onClick={() => setIsMenuClicked(true)}
+              />
+            </li>
+          )}
+
+
+
         </ul>
       </div>
 
@@ -79,6 +99,6 @@ export const Header = () => {
 
         </ul>
       </div>
-    </div >
+    </header >
   )
 };

@@ -43,7 +43,7 @@ export const Home = () => {
 
         <FlowCampaign />
 
-        <Magazine />
+        {/* <Magazine /> */}
 
       </div >
 

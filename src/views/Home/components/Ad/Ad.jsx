@@ -9,7 +9,6 @@ export const Ad = ({ title, firstDescription, secondDescription, titleStyle, adC
       <font className='ad-description1'> {firstDescription} </font> <br />
       <font className='ad-description2' > {secondDescription}</font>
       {children}
-
     </article >
   )
 };
