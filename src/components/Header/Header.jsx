@@ -5,7 +5,9 @@ import './Header.scss';
 import dynamite from './../../assets/images/logo.png'
 import PersonIcon from '@mui/icons-material/Person';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink, Link } from 'react-router-dom';
 
 
@@ -33,9 +35,13 @@ export const Header = () => {
           </li>
 
           <li>
-            <button>
+            <button className="horizon-icon">
               <MoreHorizIcon></MoreHorizIcon>
-            </button>~
+            </button>
+          </li>
+
+          <li>
+            <FontAwesomeIcon icon={faBars} className="burger-menu" />
           </li>
         </ul>
       </div>
@@ -52,7 +58,7 @@ export const Header = () => {
             <div>
               <button className="headerNav__right__button">
                 <PersonIcon style={{ marginRight: '8px' }}></PersonIcon>
-                <span>Log in</span>
+                <span className="headerNav__right__button-text">Log in</span>
               </button>
             </div>
           </li>
@@ -60,14 +66,14 @@ export const Header = () => {
           <li>
             <a className="headerNav__right__button">
               <FavoriteIcon style={{ color: 'black', marginRight: '8px' }} />
-              <font>favorites</font>
+              <font className="headerNav__right__button-text">favorites</font>
             </a>
           </li>
 
           <li>
             <a className="headerNav__right__button">
               <ShoppingBagOutlinedIcon style={{ marginRight: '8px' }} />
-              <font>Shopping Cart</font>
+              <font className="headerNav__right__button-text">Shopping Cart</font>
             </a>
           </li>
 

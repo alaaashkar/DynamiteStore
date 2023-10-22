@@ -29,12 +29,16 @@
   align-items: center;
 }
 
-.headerNav__left>ul>li:last-of-type>button {
+.horizon-icon {
   border: none;
-  position: absolute;
   top: 40.5px;
   background-color: white;
   cursor: pointer;
+  transform: translateY(10%);
+}
+
+.burger-menu {
+  display: none;
 }
 
 .headerNav__middle>a>.logo {
@@ -65,4 +69,44 @@
 
 .headerNav__right>ul>li {
   text-decoration: none;
+}
+
+
+
+
+
+
+@media(max-width:700px) {
+  .headerNav {
+    justify-content: space-between;
+  }
+
+  .burger-menu {
+    display: block;
+    font-size: 1.7rem;
+  }
+
+  .headerNav__left>ul>li {
+    display: none;
+  }
+
+
+  .headerNav__middle>a>.logo {
+    display: none;
+  }
+
+  .headerNav__right {
+    display: flex;
+    align-items: center;
+  }
+
+  .headerNav__right__button>svg {
+    font-size: 2rem;
+  }
+
+
+  .headerNav__right__button-text {
+    display: none;
+
+  }
 }

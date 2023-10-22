@@ -2,7 +2,7 @@ import './Home.scss';
 import 'react-typist/dist/Typist.css';
 import { PuffLoader } from 'react-spinners';
 import { WelcomeSection } from './components/WelcomeSection/WelcomeSection';
-import { NewProductsSection } from './components/WelcomeSection/NewProductsSection/NewProductsSection';
+import { NewProductsSection } from './components/NewProductsSection/NewProductsSection';
 import { Ad } from './components/Ad/Ad';
 import { CategoriesSection } from './components/CategoriesSection/CategoriesSection';
 import { GlamCampaign } from './components/GlamCampaign/GlamCampaign';

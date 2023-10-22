@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 
 import React, { useMemo, useState } from "react";
-import { Products } from '../../Products/Products';
+import { Products } from '../Products/Products';
 import { useProducts } from 'contexts/ProductsContext';
 
 export const NewProductsSection = () => {

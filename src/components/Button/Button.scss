@@ -1,7 +1,6 @@
 .button {
   position: absolute;
   bottom: 6%;
-  padding: 9px 15px;
   background-color: white;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight: 700;
@@ -15,5 +14,11 @@
 
   &:active {
     color: white;
+  }
+
+  a {
+    text-decoration: none;
+    padding: 9px 15px;
+    display: inline-block;
   }
 }
