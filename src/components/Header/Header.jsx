@@ -86,7 +86,7 @@ export const Header = () => {
           <li>
             <a className="headerNav__right__button">
               <FavoriteIcon style={{ color: 'black', marginRight: '8px' }} />
-              <font className="headerNav__right__button-text">favorites</font>
+              <font className="headerNav__right__button-text favorites">favorites</font>
             </a>
           </li>
 

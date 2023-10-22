@@ -69,10 +69,15 @@
 
 .headerNav__right>ul>li {
   text-decoration: none;
+
+  &>a>.favorites {
+    margin-bottom: 2.65px;
+  }
 }
 
 .close-menu {
   display: none;
+  margin-right: 18px;
 }
 
 

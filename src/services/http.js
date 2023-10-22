@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const client = axios.create({
-  baseURL: 'https://testapi.io/api/alaaashkar',
+  baseURL: 'https://fakestoreapi.com/products/category'
 })
 
 client.interceptors.response.use((response) => {

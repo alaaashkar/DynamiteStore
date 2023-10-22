@@ -15,9 +15,9 @@ export const Nav = () => {
         { 'mobile-hide': !isMenuClicked }
       )}>
         <li>
-          <Link>
+          <a href='/woman'>
             Woman
-          </Link>
+          </a>
           <FontAwesomeIcon className='icon' icon={faVenus} />
         </li>
 
