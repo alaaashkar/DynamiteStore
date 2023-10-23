@@ -38,13 +38,40 @@
   color: #222222;
   position: static;
   margin: 0;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
-.products-filter-container {
-  background-color: red;
-}
-
-.filter-form{
+.filter-form {
   display: flex;
+  gap: 50px;
+  align-items: center;
+
+  fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .all-filters {
+    i {
+      background-color: red !important;
+    }
+
+    transform: translateY(53%);
+    display: flex;
+    gap: 10px;
+
+    &>span {
+      transform: translateY(-35%);
+      font-weight: 500;
+      font-size: 1.1rem;
+      letter-spacing: 0.7px;
+      cursor: pointer;
+      padding: 10px;
+    }
+  }
+
+  .sliders {
+    transform: translateY(-10%);
+  }
 }

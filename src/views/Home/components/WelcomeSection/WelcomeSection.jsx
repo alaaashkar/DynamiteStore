@@ -51,8 +51,8 @@ export const WelcomeSection = () => {
         enableSwipe={false}
       >
 
-        <WelcomeImages img={img1} title={'unusual beige'} />
         <WelcomeImages img={img2} title={'rabanne jersey'} />
+        <WelcomeImages img={img1} title={'unusual beige'} />
         <WelcomeImages img={img5} title={'mohair blend'} />
       </Carousel>
     </section >

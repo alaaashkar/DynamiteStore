@@ -3,6 +3,7 @@ import './ItemsLayout.scss'
 import { Outlet } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import SideBar from '../../components/SideBar/SideBar';
+import { FormFilter } from './components/FormFilter/FormFilter';
 
 
 
@@ -37,11 +38,7 @@ export const ItemsLayout = () => {
           <h1 className="playing-images-title products-timeline-title">CHECK ALL OUT</h1>
 
           <div className='products-filter-container'>
-            <form className='filter-form'>
-              <fieldset>
-
-              </fieldset>
-            </form>
+            <FormFilter />
           </div>
         </div>
       </main>
