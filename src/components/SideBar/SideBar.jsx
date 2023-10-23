@@ -3,7 +3,10 @@ import './SideBar.scss'
 const SideBar = () => {
   return (
     <div className='sidebar'>
-      sidebar
+      <ul>
+        <li>Sidebar</li>
+
+      </ul>
     </div>
   );
 };

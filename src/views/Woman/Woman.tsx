@@ -2,7 +2,6 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import './Woman.scss';
 import getWomanProducts from 'utils/client';
-import SideBar from 'components/SideBar/SideBar'
 
 type womanProductType = {
   id: number;
@@ -26,29 +25,7 @@ export const Woman = () => {
 
   return (
     <>
-      <nav className='breadcrumb'>
-        <ul>
-          <li>
-            <a href="/"> START PAGE &nbsp;</a>
-            <span>/</span>
-          </li>
-
-          <li>
-            <a href="woman"> Woman &nbsp;</a>
-          </li>
-        </ul>
-      </nav>
-      <main className='container wrapper'>
-        <SideBar/>
-
-        <div className='products-timeline'>
-          <h1 className="playing-images-title products-timeline-title">CHECK ALL OUT</h1>
-
-          <div className='products-filter-container'>
-
-          </div>
-        </div>
-      </main>
+    
     </>
   )
 };

@@ -19,22 +19,22 @@ export const Nav = () => {
         { 'mobile-hide': !isMenuClicked }
       )}>
         <li>
-          <a href='/woman'>
+          <a href='/items/woman'>
             Woman
           </a>
           <FontAwesomeIcon className='icon' icon={faVenus} />
         </li>
 
         <li>
-          <Link>
-            Male
-          </Link>
+          <a href='/items/man'>
+            Man
+          </a>
           <FontAwesomeIcon className='icon' icon={faMars} />
         </li>
 
         <li>
           <Link>
-            Child
+            Kids
           </Link>
           <FontAwesomeIcon className='icon' icon={faChild} />
         </li>
@@ -50,3 +50,5 @@ export const Nav = () => {
     </nav>
   )
 };
+
+

@@ -12,7 +12,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { useMenu } from "contexts/MenuContext";
 
 
-export const Header = () => {
+ export const Header = () => {
   const { setIsMenuClicked, isMenuClicked } = useMenu()
 
   return (
