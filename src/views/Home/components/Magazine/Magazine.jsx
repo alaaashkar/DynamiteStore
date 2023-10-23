@@ -1,4 +1,4 @@
-import MagazineCard from '../Ad/MagazineCard/MagazineCard';
+import MagazineCard from '../MagazineCard/MagazineCard';
 import './Magazine.scss'
 
 import React from "react";

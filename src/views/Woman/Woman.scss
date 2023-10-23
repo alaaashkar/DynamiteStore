@@ -1,0 +1,45 @@
+.breadcrumb {
+  padding: 16px 24px;
+
+  &>ul {
+    // background-color: red;
+    gap: 0;
+    margin-bottom: 0;
+
+    &>li {
+      &>a {
+        font-size: 0.9rem;
+        font-family: 'Roboto';
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+
+    &>li:last-of-type>a {
+      font-size: 0.8rem;
+      color: red !important;
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  background-color: red;
+
+
+
+  .products-timeline {
+    flex: 7;
+    padding-right: 32px;
+    margin-left: 32px;
+    background-color: yellow;
+  }
+
+  .products-timeline-title {
+    color: #222222;
+    position: static;
+    margin: 0;
+  }
+}

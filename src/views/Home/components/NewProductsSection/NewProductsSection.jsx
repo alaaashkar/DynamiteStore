@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-vars */
 import './NewProductsSection.scss'
 import cn from 'classnames';
-
-
 import React, { useMemo, useState } from "react";
 import { useProducts } from 'contexts/ProductsContext';
 import { Products } from '../Products/Products';

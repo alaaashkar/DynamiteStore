@@ -7,7 +7,11 @@ import { useMenu } from 'contexts/MenuContext';
 
 export const Nav = () => {
   const { isMenuClicked } = useMenu()
+
+
   return (
+
+
     <nav>
       <ul className={cn(
         '',
