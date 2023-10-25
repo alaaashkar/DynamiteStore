@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import './FormFilter.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSliders } from '@fortawesome/free-solid-svg-icons';
@@ -9,7 +9,7 @@ import ProductType from '../ProductType/ProductType';
 import { FilterModal } from '../FilterModal/FilterModal';
 
 
-export const FormFilter = ({ locationEnd }) => {
+export const FormFilter = () => {
   const [isFilterModalClicked, setIsFilteredModalClicked] = useState(false);
 
   const handleAllFiltersClick = (event) => {

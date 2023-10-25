@@ -11,6 +11,7 @@ import { Male } from "./views/Male/Male";
 import { MainLayout } from "./Layouts/MainLayout/MainLayout"
 import { Kids } from "./views/Kids/Kids";
 import { Baby } from "./views/Baby/Baby";
+import { ProductPage } from "./views/ProductPage/ProductPage";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="customer-service" element={<CustomerService />} />
         <Route path="fashion-news" element={<News />} />
         <Route path="store" element={<Store />} />
+        <Route path="productPage" element={<ProductPage />} />
         <Route path="items" element={<ItemsLayout />}>
           <Route path="woman" element={<Woman />} />
           <Route path="man" element={<Male />} />

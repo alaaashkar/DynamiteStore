@@ -6,43 +6,13 @@ import SideBar from '../../components/SideBar/SideBar';
 import { FormFilter } from './components/FormFilter/FormFilter';
 import { useLocation } from 'react-router-dom';
 import { PuffLoader } from 'react-spinners';
+import Breadcrumb from '../../components/BreadCrumb/BreadCrumb';
 
 
 export const ItemsLayout = () => {
-  const { items } = useParams()
-
-  const location = useLocation()
-
-
-  const locationPathName = location.pathname.split('/')
-
-  const locationEnd = locationPathName[locationPathName.length - 1]
-
-  const breadcrumbText = locationEnd === 'woman'
-    ? 'Woman'
-    : locationEnd === 'man'
-      ? 'Man'
-      : locationEnd === 'kids'
-        ? 'Kids'
-        : locationEnd === 'baby'
-          ? 'Baby'
-          : '';
-
   return (
     <>
-      <nav className='breadcrumb'>
-        <ul>
-          <li>
-            <a href="/"> START PAGE &nbsp;</a>
-            <span>/</span>
-          </li>
-
-          <li>
-            <a href={items}> {breadcrumbText} &nbsp;</a>
-          </li>
-        </ul>
-      </nav>
-
+      <Breadcrumb />
       <main className='container wrapper'>
         <SideBar />
 
@@ -50,7 +20,7 @@ export const ItemsLayout = () => {
           <h1 className="playing-images-title products-timeline-title">CHECK ALL OUT</h1>
 
           <div className='products-filter-container'>
-            <FormFilter locationEnd={locationEnd} />
+            <FormFilter />
           </div>
 
           <Outlet />

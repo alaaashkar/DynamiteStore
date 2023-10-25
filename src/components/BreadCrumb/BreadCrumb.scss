@@ -1,0 +1,27 @@
+.breadcrumb {
+  padding: 16px 24px;
+
+  &>ul {
+    display: flex;
+    gap: 2px;
+    justify-content: center;
+    list-style: none;
+    margin-bottom: 0;
+
+    &>li {
+      &>a {
+        font-size: 0.9rem;
+        font-family: 'Roboto';
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+
+    &>li:last-of-type>a {
+      font-size: 0.8rem;
+      color: red !important;
+    }
+  }
+}
