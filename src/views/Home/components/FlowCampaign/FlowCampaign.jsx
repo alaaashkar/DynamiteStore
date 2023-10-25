@@ -11,7 +11,7 @@ export const FlowCampaign = () => {
       <h1 className='playing-images-title flow-title'>Flow</h1>
       {/* <BuyButton /> */}
       <font>Power up your workouts with new Move pieces.</font>
-      <Button text={'Take a tour'} />
+      <Button text={'Take a tour'} to='/items/woman' />
     </article>
   );
 };

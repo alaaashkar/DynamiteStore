@@ -4,18 +4,29 @@ import { Outlet } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import SideBar from '../../components/SideBar/SideBar';
 import { FormFilter } from './components/FormFilter/FormFilter';
-
+import { useLocation } from 'react-router-dom';
+import { PuffLoader } from 'react-spinners';
 
 
 export const ItemsLayout = () => {
   const { items } = useParams()
 
-  console.log(items);
+  const location = useLocation()
 
-  const breadcrumbText = items ===
-    'woman' ? 'Woman'
-    : 'male' ? 'Man'
-      : ''
+
+  const locationPathName = location.pathname.split('/')
+
+  const locationEnd = locationPathName[locationPathName.length - 1]
+
+  const breadcrumbText = locationEnd === 'woman'
+    ? 'Woman'
+    : locationEnd === 'man'
+      ? 'Man'
+      : locationEnd === 'kids'
+        ? 'Kids'
+        : locationEnd === 'baby'
+          ? 'Baby'
+          : '';
 
   return (
     <>
@@ -27,10 +38,11 @@ export const ItemsLayout = () => {
           </li>
 
           <li>
-            <a href="woman"> {breadcrumbText} &nbsp;</a>
+            <a href={items}> {breadcrumbText} &nbsp;</a>
           </li>
         </ul>
       </nav>
+
       <main className='container wrapper'>
         <SideBar />
 
@@ -38,10 +50,17 @@ export const ItemsLayout = () => {
           <h1 className="playing-images-title products-timeline-title">CHECK ALL OUT</h1>
 
           <div className='products-filter-container'>
-            <FormFilter />
+            <FormFilter locationEnd={locationEnd} />
           </div>
+
+          <Outlet />
         </div>
+
       </main>
+
+      <div className="loader">
+        <PuffLoader color="#222222" size={50} />
+      </div>
     </>
   )
 };

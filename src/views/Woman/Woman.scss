@@ -1,0 +1,26 @@
+$gap-size: 4px;
+
+
+.products-wrapper {
+  display: flex;
+  margin-top: 40px;
+  flex-wrap: wrap;
+  gap: 4px;
+
+  .product-card {
+    flex-basis: calc(25% - #{$gap-size});
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    gap: 5px;
+    font-weight: 500;
+
+    img {
+      height: 600px;
+      max-width: 100% !important;
+      object-fit: cover;
+      margin-bottom: 10px !important;
+    }
+  }
+}
+

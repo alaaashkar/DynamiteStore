@@ -33,16 +33,16 @@ export const Nav = () => {
         </li>
 
         <li>
-          <Link>
+          <a href='/items/kids'>
             Kids
-          </Link>
+          </a>
           <FontAwesomeIcon className='icon' icon={faChild} />
         </li>
 
         <li>
-          <Link>
+          <a href='/items/baby'>
             Baby
-          </Link>
+          </a>
           <FontAwesomeIcon className='icon' icon={faBaby} />
         </li>
 

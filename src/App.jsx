@@ -9,6 +9,8 @@ import { Woman } from "views/Woman/Woman";
 import { ItemsLayout } from "./Layouts/ItemsLayout/ItemsLayout"
 import { Male } from "./views/Male/Male";
 import { MainLayout } from "./Layouts/MainLayout/MainLayout"
+import { Kids } from "./views/Kids/Kids";
+import { Baby } from "./views/Baby/Baby";
 
 const App = () => {
   return (
@@ -18,9 +20,11 @@ const App = () => {
         <Route path="customer-service" element={<CustomerService />} />
         <Route path="fashion-news" element={<News />} />
         <Route path="store" element={<Store />} />
-        <Route path="items/:items" element={<ItemsLayout />}>
+        <Route path="items" element={<ItemsLayout />}>
           <Route path="woman" element={<Woman />} />
-          <Route path="man" element={< Male />} />
+          <Route path="man" element={<Male />} />
+          <Route path="kids" element={< Kids />} />
+          <Route path="baby" element={< Baby />} />
         </Route>
       </Route>
     </Routes >

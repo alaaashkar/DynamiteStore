@@ -20,7 +20,7 @@ export const Footer = () => {
       </div>
 
       <div>
-        <font className="footer-description">The contents of this page are protected by copyright and belong to H&M Hennes & Mauritz AB.</font>
+        <font className="footer-description">The contents of this page are protected by copyright and belong to DYNAMITE | AB.</font>
       </div>
 
       <h1 className='playing-images-title footer-title'>DYNAMITE</h1>

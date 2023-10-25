@@ -28,7 +28,7 @@
   display: flex;
 
   .products-timeline {
-    flex: 7;
+    flex: 8;
     padding-right: 32px;
     margin-left: 32px;
   }
@@ -52,26 +52,32 @@
     padding: 0;
   }
 
-  .all-filters {
-    i {
-      background-color: red !important;
-    }
 
-    transform: translateY(53%);
-    display: flex;
-    gap: 10px;
-
-    &>span {
-      transform: translateY(-35%);
-      font-weight: 500;
-      font-size: 1.1rem;
-      letter-spacing: 0.7px;
-      cursor: pointer;
-      padding: 10px;
-    }
-  }
-
-  .sliders {
-    transform: translateY(-10%);
-  }
 }
+
+.loadMore-container {
+  display: flex;
+  justify-content: center;
+  transform: translateX(-7%);
+
+}
+
+.loadMore {
+  position: unset;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10000px;
+  background: rgba(0, 0, 0, 0.583);
+  /* Dark background with transparency */
+  z-index: 9999;
+  /* Place it above everything */
+}
+

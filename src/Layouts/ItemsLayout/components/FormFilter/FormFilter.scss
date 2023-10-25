@@ -1,0 +1,51 @@
+.filter-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  .all-filters {
+    cursor: pointer;
+
+    transform: translateY(53%);
+    display: flex;
+    gap: 10px;
+
+    &>span {
+      transform: translateY(-35%);
+      font-weight: 500;
+      font-size: 1.1rem;
+      letter-spacing: 0.7px;
+      padding: 10px;
+    }
+
+    .sliders {
+      transform: translateY(-10%);
+    }
+  }
+
+  .left {
+    display: flex;
+    justify-content: space-around;
+    gap: 50px;
+    align-items: center;
+  }
+
+  .right {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+
+    p {
+      margin: 0 !important;
+    }
+  }
+
+
+}
