@@ -90,11 +90,6 @@ export const FilterModal = ({ isFilterModalClicked, setIsFilteredModalClicked })
               <span> &gt;</span>
             </li>
 
-            <li onClick={handleBodyClick}>
-              <span>Body</span>
-              <span> &gt;</span>
-            </li>
-
             <li onClick={handleProductTypeClick}>
               <span>Product type</span>
               <span> &gt;</span>
@@ -181,58 +176,13 @@ export const FilterModal = ({ isFilterModalClicked, setIsFilteredModalClicked })
               >
                 <FormControlLabel value="white" control={<Radio />} label="White" />
                 <FormControlLabel value="beige" control={<Radio />} label="Beige" />
-                <FormControlLabel value="red" control={<Radio />} label="Red" />
                 <FormControlLabel value="black" control={<Radio />} label="Black" />
-                <FormControlLabel value="blue" control={<Radio />} label="Blue" />
               </RadioGroup>
             </FormControl>
           </ul>
         </>
       )}
-
-      {sideModalContent === 'body' && (
-        <>
-          <header>
-            <div className='close-back-wrapper'>
-              <div>
-                <FontAwesomeIcon
-                  icon={faArrowLeftLong}
-                  size='xl' className='backwards-icon'
-                  onClick={handleBackwardsClick}
-                />
-              </div>
-
-              <div
-                onClick={() => setIsFilteredModalClicked(false)}
-                className='close-modal'>
-                X
-              </div>
-            </div>
-
-
-            <div
-              className='header-text playing-images-title'>
-              Body
-            </div>
-
-          </header>
-          <ul>
-            <FormControl >
-              <FormLabel id="demo-radio-buttons-group-label">Select a colour</FormLabel>
-              <RadioGroup
-                aria-labelledby="demo-radio-buttons-group-label"
-                defaultValue="pick-an-option"
-                name="radio-buttons-group"
-              >
-                <FormControlLabel value="Women's clothing" control={<Radio />} label="Women's clothing" />
-                <FormControlLabel value="Bra" control={<Radio />} label="Bra" />
-                <FormControlLabel value="Shoe" control={<Radio />} label="Shoe" />
-              </RadioGroup>
-            </FormControl>
-          </ul>
-        </>
-      )}
-
+   
       {sideModalContent === 'productType' && (
         <>
           <header>
@@ -266,15 +216,9 @@ export const FilterModal = ({ isFilterModalClicked, setIsFilteredModalClicked })
                 defaultValue="pick-an-option"
                 name="radio-buttons-group"
               >
-                <FormControlLabel value="scarf" control={<Radio />} label="Scarf" />
-                <FormControlLabel value="shoe" control={<Radio />} label="Shoe" />
-                <FormControlLabel value="beret" control={<Radio />} label="Beret" />
-                <FormControlLabel value="beret" control={<Radio />} label="Beret" />
-                <FormControlLabel value="bracelet" control={<Radio />} label="Bracelet" />
                 <FormControlLabel value="blouse" control={<Radio />} label="Blouse" />
                 <FormControlLabel value="dress" control={<Radio />} label="Dress" />
-                <FormControlLabel value="jacket" control={<Radio />} label="Jacket" />
-                <FormControlLabel value="skirt" control={<Radio />} label="Skirt" />
+                <FormControlLabel value="pants" control={<Radio />} label="Pants" />
               </RadioGroup>
             </FormControl>
           </ul>

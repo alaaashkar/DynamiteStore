@@ -35,7 +35,7 @@ export const Product = ({ img, name, price }) => {
 
           <font className='animated'  >{name}</font> <br />
 
-          <font className= 'animated'>{price}</font>
+          <font className= 'animated'>{price}$</font>
         </div>
       </div >
 

@@ -1,0 +1,38 @@
+[
+  {
+    "woman": [
+      "white",
+      "beige",
+      "black"
+    ]
+  },
+  {
+    "man": [
+      "brown",
+      "black",
+      "grey",
+      "red",
+      "green",
+      ""
+    ]
+  },
+  {
+    "kids": [
+      "purple",
+      "red",
+      "olive",
+      "white",
+      "blue",
+      "yellow"
+    ]
+  },
+  {
+    "baby": [
+      "beige",
+      "patterned",
+      "black",
+      "red",
+      "pink"
+    ]
+  }
+]

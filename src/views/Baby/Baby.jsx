@@ -12,7 +12,7 @@ export const Baby = () => {
 
           <font>{product.name}</font>
 
-          <font>{product.price}</font>
+          <font>{product.price}$</font>
 
           <font>New Product</font>
         </div>

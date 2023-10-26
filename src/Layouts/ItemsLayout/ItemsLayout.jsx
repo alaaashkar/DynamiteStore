@@ -1,10 +1,8 @@
 import React from 'react'
 import './ItemsLayout.scss'
 import { Outlet } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
 import SideBar from '../../components/SideBar/SideBar';
 import { FormFilter } from './components/FormFilter/FormFilter';
-import { useLocation } from 'react-router-dom';
 import { PuffLoader } from 'react-spinners';
 import Breadcrumb from '../../components/BreadCrumb/BreadCrumb';
 
@@ -12,7 +10,7 @@ import Breadcrumb from '../../components/BreadCrumb/BreadCrumb';
 export const ItemsLayout = () => {
   return (
     <>
-      <Breadcrumb />
+        {/* <Breadcrumb /> */}
       <main className='container wrapper'>
         <SideBar />
 

@@ -31,14 +31,10 @@ export default function ProductType() {
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          <MenuItem className='product-type' value={'scarf'}>Scarf</MenuItem>
-          <MenuItem className='product-type' value={'shoe'}>Shoe</MenuItem>
-          <MenuItem className='product-type' value={'beret'}>Beret</MenuItem>
-          <MenuItem className='product-type' value={'bracelet'}>Bracelet</MenuItem>
+         
           <MenuItem className='product-type' value={'blouse'}>Blouse</MenuItem>
           <MenuItem className='product-type' value={'dress'}>Dress</MenuItem>
-          <MenuItem className='product-type' value={'jacket'}>Jacket</MenuItem>
-          <MenuItem className='product-type' value={'skirt'}>Skirt</MenuItem>
+          <MenuItem className='product-type' value={'skirt'}>Pants</MenuItem>
 
 
 

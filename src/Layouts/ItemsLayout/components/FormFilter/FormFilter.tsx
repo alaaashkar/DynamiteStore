@@ -9,8 +9,10 @@ import ProductType from '../ProductType/ProductType';
 import { FilterModal } from '../FilterModal/FilterModal';
 
 
+
 export const FormFilter = () => {
   const [isFilterModalClicked, setIsFilteredModalClicked] = useState(false);
+
 
   const handleAllFiltersClick = (event) => {
     // Prevent the event from propagating to the document click event listener
@@ -19,6 +21,7 @@ export const FormFilter = () => {
     // Add a class to the body to disable scrolling
     document.body.classList.add('modal-open');
   };
+
 
 
   return (
@@ -30,10 +33,6 @@ export const FormFilter = () => {
 
         <fieldset>
           <Colour />
-        </fieldset>
-
-        <fieldset>
-          <Body />
         </fieldset>
 
         <fieldset>

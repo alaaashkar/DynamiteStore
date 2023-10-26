@@ -4,6 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import './Colour.scss'
+import { useLocation } from 'react-router-dom';
 
 export default function Colour() {
   const [colour, setColour] = React.useState('');
@@ -11,6 +12,18 @@ export default function Colour() {
   const handleChange = (event) => {
     setColour(event.target.value);
   };
+
+  const womanColorList = ['White', 'Beige', 'Black']
+
+
+  const location = useLocation();
+  const onWomanPage = location.pathname.includes('woman');
+  const onManPage = location.pathname.includes('man');
+  const onKidsPage = location.pathname.includes('kids');
+  const onBabyPage = location.pathname.includes('baby');
+
+
+  // const 
 
   return (
     <div>
@@ -28,6 +41,7 @@ export default function Colour() {
           onChange={handleChange}
           label="Colour"
         >
+          
           <MenuItem className='color-value' value={''}>
             <span>None</span>
           </MenuItem>
@@ -40,16 +54,8 @@ export default function Colour() {
             <span>Beige</span>
           </MenuItem>
 
-          <MenuItem className='color-value' value={'red'}>
-            <span>Red</span>
-          </MenuItem>
-
           <MenuItem className='color-value' value={'black'}>
             <span>Black</span>
-          </MenuItem>
-
-          <MenuItem className='color-value' value={'blue'}>
-            <span>Blue</span>
           </MenuItem>
         </Select>
       </FormControl>

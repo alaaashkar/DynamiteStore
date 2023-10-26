@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useMemo, useState } from "react";
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 // import getItems from "../services/http";
 import backUp from '../services/backup.json'
 
@@ -7,11 +7,17 @@ const ProductsContext = createContext()
 export const ProductsProvider = ({ children }) => {
   const [productsList, setProductsList] = useState(backUp)
   // const [filteredProducts, setFilteredProducts] = useState([])
+  const [menProducts, setMenProducts] = useState([])
+  const [womenProducts, setWomenProducts] = useState([])
+  const [kidsProducts, setKidsProducts] = useState([])
+  const [babyProducts, setBabyProducts] = useState([])
 
-  const womenProducts = productsList.filter(product => product.sex === 'F')
-  const menProducts = productsList.filter(product => product.sex === 'M')
-  const kidsProducts = productsList.filter(product => product.sex === 'C')
-  const babyProducts = productsList.filter(product => product.sex === 'B')
+  useEffect(() => {
+    setWomenProducts(productsList.filter(product => product.sex === 'F'))
+    setMenProducts(productsList.filter(product => product.sex === 'M'))
+    setKidsProducts(productsList.filter(product => product.sex === 'C'))
+    setBabyProducts(productsList.filter(product => product.sex === 'B'))
+  }, [productsList])
 
 
 
@@ -23,7 +29,11 @@ export const ProductsProvider = ({ children }) => {
     womenProducts,
     menProducts,
     kidsProducts,
-    babyProducts
+    babyProducts,
+    setWomenProducts,
+    setMenProducts,
+    setKidsProducts,
+    setBabyProducts
   }), [menProducts, productsList, womenProducts, kidsProducts, babyProducts]);
 
 
