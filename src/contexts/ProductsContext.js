@@ -10,10 +10,15 @@ export const ProductsProvider = ({ children }) => {
   const [womenProducts, setWomenProducts] = useState([])
   const [kidsProducts, setKidsProducts] = useState([])
   const [babyProducts, setBabyProducts] = useState([])
-  const [sortStatus, setSortStatus] = useState('')
-  const [colourStatus, setColourStatus] = useState('')
+
 
   const womenOriginalProducts = productsList.filter(product => product.sex === 'F')
+  const menOriginalProducts = productsList.filter(product => product.sex === 'M')
+  const kidsOriginalProducts = productsList.filter(product => product.sex === 'C')
+  const babyOriginalProducts = productsList.filter(product => product.sex === 'B')
+
+  const [filteredWomenData, setFilteredWomenData] = useState(womenOriginalProducts)
+
 
   useEffect(() => {
     setWomenProducts(productsList.filter(product => product.sex === 'F'))
@@ -27,6 +32,9 @@ export const ProductsProvider = ({ children }) => {
   const value = useMemo(() => ({
     setProductsList,
     womenOriginalProducts,
+    kidsOriginalProducts,
+    babyOriginalProducts,
+    menOriginalProducts,
     productsList,
     womenProducts,
     menProducts,
@@ -36,11 +44,9 @@ export const ProductsProvider = ({ children }) => {
     setMenProducts,
     setKidsProducts,
     setBabyProducts,
-    setSortStatus,
-    sortStatus,
-    setColourStatus,
-    colourStatus,
-  }), [womenOriginalProducts, productsList, womenProducts, menProducts, kidsProducts, babyProducts, sortStatus, colourStatus]);
+    filteredWomenData,
+    setFilteredWomenData,
+  }), [womenOriginalProducts, kidsOriginalProducts, babyOriginalProducts, menOriginalProducts, productsList, womenProducts, menProducts, kidsProducts, babyProducts, filteredWomenData]);
 
 
   return (

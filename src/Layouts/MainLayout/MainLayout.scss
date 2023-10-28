@@ -1,3 +1,9 @@
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+
 .container {
   will-change: contents;
   opacity: 0;
@@ -14,4 +20,12 @@
 .limited {
   max-width: 960px;
   margin: 0 auto;
+}
+
+.page {
+  flex-grow: 1;
+  min-height: 100vh;
+}
+
+.footer{
 }

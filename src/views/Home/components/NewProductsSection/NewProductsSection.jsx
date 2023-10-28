@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import './NewProductsSection.scss'
 import cn from 'classnames';
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useProducts } from 'contexts/ProductsContext';
 import { Products } from '../Products/Products';
 
@@ -9,23 +9,19 @@ export const NewProductsSection = () => {
   const [buttonClicked, setButtonClicked] = useState('woman');
   const { productsList, setProductsList } = useProducts()
 
+  const filteredProducts = productsList.filter(product => {
+    if (buttonClicked === 'woman') {
+      return product.sex === 'F';
+    } else if (buttonClicked === 'male') {
+      return product.sex === 'M';
+    } else if (buttonClicked === 'child') {
+      return product.sex === 'C';
+    } else if (buttonClicked === 'baby') {
+      return product.sex === 'B';
+    }
+    return true;
+  });
 
-  const filteredProducts = useMemo(() => {
-    return productsList.filter(product => {
-      if (buttonClicked === 'woman') {
-        return product.sex === 'F';
-      } else if (buttonClicked === 'male') {
-        return product.sex === 'M';
-      } else if (buttonClicked === 'child') {
-        return product.sex === 'C';
-      } else if (buttonClicked === 'baby') {
-        return product.sex === 'B';
-      }
-      return true;
-    });
-  }, [buttonClicked, productsList]);
-
-  ;
 
   return (
     <section className='new-products limited'>

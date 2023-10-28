@@ -14,13 +14,13 @@ export const FormFilter = () => {
   const [isFilterModalClicked, setIsFilteredModalClicked] = useState(false);
 
 
-  // const handleAllFiltersClick = (event) => {
-  //   // Prevent the event from propagating to the document click event listener
-  //   event.stopPropagation();
-  //   setIsFilteredModalClicked(true);
-  //   // Add a class to the body to disable scrolling
-  //   document.body.classList.add('modal-open');
-  // };
+  const handleAllFiltersClick = (event) => {
+    // Prevent the event from propagating to the document click event listener
+    event.stopPropagation();
+    setIsFilteredModalClicked(true);
+    // Add a class to the body to disable scrolling
+    document.body.classList.add('modal-open');
+  };
 
 
 
@@ -41,7 +41,7 @@ export const FormFilter = () => {
 
         <fieldset
           className='all-filters'
-          // onClick={handleAllFiltersClick}
+          onClick={handleAllFiltersClick}
         >
           <FontAwesomeIcon size='xl' icon={faSliders} className='sliders' />
           <span>ALL FILTERS</span>

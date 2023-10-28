@@ -1,4 +1,5 @@
-import * as React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -6,12 +7,22 @@ import Select from '@mui/material/Select';
 import './Colour.scss';
 import { useLocation } from 'react-router-dom';
 import { useProducts } from '../../../../contexts/ProductsContext';
-import { useState, useEffect } from 'react';
 
 export default function Colour() {
+
   const [selectedColour, setSelectedColour] = useState(''); // Store the selected color
-  const { womenProducts, setWomenProducts, menProducts, kidsProducts, babyProducts, womenfilteredProducts, setColourStatus, colourStatus } = useProducts();
-  const [filteredColour, setFilteredColour] = useState(womenfilteredProducts)
+  const {
+    menOriginalProducts,
+    kidsOriginalProducts,
+    babyOriginalProducts,
+    setWomenProducts,
+    setMenProducts,
+    setKidsProducts,
+    setBabyProducts,
+    filteredWomenData,
+    setFilteredWomenData,
+    womenOriginalProducts
+  } = useProducts();
 
   const handleChange = (event) => {
     setSelectedColour(event.target.value); // Update the selected color in state
@@ -24,35 +35,71 @@ export default function Colour() {
   const onKidsPage = path.includes('kids');
   const onBabyPage = path.includes('baby');
 
-  const womanColorList = ["White", "Beige", "Black"];
-  const manColorList = ["Brown", "Black", "Grey", "Red", "Green"];
-  const kidsColorList = ["Purple", "Red", "Olive", "White", "Blue", "Yellow"];
-  const babyColorList = ["Beige", "Patterned", "Black", "Red", "Pink"];
+  // Reset the selected color when the route changes
+
 
   const renderColorList = () => {
     if (onWomanPage) {
-      return womanColorList;
+      return ["White", "Beige", "Black"];
     } else if (onManPage) {
-      return manColorList;
+      return ["Brown", "Black", "Grey", "Red", "Green"];
     } else if (onKidsPage) {
-      return kidsColorList;
+      return ["Purple", "Red", "Olive", "White", "Blue", "Yellow"];
     } else if (onBabyPage) {
-      return babyColorList;
+      return ["Beige", "Patterned", "Black", "Red", "Pink"];
     }
-    return []; // Default to an empty array if no match is found.
+
+    // Default to a valid option if no match is found
+    return ['NONE'];
   };
 
+  useEffect(() => {
+    setSelectedColour('NONE');
+    // 1000 milliseconds (1 second)
+  }, [path]);
+
   // useEffect(() => {
-  //   if (onWomanPage && selectedColour) {
-  //     // Filter woman products based on the selected color
-  //     setWomenProducts(filteredColour.filter((item) =>
+  //   if (selectedColour === 'NONE') {
+  //     // If 'NONE' is selected, reset products to the original products
+  //     setWomenProducts(womenOriginalProducts);
+  //     setMenProducts(menOriginalProducts);
+  //     setKidsProducts(kidsOriginalProducts);
+  //     setBabyProducts(babyOriginalProducts);
+  //   } else {
+  //     // Filter products based on the selected color
+  //     setWomenProducts(womenOriginalProducts.filter((item) =>
+  //       item.colour && item.colour.toLowerCase() === selectedColour.toLowerCase()
+  //     ));
+  //     setMenProducts(menOriginalProducts.filter((item) =>
+  //       item.colour && item.colour.toLowerCase() === selectedColour.toLowerCase()
+  //     ));
+  //     setKidsProducts(kidsOriginalProducts.filter((item) =>
+  //       item.colour && item.colour.toLowerCase() === selectedColour.toLowerCase()
+  //     ));
+  //     setBabyProducts(babyOriginalProducts.filter((item) =>
   //       item.colour && item.colour.toLowerCase() === selectedColour.toLowerCase()
   //     ));
   //   }
 
-  // }, [colourStatus, filteredColour, onWomanPage, selectedColour, setWomenProducts, womenProducts, womenfilteredProducts]);
+  // }, [selectedColour]);
 
-  const renderedList = renderColorList()
+  const renderedList = renderColorList();
+
+
+
+  useEffect(() => {
+    let filtered = womenOriginalProducts;
+
+    if (selectedColour !== 'NONE') {
+      filtered = filtered.filter(item => item.colour === selectedColour);
+    }
+
+    setFilteredWomenData(filtered);
+
+  }, [selectedColour])
+
+  console.log(filteredWomenData);
+
 
   return (
     <div>
@@ -71,7 +118,7 @@ export default function Colour() {
           onChange={handleChange} // Update the selected color
           label="Colour"
         >
-          <MenuItem onClick={() => setColourStatus('NONE')} className='color-value' value={''}>
+          <MenuItem className='color-value' value={'NONE'}>
             <span>NONE</span>
           </MenuItem>
 

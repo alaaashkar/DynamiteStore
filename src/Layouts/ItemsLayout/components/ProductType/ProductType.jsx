@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -11,7 +12,23 @@ import { useProducts } from '../../../../contexts/ProductsContext';
 
 export default function ProductType() {
   const [productType, setProductType] = useState(''); // Store the selected product type
-  const { womenProducts, setWomenProducts, womenfilteredProducts } = useProducts();
+  const {
+    setWomenProducts,
+    setMenProducts,
+    menOriginalProducts,
+    setKidsProducts,
+    setBabyProducts,
+    babyOriginalProducts,
+    kidsOriginalProducts,
+    womenProducts,
+    filteredWomenData,
+    setFilteredWomenData,
+    womenOriginalProducts,
+  } = useProducts();
+
+
+  const [filteredData, setFilteredData] = useState(womenOriginalProducts)
+
 
   const handleChange = (event) => {
     setProductType(event.target.value); // Update the selected product type in state
@@ -39,20 +56,57 @@ export default function ProductType() {
     } else if (onBabyPage) {
       return babyTypeList;
     }
-    return []; // Default to an empty array if no match is found.
+    return ['NONE']; // Default to an empty array if no match is found.
   };
+
+  useEffect(() => {
+    setProductType('NONE');
+  }, [path]);
+
 
   // useEffect(() => {
   //   if (onWomanPage && productType) {
-  //     // Filter woman products based on the selected product type
-  //     const filteredProducts = womenProducts.filter((item) =>
+  //     // Filter woman products based on the selected color
+  //     setWomenProducts(womenProducts.filter((item) =>
   //       item.type && item.type.toLowerCase() === productType.toLowerCase()
-  //     );
-  //     setWomenProducts(filteredProducts);
+  //     ));
+  //   } else if (onManPage && productType) {
+  //     // Filter men products based on the selected color
+  //     setMenProducts(womenProducts.filter((item) =>
+  //       item.type && item.type.toLowerCase() === productType.toLowerCase()
+  //     ));
+  //   } else if (onKidsPage && productType) {
+  //     // Filter kids products based on the selected color
+  //     setKidsProducts(womenProducts.filter((item) =>
+  //       item.type && item.type.toLowerCase() === productType.toLowerCase()
+  //     ));
+  //   } else if (onBabyPage && productType) {
+  //     // Filter baby products based on the selected color
+  //     setBabyProducts(womenProducts.filter((item) =>
+  //       item.type && item.type.toLowerCase() === productType.toLowerCase()
+  //     ));
   //   }
-  // }, [productType, onWomanPage, womenProducts, setWomenProducts]);
+
+  // }, [productType]);
+
 
   const renderedType = renderTypeList()
+
+
+
+  useEffect(() => {
+    let filtered = womenOriginalProducts;
+
+    if (productType !== 'NONE') {
+      filtered = filtered.filter(item => item.type === productType);
+    }
+
+    setFilteredWomenData(filtered);
+
+  }, [productType])
+
+  console.log(filteredWomenData,productType);
+
 
   return (
     <div>
@@ -69,7 +123,7 @@ export default function ProductType() {
           onChange={handleChange}
           label="product-type"
         >
-          <MenuItem value="">
+          <MenuItem value="NONE">
             <em>None</em>
           </MenuItem>
 

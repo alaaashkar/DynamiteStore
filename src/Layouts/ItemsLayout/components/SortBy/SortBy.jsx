@@ -24,48 +24,7 @@ export default function SortBy() {
   const onKidsPage = location.pathname.includes('kids');
   const onBabyPage = location.pathname.includes('baby');
 
-  // Uncomment the sorting functions
-  const handleLowestPriceSort = () => {
-    if (onWomanPage) {
-      const sortedProducts = [...womenProducts].sort((a, b) => a.price - b.price);
-      setWomenProducts(sortedProducts);
-    } else if (onManPage) {
-      // Handle sorting for men's products
-    } else if (onKidsPage) {
-      // Handle sorting for kids' products
-    } else if (onBabyPage) {
-      // Handle sorting for baby products
-    }
-  }
-
-  const handleHighestPriceSort = () => {
-    if (onWomanPage) {
-      const sortedProducts = [...womenProducts].sort((a, b) => b.price - a.price);
-      setWomenProducts(sortedProducts);
-    } else if (onManPage) {
-      // Handle sorting for men's products
-    } else if (onKidsPage) {
-      // Handle sorting for kids' products
-    } else if (onBabyPage) {
-      // Handle sorting for baby products
-    }
-  }
-
-  // Uncomment and modify the useEffect based on your sorting needs
-  useEffect(() => {
-    switch (sortStatus) {
-      case 'NONE':
-        // Handle resetting or displaying the default products
-        break;
-      case 'LOWEST':
-        handleLowestPriceSort(); // Call the sorting function
-        break;
-      case 'HIGHEST':
-        handleHighestPriceSort(); // Call the sorting function
-        break;
-      default:
-    }
-  }, [sortStatus, onWomanPage, setWomenProducts, womenProducts]);
+  useEffect(() =>{})
 
   return (
     <div>

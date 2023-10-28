@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import './Woman.scss';
 import { Link } from 'react-router-dom';
@@ -11,7 +11,7 @@ import Breadcrumb from '../../components/BreadCrumb/BreadCrumb';
 // Define the womanProductType here if needed
 
 export const Woman = () => {
-  const { womenProducts } = useProducts();
+  const { womenProducts, filteredWomenData } = useProducts();
   const initialItemsToShow = 8;
   const [visibleItems, setVisibleItems] = useState(initialItemsToShow);
   const [isLoading, setIsLoading] = useState(false);
@@ -25,18 +25,20 @@ export const Woman = () => {
     }, 500);
   };
 
+  console.log(filteredWomenData);
+
   return (
     <>
       {/* <Breadcrumb>
-        <li><Link to="">Woman</Link></li>
-      </Breadcrumb > */}
+          <li><Link to="">Woman</Link></li>
+        </Breadcrumb > */}
       <div className="container products-wrapper">
-        {womenProducts.slice(0, visibleItems).map((product) => (
+        {filteredWomenData.slice(0, visibleItems).map((product) => (
           <div
             className="product-card"
             onMouseEnter={() => setHoveredProductId(product.id)}
             onMouseLeave={() => setHoveredProductId(0)}
-            key={product.id}
+            key={product.id} // Ensure that product.id is unique
           >
             <Link to={`/product-page/${product.id}`} className="product-link">
               {hoveredProductId === product.id ? (
