@@ -7,15 +7,16 @@ import { useProducts } from '../../../../contexts/ProductsContext';
 import './SortBy.scss';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useState } from 'react';
+import { ClipLoader } from 'react-spinners';
 
 export default function SortBy() {
-  const [age, setAge] = React.useState('');
-  const { womenProducts, setWomenProducts, sortStatus, setSortStatus } = useProducts();
+  const [selectedSortStatus, setSelectedSortStatus] = React.useState('');
+  const { filteredWomenData, setFilteredWomenData, setFilteredMenData, setFilteredKidsData, setFilteredBabyData, filteredMenData, filteredKidsData, filteredBabyData, womenOriginalProducts } = useProducts();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (event) => {
-    const selectedSortStatus = event.target.value;
-    setAge(selectedSortStatus);
-    setSortStatus(selectedSortStatus); // Set the sort status here
+    setSelectedSortStatus(event.target.value);
   };
 
   const location = useLocation();
@@ -24,7 +25,53 @@ export default function SortBy() {
   const onKidsPage = location.pathname.includes('kids');
   const onBabyPage = location.pathname.includes('baby');
 
-  useEffect(() =>{})
+  const load = (callback) => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      if (typeof callback === 'function') {
+        callback(); // Call the provided callback function
+      }
+    }, 500);
+  };
+
+  useEffect(() => {
+    if (onWomanPage) {
+      load(() => {
+        if (selectedSortStatus === 'LOWEST') {
+          setFilteredWomenData([...filteredWomenData].sort((a, b) => a.price - b.price));
+        } else if (selectedSortStatus === 'HIGHEST') {
+          setFilteredWomenData([...filteredWomenData].sort((a, b) => b.price - a.price));
+        } else if (selectedSortStatus === 'NONE') {
+          setFilteredWomenData(womenOriginalProducts)
+        }
+      });
+    } else if (onManPage) {
+      load(() => {
+        if (selectedSortStatus === 'LOWEST') {
+          setFilteredMenData([...filteredMenData].sort((a, b) => a.price - b.price));
+        } else if (selectedSortStatus === 'HIGHEST') {
+          setFilteredMenData([...filteredMenData].sort((a, b) => b.price - a.price));
+        }
+      });
+    } else if (onKidsPage) {
+      load(() => {
+        if (selectedSortStatus === 'LOWEST') {
+          setFilteredKidsData([...filteredKidsData].sort((a, b) => a.price - b.price));
+        } else if (selectedSortStatus === 'HIGHEST') {
+          setFilteredKidsData([...filteredKidsData].sort((a, b) => b.price - a.price));
+        }
+      });
+    } else if (onBabyPage) {
+      load(() => {
+        if (selectedSortStatus === 'LOWEST') {
+          setFilteredBabyData([...filteredBabyData].sort((a, b) => a.price - b.price));
+        } else if (selectedSortStatus === 'HIGHEST') {
+          setFilteredBabyData([...filteredBabyData].sort((a, b) => b.price - a.price));
+        }
+      });
+    }
+  }, [selectedSortStatus]);
 
   return (
     <div>
@@ -37,17 +84,22 @@ export default function SortBy() {
           className='select'
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
-          value={age}
+          value={selectedSortStatus}
           onChange={handleChange}
-          label="Age"
+          label="SortStatus"
         >
-          <MenuItem onClick={() => setSortStatus('NONE')} value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem onClick={() => setSortStatus('LOWEST')} className='value' value={'lowest-price'}>Lowest price</MenuItem>
-          <MenuItem onClick={() => setSortStatus('HIGHEST')} className='value' value={'highest-price'}>Highest price</MenuItem>
+          <MenuItem className='value' value="NONE"> <em>None</em></MenuItem>
+          <MenuItem className='value' value={'LOWEST'}>Lowest price</MenuItem>
+          <MenuItem className='value' value={'HIGHEST'}>Highest price</MenuItem>
         </Select>
       </FormControl>
+
+      {isLoading && (
+        <>
+          <div className="backdrop" />
+          <ClipLoader size={25} color="white" className="clip-loader" />
+        </>
+      )}
     </div>
   );
 }

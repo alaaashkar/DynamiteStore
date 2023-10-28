@@ -7,18 +7,19 @@ import Select from '@mui/material/Select';
 import './Colour.scss';
 import { useLocation } from 'react-router-dom';
 import { useProducts } from '../../../../contexts/ProductsContext';
+import { ClipLoader } from 'react-spinners';
+
 
 export default function Colour() {
-
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedColour, setSelectedColour] = useState(''); // Store the selected color
   const {
     menOriginalProducts,
     kidsOriginalProducts,
     babyOriginalProducts,
-    setWomenProducts,
-    setMenProducts,
-    setKidsProducts,
-    setBabyProducts,
+    setFilteredMenData,
+    setFilteredKidsData,
+    setFilteredBabyData,
     filteredWomenData,
     setFilteredWomenData,
     womenOriginalProducts
@@ -58,43 +59,62 @@ export default function Colour() {
     // 1000 milliseconds (1 second)
   }, [path]);
 
-  // useEffect(() => {
-  //   if (selectedColour === 'NONE') {
-  //     // If 'NONE' is selected, reset products to the original products
-  //     setWomenProducts(womenOriginalProducts);
-  //     setMenProducts(menOriginalProducts);
-  //     setKidsProducts(kidsOriginalProducts);
-  //     setBabyProducts(babyOriginalProducts);
-  //   } else {
-  //     // Filter products based on the selected color
-  //     setWomenProducts(womenOriginalProducts.filter((item) =>
-  //       item.colour && item.colour.toLowerCase() === selectedColour.toLowerCase()
-  //     ));
-  //     setMenProducts(menOriginalProducts.filter((item) =>
-  //       item.colour && item.colour.toLowerCase() === selectedColour.toLowerCase()
-  //     ));
-  //     setKidsProducts(kidsOriginalProducts.filter((item) =>
-  //       item.colour && item.colour.toLowerCase() === selectedColour.toLowerCase()
-  //     ));
-  //     setBabyProducts(babyOriginalProducts.filter((item) =>
-  //       item.colour && item.colour.toLowerCase() === selectedColour.toLowerCase()
-  //     ));
-  //   }
-
-  // }, [selectedColour]);
-
   const renderedList = renderColorList();
 
-
+  const load = (callback) => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      if (typeof callback === 'function') {
+        callback(); // Call the provided callback function
+      }
+    }, 500);
+  };
 
   useEffect(() => {
-    let filtered = womenOriginalProducts;
+    if (onWomanPage) {
+      load(() => {
+        let filtered = womenOriginalProducts;
 
-    if (selectedColour !== 'NONE') {
-      filtered = filtered.filter(item => item.colour === selectedColour);
+        if (selectedColour !== 'NONE') {
+          filtered = filtered.filter(item => item.colour === selectedColour);
+        }
+
+        setFilteredWomenData(filtered);
+      })
+
+    } else if (onManPage) {
+      load(() => {
+        let filtered = menOriginalProducts;
+
+        if (selectedColour !== 'NONE') {
+          filtered = filtered.filter(item => item.colour === selectedColour);
+        }
+
+        setFilteredMenData(filtered)
+      })
+    } else if (onKidsPage) {
+      load(() => {
+        let filtered = kidsOriginalProducts;
+
+        if (selectedColour !== 'NONE') {
+          filtered = filtered.filter(item => item.colour === selectedColour);
+        }
+
+        setFilteredKidsData(filtered)
+      })
+
+    } else {
+      load(() => {
+        let filtered = babyOriginalProducts
+        if (selectedColour !== 'NONE') {
+          filtered = filtered.filter(item => item.colour === selectedColour);
+        }
+
+        setFilteredBabyData(filtered)
+      })
     }
 
-    setFilteredWomenData(filtered);
 
   }, [selectedColour])
 
@@ -133,6 +153,13 @@ export default function Colour() {
           ))}
         </Select>
       </FormControl>
+
+      {isLoading && (
+        <>
+          <div className="backdrop" />
+          <ClipLoader size={25} color="white" className="clip-loader" />
+        </>
+      )}
     </div>
   );
 }

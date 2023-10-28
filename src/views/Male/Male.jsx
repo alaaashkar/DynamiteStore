@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 
 export const Male = () => {
-  const { menProducts } = useProducts();
+  const { menProducts, filteredMenData } = useProducts();
   const initialItemsToShow = 8;
   const [visibleItems, setVisibleItems] = useState(initialItemsToShow);
   const [isLoading, setIsLoading] = useState(false);
@@ -26,7 +26,7 @@ export const Male = () => {
   return (
     <>
       <div className='container products-wrapper'>
-        {menProducts.slice(0, visibleItems).map(product => (
+        {filteredMenData.slice(0, visibleItems).map(product => (
           <div
             className='product-card'
             key={product.id}

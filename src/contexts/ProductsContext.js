@@ -18,6 +18,9 @@ export const ProductsProvider = ({ children }) => {
   const babyOriginalProducts = productsList.filter(product => product.sex === 'B')
 
   const [filteredWomenData, setFilteredWomenData] = useState(womenOriginalProducts)
+  const [filteredMenData, setFilteredMenData] = useState(menOriginalProducts)
+  const [filteredKidsData, setFilteredKidsData] = useState(kidsOriginalProducts)
+  const [filteredBabyData, setFilteredBabyData] = useState(babyOriginalProducts)
 
 
   useEffect(() => {
@@ -46,7 +49,13 @@ export const ProductsProvider = ({ children }) => {
     setBabyProducts,
     filteredWomenData,
     setFilteredWomenData,
-  }), [womenOriginalProducts, kidsOriginalProducts, babyOriginalProducts, menOriginalProducts, productsList, womenProducts, menProducts, kidsProducts, babyProducts, filteredWomenData]);
+    filteredMenData,
+    setFilteredMenData,
+    filteredKidsData,
+    setFilteredKidsData,
+    filteredBabyData,
+    setFilteredBabyData
+  }), [womenOriginalProducts, kidsOriginalProducts, babyOriginalProducts, menOriginalProducts, productsList, womenProducts, menProducts, kidsProducts, babyProducts, filteredWomenData, filteredMenData, filteredKidsData, filteredBabyData]);
 
 
   return (

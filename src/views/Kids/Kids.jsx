@@ -5,13 +5,13 @@ import { PuffLoader } from 'react-spinners';
 import { Link } from 'react-router-dom';
 
 export const Kids = () => {
-  const { kidsProducts } = useProducts();
+  const { kidsProducts, filteredKidsData } = useProducts();
   const [hoveredProductId, setHoveredProductId] = useState(0); // Initialize with a default value
 
   return (
     <>
       <div className='container products-wrapper'>
-        {kidsProducts.map((product) => (
+        {filteredKidsData.map((product) => (
           <div
             className="product-card"
             onMouseEnter={() => setHoveredProductId(product.id)}

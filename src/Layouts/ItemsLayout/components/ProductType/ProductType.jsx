@@ -13,22 +13,15 @@ import { useProducts } from '../../../../contexts/ProductsContext';
 export default function ProductType() {
   const [productType, setProductType] = useState(''); // Store the selected product type
   const {
-    setWomenProducts,
-    setMenProducts,
     menOriginalProducts,
-    setKidsProducts,
-    setBabyProducts,
     babyOriginalProducts,
     kidsOriginalProducts,
-    womenProducts,
-    filteredWomenData,
     setFilteredWomenData,
     womenOriginalProducts,
+    setFilteredMenData,
+    setFilteredKidsData,
+    setFilteredBabyData
   } = useProducts();
-
-
-  const [filteredData, setFilteredData] = useState(womenOriginalProducts)
-
 
   const handleChange = (event) => {
     setProductType(event.target.value); // Update the selected product type in state
@@ -63,50 +56,44 @@ export default function ProductType() {
     setProductType('NONE');
   }, [path]);
 
-
-  // useEffect(() => {
-  //   if (onWomanPage && productType) {
-  //     // Filter woman products based on the selected color
-  //     setWomenProducts(womenProducts.filter((item) =>
-  //       item.type && item.type.toLowerCase() === productType.toLowerCase()
-  //     ));
-  //   } else if (onManPage && productType) {
-  //     // Filter men products based on the selected color
-  //     setMenProducts(womenProducts.filter((item) =>
-  //       item.type && item.type.toLowerCase() === productType.toLowerCase()
-  //     ));
-  //   } else if (onKidsPage && productType) {
-  //     // Filter kids products based on the selected color
-  //     setKidsProducts(womenProducts.filter((item) =>
-  //       item.type && item.type.toLowerCase() === productType.toLowerCase()
-  //     ));
-  //   } else if (onBabyPage && productType) {
-  //     // Filter baby products based on the selected color
-  //     setBabyProducts(womenProducts.filter((item) =>
-  //       item.type && item.type.toLowerCase() === productType.toLowerCase()
-  //     ));
-  //   }
-
-  // }, [productType]);
-
-
   const renderedType = renderTypeList()
 
-
-
   useEffect(() => {
-    let filtered = womenOriginalProducts;
+    if (onWomanPage) {
+      let filtered = womenOriginalProducts;
 
-    if (productType !== 'NONE') {
-      filtered = filtered.filter(item => item.type === productType);
+      if (productType !== 'NONE') {
+        filtered = filtered.filter(item => item.type === productType);
+      }
+
+      setFilteredWomenData(filtered);
+    } else if (onManPage) {
+      let filtered = menOriginalProducts;
+
+      if (productType !== 'NONE') {
+        filtered = filtered.filter(item => item.type === productType);
+      }
+
+      setFilteredMenData(filtered)
+    } else if (onKidsPage) {
+      let filtered = kidsOriginalProducts;
+
+      if (productType !== 'NONE') {
+        filtered = filtered.filter(item => item.type === productType);
+      }
+
+      setFilteredKidsData(filtered)
+    } else {
+      let filtered = babyOriginalProducts
+      if (productType !== 'NONE') {
+        filtered = filtered.filter(item => item.type === productType);
+      }
+
+      setFilteredBabyData(filtered)
     }
 
-    setFilteredWomenData(filtered);
 
   }, [productType])
-
-  console.log(filteredWomenData,productType);
-
 
   return (
     <div>
