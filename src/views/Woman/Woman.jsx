@@ -40,13 +40,13 @@ export const Woman = () => {
             onMouseLeave={() => setHoveredProductId(0)}
             key={product.id} // Ensure that product.id is unique
           >
-            <Link to={`/product-page/${product.id}`} className="product-link">
+            <a href={`/product-page/${product.id}`} className="product-link">
               {hoveredProductId === product.id ? (
                 <img src={product.itemImg} alt={product.name} />
               ) : (
                 <img src={product.img} alt={product.name} />
               )}
-            </Link>
+            </a>
 
             <a href={`/product-page/${product.id}`} className="product-link">
               <font>{product.name}</font>

@@ -8,9 +8,11 @@ import './ProductType.scss'
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useProducts } from '../../../../contexts/ProductsContext';
+import { ClipLoader } from 'react-spinners';
 
 
 export default function ProductType() {
+  const [isLoading, setIsLoading] = useState(false)
   const [productType, setProductType] = useState(''); // Store the selected product type
   const {
     menOriginalProducts,
@@ -26,6 +28,16 @@ export default function ProductType() {
   const handleChange = (event) => {
     setProductType(event.target.value); // Update the selected product type in state
   };
+
+  const load = (callback) => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      if (typeof callback === 'function') {
+        callback(); // Call the provided callback function
+      }
+    }, 500);
+  }
 
   const location = useLocation();
   const path = location.pathname;
@@ -60,39 +72,48 @@ export default function ProductType() {
 
   useEffect(() => {
     if (onWomanPage) {
-      let filtered = womenOriginalProducts;
+      load(() => {
+        let filtered = womenOriginalProducts;
 
-      if (productType !== 'NONE') {
-        filtered = filtered.filter(item => item.type === productType);
-      }
+        if (productType !== 'NONE') {
+          filtered = filtered.filter(item => item.type === productType);
+        }
 
-      setFilteredWomenData(filtered);
+        setFilteredWomenData(filtered);
+      })
+
     } else if (onManPage) {
-      let filtered = menOriginalProducts;
+      load(() => {
+        let filtered = menOriginalProducts;
 
-      if (productType !== 'NONE') {
-        filtered = filtered.filter(item => item.type === productType);
-      }
+        if (productType !== 'NONE') {
+          filtered = filtered.filter(item => item.type === productType);
+        }
+        setFilteredMenData(filtered)
 
-      setFilteredMenData(filtered)
+      })
+
     } else if (onKidsPage) {
-      let filtered = kidsOriginalProducts;
+      load(() => {
+        let filtered = kidsOriginalProducts;
 
-      if (productType !== 'NONE') {
-        filtered = filtered.filter(item => item.type === productType);
-      }
+        if (productType !== 'NONE') {
+          filtered = filtered.filter(item => item.type === productType);
+        }
+        setFilteredKidsData(filtered)
 
-      setFilteredKidsData(filtered)
+      })
+
     } else {
-      let filtered = babyOriginalProducts
-      if (productType !== 'NONE') {
-        filtered = filtered.filter(item => item.type === productType);
-      }
+      load(() => {
+        let filtered = babyOriginalProducts
+        if (productType !== 'NONE') {
+          filtered = filtered.filter(item => item.type === productType);
+        }
 
-      setFilteredBabyData(filtered)
+        setFilteredBabyData(filtered)
+      })
     }
-
-
   }, [productType])
 
   return (
@@ -124,6 +145,13 @@ export default function ProductType() {
           ))}
         </Select>
       </FormControl>
+
+      {isLoading && (
+        <>
+          <div className="backdrop" />
+          <ClipLoader size={25} color="white" className="clip-loader" />
+        </>
+      )}
     </div>
   );
 }

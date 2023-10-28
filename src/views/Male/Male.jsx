@@ -33,13 +33,13 @@ export const Male = () => {
             onMouseEnter={() => setProductId(product.id)}
             onMouseLeave={() => setProductId(0)}
           >
-            <Link to={`/product-page/${product.id}`}>
+            <a href={`/product-page/${product.id}`}>
               {product.id === productId ? (
                 <img src={product.itemImg} alt="img" />
               ) : (
                 <img src={product.img} alt="img" />
               )}
-            </Link>
+            </a>
 
             <a href={`/product-page/${product.id}`} className="product-link">
               <font>{product.name}</font>
