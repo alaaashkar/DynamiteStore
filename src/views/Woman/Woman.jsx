@@ -1,11 +1,11 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './Woman.scss';
-import getWomanProducts from 'utils/client';
+import { Link } from 'react-router-dom';
+
 import { useProducts } from 'contexts/ProductsContext';
 import { Button } from '../../components/Button/Button';
-import { ClipLoader } from 'react-spinners';
-import { Link } from 'react-router-dom';
+import { PuffLoader, ClipLoader } from 'react-spinners';
 import Breadcrumb from '../../components/BreadCrumb/BreadCrumb';
 
 // Define the womanProductType here if needed
@@ -27,10 +27,10 @@ export const Woman = () => {
 
   return (
     <>
-      <Breadcrumb>
+      {/* <Breadcrumb>
         <li><Link to="">Woman</Link></li>
-      </Breadcrumb >
-      <div className="products-wrapper">
+      </Breadcrumb > */}
+      <div className="container products-wrapper">
         {womenProducts.slice(0, visibleItems).map((product) => (
           <div
             className="product-card"
@@ -38,13 +38,13 @@ export const Woman = () => {
             onMouseLeave={() => setHoveredProductId(0)}
             key={product.id}
           >
-            <a href={`/product-page/${product.id}`} className="product-link">
+            <Link to={`/product-page/${product.id}`} className="product-link">
               {hoveredProductId === product.id ? (
                 <img src={product.itemImg} alt={product.name} />
               ) : (
                 <img src={product.img} alt={product.name} />
               )}
-            </a>
+            </Link>
 
             <a href={`/product-page/${product.id}`} className="product-link">
               <font>{product.name}</font>
@@ -57,10 +57,13 @@ export const Woman = () => {
         ))}
       </div>
 
+      <div className="loader">
+        <PuffLoader color="#222222" size={50} />
+      </div>
+
       {isLoading && (
         <>
           <div className="backdrop" />
-
           <ClipLoader size={20} color="black" className="clip-loader" />
         </>
       )}

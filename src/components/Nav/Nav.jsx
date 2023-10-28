@@ -19,30 +19,30 @@ export const Nav = () => {
         { 'mobile-hide': !isMenuClicked }
       )}>
         <li>
-          <a href='/items/woman'>
+          <Link to='/items/woman'>
             Woman
-          </a>
+          </Link>
           <FontAwesomeIcon className='icon' icon={faVenus} />
         </li>
 
         <li>
-          <a href='/items/man'>
+          <Link to='/items/man'>
             Man
-          </a>
+          </Link>
           <FontAwesomeIcon className='icon' icon={faMars} />
         </li>
 
         <li>
-          <a href='/items/kids'>
+          <Link to='/items/kids'>
             Kids
-          </a>
+          </Link>
           <FontAwesomeIcon className='icon' icon={faChild} />
         </li>
 
         <li>
-          <a href='/items/baby'>
+          <Link to='/items/baby'>
             Baby
-          </a>
+          </Link>
           <FontAwesomeIcon className='icon' icon={faBaby} />
         </li>
 

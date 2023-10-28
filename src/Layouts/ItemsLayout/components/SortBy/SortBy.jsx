@@ -6,14 +6,16 @@ import Select from '@mui/material/Select';
 import { useProducts } from '../../../../contexts/ProductsContext';
 import './SortBy.scss';
 import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export default function SortBy() {
   const [age, setAge] = React.useState('');
-  const { womenProducts, setWomenProducts, menProducts, setMenProducts, kidsProducts, setKidsProducts, babyProducts, setBabyProducts } = useProducts();
-
+  const { womenProducts, setWomenProducts, sortStatus, setSortStatus } = useProducts();
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    const selectedSortStatus = event.target.value;
+    setAge(selectedSortStatus);
+    setSortStatus(selectedSortStatus); // Set the sort status here
   };
 
   const location = useLocation();
@@ -22,21 +24,17 @@ export default function SortBy() {
   const onKidsPage = location.pathname.includes('kids');
   const onBabyPage = location.pathname.includes('baby');
 
-
-
+  // Uncomment the sorting functions
   const handleLowestPriceSort = () => {
     if (onWomanPage) {
       const sortedProducts = [...womenProducts].sort((a, b) => a.price - b.price);
       setWomenProducts(sortedProducts);
     } else if (onManPage) {
-      const sortedProducts = [...menProducts].sort((a, b) => a.price - b.price);
-      setMenProducts(sortedProducts);
+      // Handle sorting for men's products
     } else if (onKidsPage) {
-      const sortedProducts = [...kidsProducts].sort((a, b) => a.price - b.price);
-      setKidsProducts(sortedProducts);
+      // Handle sorting for kids' products
     } else if (onBabyPage) {
-      const sortedProducts = [...babyProducts].sort((a, b) => a.price - b.price);
-      setBabyProducts(sortedProducts);
+      // Handle sorting for baby products
     }
   }
 
@@ -45,16 +43,29 @@ export default function SortBy() {
       const sortedProducts = [...womenProducts].sort((a, b) => b.price - a.price);
       setWomenProducts(sortedProducts);
     } else if (onManPage) {
-      const sortedProducts = [...menProducts].sort((a, b) => b.price - a.price);
-      setMenProducts(sortedProducts);
+      // Handle sorting for men's products
     } else if (onKidsPage) {
-      const sortedProducts = [...kidsProducts].sort((a, b) => b.price - a.price);
-      setKidsProducts(sortedProducts)
+      // Handle sorting for kids' products
     } else if (onBabyPage) {
-      const sortedProducts = [...babyProducts].sort((a, b) => b.price - a.price);
-      setBabyProducts(sortedProducts);
+      // Handle sorting for baby products
     }
   }
+
+  // Uncomment and modify the useEffect based on your sorting needs
+  useEffect(() => {
+    switch (sortStatus) {
+      case 'NONE':
+        // Handle resetting or displaying the default products
+        break;
+      case 'LOWEST':
+        handleLowestPriceSort(); // Call the sorting function
+        break;
+      case 'HIGHEST':
+        handleHighestPriceSort(); // Call the sorting function
+        break;
+      default:
+    }
+  }, [sortStatus, onWomanPage, setWomenProducts, womenProducts]);
 
   return (
     <div>
@@ -71,11 +82,11 @@ export default function SortBy() {
           onChange={handleChange}
           label="Age"
         >
-          <MenuItem value="">
+          <MenuItem onClick={() => setSortStatus('NONE')} value="">
             <em>None</em>
           </MenuItem>
-          <MenuItem onClick={handleLowestPriceSort} className='value' value={'lowest-price'}>Lowest price</MenuItem>
-          <MenuItem onClick={handleHighestPriceSort} className='value' value={'highest-price'}>Highest price</MenuItem>
+          <MenuItem onClick={() => setSortStatus('LOWEST')} className='value' value={'lowest-price'}>Lowest price</MenuItem>
+          <MenuItem onClick={() => setSortStatus('HIGHEST')} className='value' value={'highest-price'}>Highest price</MenuItem>
         </Select>
       </FormControl>
     </div>

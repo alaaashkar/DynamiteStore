@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './Male.scss';
 import { useProducts } from '../../contexts/ProductsContext';
 import { Button } from '../../components/Button/Button';
-import { ClipLoader } from 'react-spinners';
+import { ClipLoader, PuffLoader } from 'react-spinners';
+import { Link } from 'react-router-dom';
 
 
 export const Male = () => {
@@ -22,7 +23,7 @@ export const Male = () => {
 
   return (
     <>
-      <div className='products-wrapper'>
+      <div className='container products-wrapper'>
         {menProducts.slice(0, visibleItems).map(product => (
           <div
             className='product-card'
@@ -30,13 +31,17 @@ export const Male = () => {
             onMouseEnter={() => setProductId(product.id)}
             onMouseLeave={() => setProductId(0)}
           >
-            {product.id === productId ? (
-              <img src={product.itemImg} alt="img" />
-            ): (
+            <Link to={`/product-page/${product.id}`}>
+              {product.id === productId ? (
+                <img src={product.itemImg} alt="img" />
+              ) : (
                 <img src={product.img} alt="img" />
-            )}
+              )}
+            </Link>
 
-            <font>{product.name}</font>
+            <a href={`/product-page/${product.id}`} className="product-link">
+              <font>{product.name}</font>
+            </a>
 
             <font>{product.price}$</font>
 
@@ -45,6 +50,9 @@ export const Male = () => {
         ))}
       </div>
 
+      <div className="loader">
+        <PuffLoader color="#222222" size={50} />
+      </div>
 
       {isLoading && (
         <>

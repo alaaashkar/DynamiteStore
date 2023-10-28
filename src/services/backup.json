@@ -4,10 +4,10 @@
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F10%2F90%2F1090f6cc7ca04b5b8a10d2ee61a2907c31f6897c.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
     "itemImg": "https://d29c1z66frfv6c.cloudfront.net/pub/media/catalog/product/large/1493aba3b38852a310cda540185a8cdf1c77ea22_xxl-1.jpg",
     "name": "Oversize Crinkle Blouse",
-    "type": "blouse",
+    "type": "Blouse",
     "price": "39.99",
     "sex": "F",
-    "colour": "white"
+    "colour": "White"
   },
   {
     "id": "2",
@@ -15,9 +15,9 @@
     "itemImg": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F7a%2Fc3%2F7ac34a38c7dc6113c7517b07bf68351080f98995.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "name": "Textured Jersey Dress",
     "price": "34.99",
-    "type": "dress",
+    "type": "Dress",
     "sex": "F",
-    "colour": "beige"
+    "colour": "Beige"
   },
   {
     "id": "3",
@@ -25,9 +25,9 @@
     "itemImg": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F46%2F9e%2F469e294d76fc157a55dc0334a6d64ab8d18902ac.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "name": "Mohair Blend Half Turtleneck Sweater",
     "price": "33.00",
-    "type": "blouse",
+    "type": "Blouse",
     "sex": "F",
-    "colour": "beige"
+    "colour": "Beige"
   },
   {
     "id": "4",
@@ -35,89 +35,89 @@
     "itemImg": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F2b%2F0e%2F2b0e9d882f2cdcb9e6ab42d236a4bc2b97f476d6.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "name": "Rib Knitted Oversize Sweater",
     "price": "45.00",
-    "type": "blouse",
+    "type": "Blouse",
     "sex": "F",
-    "colour": "beige"
+    "colour": "Beige"
   },
   {
     "id": "5",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F41%2F01%2F4101a8a155bae35df6ce378001392c4be7170684.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
     "itemImg": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Fb4%2Ff6%2Fb4f646fc8fe50b408815946b7daa872522d4b55a.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "name": "Beaded Satin Dress",
-    "type": "dress",
+    "type": "Dress",
     "price": "78.99",
     "sex": "F",
-    "colour": "white"
+    "colour": "White"
   },
   {
     "id": "6",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fb2%2F75%2Fb275f3df06f3a9c9b399fbb9cd4d1a8e0aa4a5de.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
     "itemImg": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Ffd%2Fbd%2Ffdbd3e901229517384b7789b403147d2244e29be.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "name": "Mohair Blend Knit Skirt",
-    "type": "dress",
+    "type": "Skirt",
     "price": "71.00",
     "sex": "F",
-    "colour": "beige"
+    "colour": "Beige"
   },
   {
     "id": "7",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F9b%2Fc4%2F9bc48cb2673309da479746b6018a6d8dcc184e41.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
     "itemImg": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Fbf%2Fd1%2Fbfd1ff84f420853dae29afa073955296d5394932.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "name": "Turtleneck Oversize Sweater",
-    "type": "blouse",
+    "type": "Blouse",
     "price": "62.00",
     "sex": "F",
-    "colour": "white"
+    "colour": "White"
   },
   {
     "id": "8",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Faa%2F34%2Faa3437c69d36e325d0892bfaebe5f33eedcea43d.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
     "itemImg": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F59%2F19%2F5919e3b86bafb58dc8e8d594102897d3872e6da0.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "name": "Gabardin Kargo Pants",
-    "type": "pants",
+    "type": "Pants",
     "price": "55.99",
     "sex": "F",
-    "colour": "beige"
+    "colour": "Beige"
   },
   {
     "id": "9",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F37%2F56%2F37566be09023a31f711a6239c8772bd9145c0ff6.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
     "itemImg": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F0f%2F40%2F0f40050d5c129c62db0accff11179c3d5ff0c910.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bladies_trousers_cargo%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "name": "Cargo Pants",
-    "type": "pants",
+    "type": "Pants",
     "price": "52.99",
     "sex": "F",
-    "colour": "white"
+    "colour": "White"
   },
   {
     "id": "10",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fa8%2Fd2%2Fa8d287730e051cfdedc79f624462ad6868c0cf11.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
     "itemImg": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F9a%2F8b%2F9a8b3979fc74d301694492f61052abdb9a32ecc9.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bladies_plus%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "name": "Textured Jersey Dress",
-    "type": "dress",
+    "type": "Dress",
     "price": "43.99",
     "sex": "F",
-    "colour": "beige"
+    "colour": "Beige"
   },
   {
     "id": "11",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F57%2Fd2%2F57d2edb9b87ecaa794b6ab291bcfd8a008158fdc.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
     "itemImg": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Fef%2Ffd%2Feffd0c30ceeb107580541b594aa43e18f717e4c1.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "name": "Kruvaze Blazer",
-    "type": "blouse",
+    "type": "Blouse",
     "price": "57.99",
     "sex": "F",
-    "colour": "white"
+    "colour": "Black"
   },
   {
     "id": "12",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Ff5%2F7e%2Ff57ea8e5fc4c4ea3691fbd151ba22a1483c92886.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
     "itemImg": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Fe3%2Fb7%2Fe3b7e1e944b950d154dec9c509c81aa42234c7e2.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "name": "Short Sleeve Blouse",
-    "type": "pants",
+    "type": "Pants",
     "price": "45.99",
     "sex": "F",
-    "colour": "beige"
+    "colour": "Beige"
   },
   {
     "id": "13",
@@ -126,7 +126,7 @@
     "name": "Loose Fit Corduroy Collar Jacket",
     "price": "45.99",
     "sex": "M",
-    "colour": "brown",
+    "colour": "Brown",
     "type": "jacket"
   },
   {
@@ -136,8 +136,8 @@
     "name": "Oversized Fit Hoodie",
     "price": "49.99",
     "sex": "M",
-    "colour": "black",
-    "type": "hoodie"
+    "colour": "Black",
+    "type": "Hoodie"
   },
   {
     "id": "15",
@@ -146,8 +146,8 @@
     "itemImg": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Ffe%2F93%2Ffe93833c1336616923faffd940f9f00b69c183a1.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "price": "55.00",
     "sex": "M",
-    "colour": "grey",
-    "type": "blouse"
+    "colour": "Grey",
+    "type": "Blouse"
   },
   {
     "id": "16",
@@ -156,8 +156,8 @@
     "name": "Relaxed Fit Worker Trousers",
     "price": "40.00",
     "sex": "M",
-    "colour": "brown",
-    "type": "pants"
+    "colour": "Brown",
+    "type": "Pants"
   },
   {
     "id": "17",
@@ -166,8 +166,8 @@
     "name": "Oversize Sweatshirt with Zipper at Top",
     "price": "43.00",
     "sex": "M",
-    "colour": "red",
-    "type": "sweatshirt"
+    "colour": "Red",
+    "type": "Sweatshirt"
   },
   {
     "id": "18",
@@ -177,7 +177,7 @@
     "price": "50.00",
     "sex": "M",
     "colour": "Green",
-    "type": "sweatshirt"
+    "type": "Sweatshirt"
   },
   {
     "id": "19",
@@ -187,7 +187,7 @@
     "price": "60.00",
     "sex": "M",
     "colour": "Black",
-    "type": "jacket"
+    "type": "Jacket"
   },
   {
     "id": "20",
@@ -197,7 +197,7 @@
     "price": "75.00",
     "sex": "M",
     "colour": "Black",
-    "type": "pants"
+    "type": "Pants"
   },
   {
     "id": "21",
@@ -206,8 +206,8 @@
     "name": "Baggy Jeans",
     "price": "55.00",
     "sex": "M",
-    "colour": "red",
-    "type": "pants"
+    "colour": "Red",
+    "type": "Pants"
   },
   {
     "id": "22",
@@ -216,8 +216,8 @@
     "name": "Loose Fit Water Repellent Fluffy Jacket",
     "price": "55.00",
     "sex": "M",
-    "colour": "black",
-    "type": "jacket"
+    "colour": "Black",
+    "type": "Jacket"
   },
   {
     "id": "23",
@@ -226,8 +226,8 @@
     "name": "Regular Fit Cargo Pants",
     "price": "65.00",
     "sex": "M",
-    "colour": "black",
-    "type": "pants"
+    "colour": "Black",
+    "type": "Pants"
   },
   {
     "id": "24",
@@ -236,134 +236,167 @@
     "name": "Regular Fit Zipper Cardigan",
     "price": "70.00",
     "sex": "M",
-    "colour": "red",
-    "type": "blouse"
+    "colour": "Red",
+    "type": "Blouse"
   },
   {
     "id": "25",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fcd%2Feb%2Fcdeb5f25a9276dc3821c90828e76c01030e58ac9.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
+    "itemImg": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F42%2Fe8%2F42e8e14c0465d200837e13c5ed5124f2f2c3c8e7.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "name": "Printed Sweatshirt Dress",
     "price": "25.00",
     "sex": "C",
-    "colour": "purple",
-    "type": "dress"
+    "colour": "Purple",
+    "type": "Dress"
   },
   {
     "id": "26",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F2f%2F55%2F2f55dbc89a320737d84cf8cb382d527c2c8ab837.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
+    "itemImg": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F6b%2Fe5%2F6be5e1627e1affdc847d5c816c38ac036b11dae7.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bkids_girls_clothing%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "name": "Printed Sweatshirt",
     "price": "30.00",
     "sex": "C",
-    "colour": "red",
-    "type": "sweatshirt"
+    "colour": "Red",
+    "type": "Sweatshirt"
   },
   {
     "id": "27",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fc3%2Ff1%2Fc3f1301e0046f74b5055a6ee423bec784ae211f5.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
+    "itemImg": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Fdd%2Fe0%2Fdde04b8daba057f53003a3c8a3ba51ca846fe769.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "name": "Hooded and Printed Oversize Top",
     "price": "35.00",
     "sex": "C",
-    "colour": "olive",
-    "type": "hoodie"
+    "colour": "Olive",
+    "type": "Hoodie"
   },
   {
     "id": "28",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F72%2F53%2F72532ebd4553f80e58fafd13cbe8d467b160c2e5.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
+    "itemImg": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F58%2Fdd%2F58dd96f5313bed40ef7423bf825d62455e646dae.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "name": "Printed Jersey Top",
     "price": "40.00",
     "sex": "C",
-    "colour": "white",
-    "type": "sweatshirt"
+    "colour": "White",
+    "type": "Sweatshirt"
   },
   {
     "id": "29",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F22%2F7a%2F227a4e6531abd1dcca043dda89756b62e0927caa.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
     "name": "2 Piece Printed Sweatshirt Set",
     "price": "35.00",
+    "itemImg": "https://cdn.lafamiliastore.com/media/catalog/product/cache/79bd876f3bf0c90446722fab7706bcd3/6/2/6222524012105-a_1.jpg",
     "sex": "C",
-    "colour": "blue",
-    "type": "sweatshirt"
+    "colour": "Blue",
+    "type": "Sweatshirt"
   },
   {
     "id": "30",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F98%2F5f%2F985fb43ca8d9fae3a7b6171b6d42ad1615ab1b79.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bkids_girls_clothing_dresses_longsleeve%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
     "name": "Tulle Skirt Dress",
     "price": "25.00",
+    "itemImg": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F16%2Fb3%2F16b3c5bd97052366596aece61a7ffcf8aad874ac.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bkids_girls_clothing_dresses_longsleeve%5D%2Ctype%5BDESCRIPTIVEDETAIL%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "sex": "C",
-    "colour": "yellow",
-    "type": "dress"
+    "colour": "Yellow",
+    "type": "Dress"
   },
   {
     "id": "31",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F13%2F25%2F1325be012a4ef06ae2a0b06f07b395292d4836a9.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bkids_girls_clothing%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
     "name": "costume",
+    "itemImg": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Fe9%2Fce%2Fe9ce6f900e1fed6f45cbf80bd1b94c346328ee22.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bkids_girls_clothing%5D%2Ctype%5BDESCRIPTIVEDETAIL%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "price": "30.00",
+    "type": "Dress",
     "sex": "C",
-    "colour": "yellow"
+    "colour": "Yellow"
   },
   {
     "id": "32",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fde%2Fff%2Fdeffd205f60e36751747739d7c65b58b3328fb31.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bkids_girls_clothing_nightwear_dressinggowns%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
     "name": "Fleece Dressing Gown",
     "price": "35.00",
+    "itemImg": "https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F13%2F9c%2F139cad6f7bf6a79a05d428c0381d89335d1a2148.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bkids_girls_clothing_nightwear_dressinggowns%5D%2Ctype%5BDESCRIPTIVEDETAIL%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "sex": "C",
-    "color": "white",
-    "type":"dress"
+    "colour": "White",
+    "type": "Dress"
   },
   {
     "id": "33",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F59%2F58%2F5958e227bdcadaf9449b673ac5cfb606b8343f9a.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bkids_baby_girl_setsoutfits%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
     "name": "2 Piece Sweatshirt Set",
     "price": "25.00",
-    "sex": "B"
+    "itemImg":"https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Fd2%2Feb%2Fd2eb5e688effcec6e4f7e8ed463321045d3714a1.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bkids_baby_girl_setsoutfits%5D%2Ctype%5BDESCRIPTIVEDETAIL%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
+    "sex": "B",
+    "colour": "Beige",
+    "type": "Sweatshirt"
   },
   {
     "id": "34",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F13%2F0b%2F130b71a16abf915fc414a9aac7a8016b1e2ae42b.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
     "name": "Patterned Sweatshirt Dress",
+    "itemImg":"https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F5a%2F49%2F5a49ac3435e88bdd14afcae33266c49789d100c3.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVEDETAIL%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "price": "32.00",
-    "sex": "B"
+    "sex": "B",
+    "colour": "Patterned",
+    "type": "Dress"
   },
   {
     "id": "35",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F56%2Fae%2F56aeacf9c42764c2bf12c00b6f6579c99fa175dc.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
     "name": "2-Piece Long Sleeve Bodysuit",
+    "itemImg":"https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F90%2F2c%2F902c4af839e23d79bac11bcf0bda4b121f89d556.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVEDETAIL%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
     "price": "30.00",
-    "sex": "B"
+    "sex": "B",
+    "color": "Patterned",
+    "type": "Bodysuit"
   },
   {
     "id": "36",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F75%2F7c%2F757c986fdb9e3c61deac0d9939cd3c68fb1f6067.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bkids_baby_boy_shoes%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
     "name": "Warm-lined lace-up boots",
     "price": "30.00",
-    "sex": "B"
+    "itemImg":"https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F4b%2F5a%2F4b5a922c3791f393c7ff5532dac9e29af182f00b.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bkids_baby_boy_shoes%5D%2Ctype%5BDESCRIPTIVEDETAIL%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
+    "sex": "B",
+    "colour": "Black",
+    "type": "Shoes"
   },
   {
     "id": "37",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Ffa%2F8a%2Ffa8af82b3e8774b06dda742cdac33dacb360e31b.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
     "name": "2 Piece Velor Set",
     "price": "25.00",
-    "sex": "B"
+    "itemImg":"https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F32%2F85%2F32852d39c81495eb036ce4da4347df45aafae166.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVEDETAIL%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
+    "sex": "B",
+    "colour": "Red",
+    "type": "Set"
   },
   {
     "id": "38",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fbe%2Fd1%2Fbed1215041f6ca42872512b02d1520b390e85dc7.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
     "name": "2 Piece Jacquard Knitwear Set",
     "price": "30.00",
-    "sex": "B"
+    "itemImg":"https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F39%2Fd9%2F39d9d65b070b9bad9572bf13d8ee527727bb3361.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVEDETAIL%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
+    "sex": "B",
+    "colour": "Pink",
+    "type": "Set"
   },
   {
     "id": "39",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F93%2F40%2F9340fa21575353a5790d9c5be2ac76830621464e.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bkids_baby_boy_clothing_bodysuits%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
     "name": "2-Piece Ribbed and Turtleneck Body",
     "price": "25.00",
-    "sex": "B"
+    "sex": "B",
+    "itemImg":"https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2Fb0%2F95%2Fb095697be7dbf3b021d8f4f5ad27e376c07d38ee.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVEDETAIL%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
+    "colour": "Pink",
+    "type": "Turtleneck"
   },
   {
     "id": "40",
     "img": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fe8%2F3d%2Fe83dceb3cdaf90292de472038d4fd8ea2878ea7d.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bkids_baby_girl_clothing_dresses%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
     "name": "Cotton Jersey Dress",
     "price": "23.00",
-    "sex": "B"
+    "itemImg":"https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F7c%2Ff4%2F7cf4ba324e1a28244a1679a286f39a4e0c0f79b6.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bkids_baby_girl_clothing_dresses%5D%2Ctype%5BDESCRIPTIVEDETAIL%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D",
+    "sex": "B",
+    "colour": "Red",
+    "type": "Dress"
   }
 ]

@@ -10,20 +10,13 @@ import { PuffLoader } from 'react-spinners';
 
 
 export const ProductPage = () => {
-  const [item, setItem] = useState(null)
   const [selectedColor, setSelectedColor] = useState('Black')
   const [boxSelected, setBoxSelected] = useState('')
   const { itemId } = useParams();
-  const { womenProducts } = useProducts()
+  const { productsList } = useProducts()
 
 
-  const foundItem = womenProducts.find(item => item.id === itemId);
-
-  console.log(foundItem);
-
-  useEffect(() => {
-    setItem(foundItem);
-  }, [foundItem, womenProducts]); // Include 'itemId' as the only dependency
+  const foundItem = productsList.find(item => item.id === itemId)
 
   return (
     <>
