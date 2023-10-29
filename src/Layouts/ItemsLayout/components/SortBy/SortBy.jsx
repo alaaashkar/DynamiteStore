@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { ClipLoader } from 'react-spinners';
 
+
 export default function SortBy() {
   const [selectedSortStatus, setSelectedSortStatus] = React.useState('');
   const { filteredWomenData, setFilteredWomenData, setFilteredMenData, setFilteredKidsData, setFilteredBabyData, filteredMenData, filteredKidsData, filteredBabyData, womenOriginalProducts } = useProducts();
@@ -72,6 +73,11 @@ export default function SortBy() {
       });
     }
   }, [selectedSortStatus]);
+
+
+
+
+
 
   return (
     <div>

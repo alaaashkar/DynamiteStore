@@ -7,6 +7,7 @@ import Radio from '@mui/material/Radio';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
 import { FormLabel } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 import React, { useEffect, useRef, useState } from "react";
 
 
@@ -61,6 +62,56 @@ export const FilterModal = ({ isFilterModalClicked, setIsFilteredModalClicked })
     setSideModalContent('productType');
     event.stopPropagation();
   };
+
+
+  const location = useLocation();
+  const path = location.pathname;
+  const onWomanPage = path.includes('woman');
+  const onManPage = path.includes('man');
+  const onKidsPage = path.includes('kids');
+  const onBabyPage = path.includes('baby');
+
+  // Reset the selected color when the route changes
+
+
+  const renderColorList = () => {
+    if (onWomanPage) {
+      return ["White", "Beige", "Black"];
+    } else if (onManPage) {
+      return ["Brown", "Black", "Grey", "Red", "Green"];
+    } else if (onKidsPage) {
+      return ["Purple", "Red", "Olive", "White", "Blue", "Yellow"];
+    } else if (onBabyPage) {
+      return ["Beige", "Patterned", "Black", "Red", "Pink"];
+    }
+
+    // Default to a valid option if no match is found
+    return ['NONE'];
+  };
+
+  const renderedList = renderColorList();
+
+
+
+  const womanTypeList = ["Blouse", "Dress", "Skirt", "Pants"];
+  const manTypeList = ["Jacket", "Hoodie", "Blouse", "Pants", "Sweatshirt"];
+  const kidsTypeList = ["Dress", "Sweatshirt", "Hoodie", "Bodysuit", "Shoes"];
+  const babyTypeList = ["Sweatshirt", "Dress", "Bodysuit", "Shoes", "Set", "Turtleneck"];
+
+  const renderTypeList = () => {
+    if (onWomanPage) {
+      return womanTypeList;
+    } else if (onManPage) {
+      return manTypeList;
+    } else if (onKidsPage) {
+      return kidsTypeList;
+    } else if (onBabyPage) {
+      return babyTypeList;
+    }
+    return ['NONE']; // Default to an empty array if no match is found.
+  };
+  const renderedType = renderTypeList()
+
 
   return (
     <aside ref={sliderRef} className={cn('sidedrawer', { 'active': isFilterModalClicked })}>
@@ -174,15 +225,16 @@ export const FilterModal = ({ isFilterModalClicked, setIsFilteredModalClicked })
                 defaultValue="pick-an-option"
                 name="radio-buttons-group"
               >
-                <FormControlLabel value="white" control={<Radio />} label="White" />
-                <FormControlLabel value="beige" control={<Radio />} label="Beige" />
-                <FormControlLabel value="black" control={<Radio />} label="Black" />
+                {renderedList.map(colour => (
+                  <FormControlLabel value={colour} control={<Radio />} label={colour} />
+                ))}
+
               </RadioGroup>
             </FormControl>
           </ul>
         </>
       )}
-   
+
       {sideModalContent === 'productType' && (
         <>
           <header>
@@ -216,9 +268,9 @@ export const FilterModal = ({ isFilterModalClicked, setIsFilteredModalClicked })
                 defaultValue="pick-an-option"
                 name="radio-buttons-group"
               >
-                <FormControlLabel value="blouse" control={<Radio />} label="Blouse" />
-                <FormControlLabel value="dress" control={<Radio />} label="Dress" />
-                <FormControlLabel value="pants" control={<Radio />} label="Pants" />
+                {renderedType.map(type => (
+                  <FormControlLabel value={type} control={<Radio />} label={type} />
+                ))}
               </RadioGroup>
             </FormControl>
           </ul>
