@@ -11,9 +11,8 @@ import { useState } from 'react';
 import { ClipLoader } from 'react-spinners';
 
 
-export default function SortBy({ setIsFilteredModalClicked, setSideModalContent, setSelectedSortStatus, selectedSortStatus }) {
+export default function SortBy({ setIsFilteredModalClicked, setSideModalContent, setSelectedSortStatus, selectedSortStatus, setIsLoading, isLoading }) {
   const { filteredWomenData, setFilteredWomenData, setFilteredMenData, setFilteredKidsData, setFilteredBabyData, filteredMenData, filteredKidsData, filteredBabyData, womenOriginalProducts, menOriginalProducts, kidsOriginalProducts, babyOriginalProducts } = useProducts();
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (event) => {
     setSelectedSortStatus(event.target.value);

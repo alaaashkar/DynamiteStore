@@ -10,8 +10,7 @@ import { useProducts } from '../../../../contexts/ProductsContext';
 import { ClipLoader } from 'react-spinners';
 
 
-export default function Colour({ setIsFilteredModalClicked, selectedColour, setSelectedColour }) {
-  const [isLoading, setIsLoading] = useState(false);
+export default function Colour({ setIsFilteredModalClicked, selectedColour, setSelectedColour, setIsLoading, isLoading }) {
   const {
     menOriginalProducts,
     kidsOriginalProducts,

@@ -26,7 +26,7 @@ export const ItemsLayout = () => {
 
       </main>
 
-      <div className="loader">
+      <div className="loader">  
         <PuffLoader color="#222222" size={50} />
       </div>
     </>

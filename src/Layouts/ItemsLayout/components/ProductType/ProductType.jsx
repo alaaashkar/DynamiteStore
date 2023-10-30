@@ -11,8 +11,7 @@ import { useProducts } from '../../../../contexts/ProductsContext';
 import { ClipLoader } from 'react-spinners';
 
 
-export default function ProductType({ setProductType, productType, setIsFilteredModalClicked, setSideModalContent }) {
-  const [isLoading, setIsLoading] = useState(false)
+export default function ProductType({ setProductType, productType, setIsFilteredModalClicked, setSideModalContent, setIsLoading, isLoading }) {
   const {
     menOriginalProducts,
     babyOriginalProducts,

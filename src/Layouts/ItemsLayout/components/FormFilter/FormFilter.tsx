@@ -17,6 +17,8 @@ export const FormFilter = () => {
   const [selectedSortStatus, setSelectedSortStatus] = useState('');
   const [selectedColour, setSelectedColour] = useState('')
   const [productType, setProductType] = useState(''); // Store the selected product type
+  const [isLoading, setIsLoading] = useState(false);
+
 
 
 
@@ -34,6 +36,8 @@ export const FormFilter = () => {
       <div className='left'>
         <fieldset>
           <SortBy
+            setIsLoading={setIsLoading}
+            isLoading={isLoading}
             setSelectedSortStatus={setSelectedSortStatus}
             selectedSortStatus={selectedSortStatus}
             setIsFilteredModalClicked={setIsFilteredModalClicked}
@@ -43,6 +47,8 @@ export const FormFilter = () => {
 
         <fieldset>
           <Colour
+            setIsLoading={setIsLoading}
+            isLoading={isLoading}
             setSelectedColour={setSelectedColour}
             selectedColour={selectedColour}
             setIsFilteredModalClicked={setIsFilteredModalClicked}
@@ -52,6 +58,8 @@ export const FormFilter = () => {
 
         <fieldset>
           <ProductType
+            setIsLoading={setIsLoading}
+            isLoading={isLoading}
             setSideModalContent={setSideModalContent}
             setProductType={setProductType}
             setIsFilteredModalClicked={setIsFilteredModalClicked}
@@ -67,7 +75,7 @@ export const FormFilter = () => {
           <span>ALL FILTERS</span>
         </fieldset>
 
-        {isFilterModalClicked && <div className="backdrop" />}
+        {isLoading && <div className="backdrop" />}
 
         <FilterModal
           setSelectedSortStatus={setSelectedSortStatus}
