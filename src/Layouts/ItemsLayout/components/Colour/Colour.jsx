@@ -87,37 +87,36 @@ export default function Colour({ setIsFilteredModalClicked, selectedColour, setS
           setFilteredWomenData(womenOriginalProducts)
         }
       })
-
     } else if (onManPage) {
       load(() => {
         let filtered = menOriginalProducts;
 
-        if (selectedColour !== 'NONE' || colourStatusSide !== '') {
+        if (selectedColour !== 'NONE') {
           filtered = filtered.filter(item => item.colour.toLowerCase() === selectedColour.toLowerCase());
         }
-        setFilteredMenData(filtered)
+        setFilteredMenData(filtered);
       })
     } else if (onKidsPage) {
       load(() => {
         let filtered = kidsOriginalProducts;
 
-        if (selectedColour !== 'NONE' || colourStatusSide !== '') {
+        if (selectedColour !== 'NONE') {
           filtered = filtered.filter(item => item.colour.toLowerCase() === selectedColour.toLowerCase());
         }
 
-        setFilteredKidsData(filtered)
+        setFilteredKidsData(filtered);
       })
-
     } else {
       load(() => {
-        let filtered = babyOriginalProducts
-        if (selectedColour !== 'NONE' || colourStatusSide !== '') {
-          filtered = filtered.filter(item => item.colour.toLowerCase() === selectedColour.toLowerCase());
+        let filtered = babyOriginalProducts;
+        if (selectedColour !== 'NONE') {
+          filtered = filtered.filter(item => item.colour?.toLowerCase() === selectedColour.toLowerCase());
         }
 
-        setFilteredBabyData(filtered)
+        setFilteredBabyData(filtered);
       })
     }
+
 
 
   }, [selectedColour, colourStatusSide])

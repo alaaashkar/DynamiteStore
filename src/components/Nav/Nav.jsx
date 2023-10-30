@@ -4,9 +4,25 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVenus, faMars, faChild, faBaby } from '@fortawesome/free-solid-svg-icons';
 import { useMenu } from 'contexts/MenuContext';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 export const Nav = () => {
   const { isMenuClicked } = useMenu()
+  const [addVisibilityToNav, setAddVisibilityToNav] = useState(true)
+
+
+
+  useEffect(() => {
+    // Add the CSS class 'highlight' for 1 second after the component mounts
+    if (addVisibilityToNav) {
+      const timer = setTimeout(() => {
+        setAddVisibilityToNav(false);
+      }, 1000); // 1 second
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
 
   return (
@@ -14,7 +30,7 @@ export const Nav = () => {
 
     <nav>
       <ul className={cn(
-        '',
+        { 'mobile-nav': addVisibilityToNav },
         { 'mobile-show': isMenuClicked },
         { 'mobile-hide': !isMenuClicked }
       )}>

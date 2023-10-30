@@ -10,6 +10,7 @@ export const ProductsProvider = ({ children }) => {
   const [womenProducts, setWomenProducts] = useState([])
   const [kidsProducts, setKidsProducts] = useState([])
   const [babyProducts, setBabyProducts] = useState([])
+  const [cartItems, setCartItems] = useState([])
 
   const womenOriginalProducts = productsList.filter(product => product.sex === 'F')
   const menOriginalProducts = productsList.filter(product => product.sex === 'M')
@@ -54,7 +55,9 @@ export const ProductsProvider = ({ children }) => {
     setFilteredKidsData,
     filteredBabyData,
     setFilteredBabyData,
-  }), [womenOriginalProducts, kidsOriginalProducts, babyOriginalProducts, menOriginalProducts, productsList, womenProducts, menProducts, kidsProducts, babyProducts, filteredWomenData, filteredMenData, filteredKidsData, filteredBabyData]);
+    cartItems,
+     setCartItems
+  }), [womenOriginalProducts, kidsOriginalProducts, babyOriginalProducts, menOriginalProducts, productsList, womenProducts, menProducts, kidsProducts, babyProducts, filteredWomenData, filteredMenData, filteredKidsData, filteredBabyData, cartItems]);
 
 
   return (

@@ -90,7 +90,7 @@ export const FormFilter = () => {
           isFilterModalClicked={isFilterModalClicked}
           setSelectedColour={setSelectedColour}
           setProductType={setProductType}
-        />~
+        />
 
 
       </div>

@@ -9,14 +9,64 @@ import { PuffLoader } from 'react-spinners';
 
 
 
+
 export const ProductPage = () => {
-  const [selectedColor, setSelectedColor] = useState('Black')
-  const [boxSelected, setBoxSelected] = useState('')
+  const [selectedColor, setSelectedColor] = useState('')
+  const [selectedSize, setSelectedSize] = useState('')
   const { itemId } = useParams();
-  const { productsList } = useProducts()
+  const { productsList, setCartItems, cartItems } = useProducts()
+  const [isColourError, setIsColourError] = useState(false)
+  const [isSizeError, setIsSizeError] = useState(false)
+
+  const initialCartItems = JSON.parse(localStorage.getItem('cartItems')) || [] //we get the converted string back to array through parse and we give it as a value to the initialCartItems variable
+  const [localCartItems, setLocalCartItems] = useState(initialCartItems) //we set it as a default state so everytime the page loads the state loads with the last updated storage data otherwise it will lose its data
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems))
+  }, [cartItems])
 
 
   const foundItem = productsList.find(item => item.id === itemId)
+
+  const handleOnSubmit = (event) => {
+    event.preventDefault()
+    if (selectedColor !== '' && selectedSize !== '') {
+      // const maxId = productsList.reduce((max, item) => (item.id > max ? item.id : max), 0)
+      const newItem = {
+        id: cartItems.length + 1,
+        img: foundItem.img,
+        itemImg: foundItem.itemImg,
+        name: foundItem.name,
+        price: foundItem.price,
+        size: selectedSize,
+        colour: selectedColor,
+      }
+
+      setSelectedSize('')
+      setSelectedColor('')
+      setLocalCartItems([...localCartItems, newItem]) //first we push to the array
+      localStorage.setItem('cartItems', JSON.stringify(localCartItems)) //then we set the array to the Local Storage
+      setIsColourError(false)
+    } else if (selectedColor === '') {
+      setIsColourError(true)
+    } else if (selectedSize === '') {
+      setIsSizeError(true)
+    }
+  }
+
+  useEffect(() => {
+    setCartItems(localCartItems);
+  }, [localCartItems]);
+
+  console.log(cartItems);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsColourError(false)
+      setIsSizeError(false)
+    }, 4000);
+  }, [isColourError, selectedColor, selectedSize, isSizeError])
+
 
   return (
     <>
@@ -28,17 +78,34 @@ export const ProductPage = () => {
           <img src={foundItem?.img} alt="" />
           <img src={foundItem?.itemImg} alt="" />
         </div>
-        <div className='column2'>
+
+        <form onSubmit={handleOnSubmit} className='column2'>
           <h1 className='product-title'>{foundItem?.name}</h1>
 
           <font className='product-price'>{foundItem?.price}$</font>
 
           <div className='product-colors'>
-            <font className="color-name">{selectedColor} color</font>
+            <div className='colours'>
+              <font className="color-name">{selectedColor} Colour</font>
+
+              {isColourError && (
+                <font className="error-colour"> Please Select a Colour !</font>
+              )}
+
+            </div>
             <div className='color-circles'>
-              <span onClick={() => setSelectedColor('Black')} className={cn('dot', { "selected-color": selectedColor === 'Black' })}></span>
-              <span onClick={() => setSelectedColor('Red')} className={cn('dot', { "selected-color": selectedColor === "Red" })}></span>
-              <span onClick={() => setSelectedColor('Grey')} className={cn('dot', { "selected-color": selectedColor === "Grey" })}></span>
+              <span onClick={() => setSelectedColor('Black')}
+                className={cn('dot', { "selected-color": selectedColor === 'Black' })}>
+              </span>
+
+              <span onClick={() => setSelectedColor('Red')}
+                className={cn('dot', { "selected-color": selectedColor === "Red" })}>
+              </span>
+
+              <span onClick={() => setSelectedColor('Grey')}
+                className={cn('dot', { "selected-color": selectedColor === "Grey" })}>
+              </span>
+
               <span onClick={() => setSelectedColor('Blue')} className={cn('dot', { "selected-color": selectedColor === "Blue" })}></span>
             </div>
           </div>
@@ -50,19 +117,27 @@ export const ProductPage = () => {
             </div>
 
             <ul className='size-rw2'>
-              <li onClick={() => setBoxSelected('xs')} className={cn('sizes-box', { "box-selected": boxSelected === 'xs' })}>XS</li>
-              <li onClick={() => setBoxSelected('s')} className={cn('sizes-box', { "box-selected": boxSelected === 's' })}>S</li>
-              <li onClick={() => setBoxSelected('m')} className={cn('sizes-box', { "box-selected": boxSelected === 'm' })}>M</li>
-              <li onClick={() => setBoxSelected('l')} className={cn('sizes-box', { "box-selected": boxSelected === 'l' })}>L</li>
-              <li onClick={() => setBoxSelected('xl')} className={cn('sizes-box', { "box-selected": boxSelected === 'xl' })}>Xl</li>
+              <li onClick={() => setSelectedSize('xs')} className={cn('sizes-box', { "box-selected": selectedSize === 'xs' })}>XS</li>
+              <li onClick={() => setSelectedSize('s')} className={cn('sizes-box', { "box-selected": selectedSize === 's' })}>S</li>
+              <li onClick={() => setSelectedSize('m')} className={cn('sizes-box', { "box-selected": selectedSize === 'm' })}>M</li>
+              <li onClick={() => setSelectedSize('l')} className={cn('sizes-box', { "box-selected": selectedSize === 'l' })}>L</li>
+              <li onClick={() => setSelectedSize('xl')} className={cn('sizes-box', { "box-selected": selectedSize === 'xl' })}>Xl</li>
             </ul>
+
+            {isSizeError && (
+              <font className="error-colour"> Please Select a Colour !</font>
+
+            )}
           </div>
 
-          <button className='add-button'>
+          <button
+            // disabled={buttonIsDisabled}
+            type='submit'
+            className='add-button'>
             <ShoppingBagOutlinedIcon style={{ marginRight: '8px' }} />
             Add
           </button>
-        </div>
+        </form>
       </div>
 
       <div className="loader">

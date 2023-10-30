@@ -122,7 +122,12 @@ export const FilterModal = ({ isFilterModalClicked, setIsFilteredModalClicked, s
   }
 
   return (
-    <aside ref={sliderRef} className={cn('sidedrawer', { 'active': isFilterModalClicked })}>
+    <aside ref={sliderRef}
+      className={cn(
+        'sidedrawer',
+        { 'active': isFilterModalClicked }
+      )}
+    >
 
       {sideModalContent === 'default' && (
         <>
