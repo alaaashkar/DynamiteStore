@@ -6,12 +6,18 @@ import SortBy from '../SortBy/SortBy';
 import Colour from '../Colour/Colour';
 import ProductType from '../ProductType/ProductType';
 import { FilterModal } from '../FilterModal/FilterModal';
-import { faCircleXmark } from '@fortawesome/free-solid-svg-icons'
+
+
 
 
 
 export const FormFilter = () => {
   const [isFilterModalClicked, setIsFilteredModalClicked] = useState(false);
+  const [sideModalContent, setSideModalContent] = useState('default')
+  const [selectedSortStatus, setSelectedSortStatus] = useState('');
+  const [selectedColour, setSelectedColour] = useState('')
+  const [productType, setProductType] = useState(''); // Store the selected product type
+
 
 
   const handleAllFiltersClick = (event) => {
@@ -23,20 +29,34 @@ export const FormFilter = () => {
   };
 
 
-
   return (
     <form className='filter-form'>
       <div className='left'>
         <fieldset>
-          <SortBy />
+          <SortBy
+            setSelectedSortStatus={setSelectedSortStatus}
+            selectedSortStatus={selectedSortStatus}
+            setIsFilteredModalClicked={setIsFilteredModalClicked}
+            setSideModalContent={setSideModalContent}
+          />
         </fieldset>
 
         <fieldset>
-          <Colour />
+          <Colour
+            setSelectedColour={setSelectedColour}
+            selectedColour={selectedColour}
+            setIsFilteredModalClicked={setIsFilteredModalClicked}
+            setSideModalContent={setSideModalContent}
+          />
         </fieldset>
 
         <fieldset>
-          <ProductType />
+          <ProductType
+            setSideModalContent={setSideModalContent}
+            setProductType={setProductType}
+            setIsFilteredModalClicked={setIsFilteredModalClicked}
+            productType={productType}
+          />
         </fieldset>
 
         <fieldset
@@ -47,16 +67,18 @@ export const FormFilter = () => {
           <span>ALL FILTERS</span>
         </fieldset>
 
-        <fieldset className='clear-filters'>
-          <FontAwesomeIcon color='black' className='clear-all-icon' icon={faCircleXmark} />
-          <span className='clear-all-text'>Reset All Filters</span>
-        </fieldset>
-
         {isFilterModalClicked && <div className="backdrop" />}
 
         <FilterModal
+          setSelectedSortStatus={setSelectedSortStatus}
+          sideModalContent={sideModalContent}
+          setSideModalContent={setSideModalContent}
           setIsFilteredModalClicked={setIsFilteredModalClicked}
-          isFilterModalClicked={isFilterModalClicked} />
+          isFilterModalClicked={isFilterModalClicked}
+          setSelectedColour={setSelectedColour}
+          setProductType={setProductType}
+        />
+
 
       </div>
 

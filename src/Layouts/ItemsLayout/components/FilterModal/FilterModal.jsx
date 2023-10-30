@@ -8,12 +8,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
 import { FormLabel } from '@mui/material';
 import { useLocation } from 'react-router-dom';
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
 
-
-export const FilterModal = ({ isFilterModalClicked, setIsFilteredModalClicked }) => {
-  const [sideModalContent, setSideModalContent] = useState('default')
+export const FilterModal = ({ isFilterModalClicked, setIsFilteredModalClicked, setSideModalContent, sideModalContent, setSelectedSortStatus, setSelectedColour, setProductType }) => {
 
   const sliderRef = useRef(null);
 
@@ -45,11 +43,6 @@ export const FilterModal = ({ isFilterModalClicked, setIsFilteredModalClicked })
 
   const handleColourClick = (event) => {
     setSideModalContent('colour');
-    event.stopPropagation();
-  };
-
-  const handleBodyClick = (event) => {
-    setSideModalContent('body');
     event.stopPropagation();
   };
 
@@ -112,6 +105,21 @@ export const FilterModal = ({ isFilterModalClicked, setIsFilteredModalClicked })
   };
   const renderedType = renderTypeList()
 
+  const handleSortLowest = () => {
+    setSelectedSortStatus('LOWEST')
+  }
+
+  const handleSortHighest = () => {
+    setSelectedSortStatus('HIGHEST')
+  }
+
+  const handleColour = (colour) => {
+    setSelectedColour(colour)
+  }
+
+  const handleType = (type) => {
+    setProductType(type)
+  }
 
   return (
     <aside ref={sliderRef} className={cn('sidedrawer', { 'active': isFilterModalClicked })}>
@@ -183,13 +191,14 @@ export const FilterModal = ({ isFilterModalClicked, setIsFilteredModalClicked })
                 defaultValue="pick-an-option"
                 name="radio-buttons-group"
               >
-                <FormControlLabel value="lowest-price" control={<Radio />} label="Lowest price" />
-                <FormControlLabel value="highest-price" control={<Radio />} label="Highest price" />
+                <FormControlLabel onClick={handleSortLowest} value="lowest-price" control={<Radio />} label="Lowest price" />
+                <FormControlLabel onClick={handleSortHighest} value="highest-price" control={<Radio />} label="Highest price" />
               </RadioGroup>
             </FormControl>
           </ul>
         </>
       )}
+
 
       {sideModalContent === 'colour' && (
         <>
@@ -226,7 +235,7 @@ export const FilterModal = ({ isFilterModalClicked, setIsFilteredModalClicked })
                 name="radio-buttons-group"
               >
                 {renderedList.map(colour => (
-                  <FormControlLabel value={colour} control={<Radio />} label={colour} />
+                  <FormControlLabel onClick={() => handleColour(colour)} value={colour} control={<Radio />} label={colour} />
                 ))}
 
               </RadioGroup>
@@ -269,7 +278,7 @@ export const FilterModal = ({ isFilterModalClicked, setIsFilteredModalClicked })
                 name="radio-buttons-group"
               >
                 {renderedType.map(type => (
-                  <FormControlLabel value={type} control={<Radio />} label={type} />
+                  <FormControlLabel onClick={() => handleType(type)} value={type} control={<Radio />} label={type} />
                 ))}
               </RadioGroup>
             </FormControl>

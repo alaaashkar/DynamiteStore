@@ -11,9 +11,8 @@ import { useState } from 'react';
 import { ClipLoader } from 'react-spinners';
 
 
-export default function SortBy() {
-  const [selectedSortStatus, setSelectedSortStatus] = React.useState('');
-  const { filteredWomenData, setFilteredWomenData, setFilteredMenData, setFilteredKidsData, setFilteredBabyData, filteredMenData, filteredKidsData, filteredBabyData, womenOriginalProducts } = useProducts();
+export default function SortBy({ setIsFilteredModalClicked, setSideModalContent, setSelectedSortStatus, selectedSortStatus }) {
+  const { filteredWomenData, setFilteredWomenData, setFilteredMenData, setFilteredKidsData, setFilteredBabyData, filteredMenData, filteredKidsData, filteredBabyData, womenOriginalProducts, menOriginalProducts, kidsOriginalProducts, babyOriginalProducts } = useProducts();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (event) => {
@@ -32,6 +31,10 @@ export default function SortBy() {
       setIsLoading(false);
       if (typeof callback === 'function') {
         callback(); // Call the provided callback function
+        setIsFilteredModalClicked(false)
+        setSideModalContent('default')
+        document.body.classList.remove('modal-open');
+
       }
     }, 500);
   };
@@ -53,6 +56,8 @@ export default function SortBy() {
           setFilteredMenData([...filteredMenData].sort((a, b) => a.price - b.price));
         } else if (selectedSortStatus === 'HIGHEST') {
           setFilteredMenData([...filteredMenData].sort((a, b) => b.price - a.price));
+        } else if (selectedSortStatus === 'NONE') {
+          setFilteredMenData(menOriginalProducts)
         }
       });
     } else if (onKidsPage) {
@@ -61,6 +66,8 @@ export default function SortBy() {
           setFilteredKidsData([...filteredKidsData].sort((a, b) => a.price - b.price));
         } else if (selectedSortStatus === 'HIGHEST') {
           setFilteredKidsData([...filteredKidsData].sort((a, b) => b.price - a.price));
+        } else if (selectedSortStatus === 'NONE') {
+          setFilteredKidsData(kidsOriginalProducts);
         }
       });
     } else if (onBabyPage) {
@@ -69,6 +76,8 @@ export default function SortBy() {
           setFilteredBabyData([...filteredBabyData].sort((a, b) => a.price - b.price));
         } else if (selectedSortStatus === 'HIGHEST') {
           setFilteredBabyData([...filteredBabyData].sort((a, b) => b.price - a.price));
+        } else if (selectedSortStatus === 'NONE') {
+          setFilteredBabyData(babyOriginalProducts);
         }
       });
     }

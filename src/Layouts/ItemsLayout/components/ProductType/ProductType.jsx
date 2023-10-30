@@ -11,9 +11,8 @@ import { useProducts } from '../../../../contexts/ProductsContext';
 import { ClipLoader } from 'react-spinners';
 
 
-export default function ProductType() {
+export default function ProductType({ setProductType, productType, setIsFilteredModalClicked, setSideModalContent }) {
   const [isLoading, setIsLoading] = useState(false)
-  const [productType, setProductType] = useState(''); // Store the selected product type
   const {
     menOriginalProducts,
     babyOriginalProducts,
@@ -35,6 +34,9 @@ export default function ProductType() {
       setIsLoading(false);
       if (typeof callback === 'function') {
         callback(); // Call the provided callback function
+        setIsFilteredModalClicked(false)
+        setSideModalContent('default')
+        document.body.classList.remove('modal-open')
       }
     }, 500);
   }
@@ -127,11 +129,11 @@ export default function ProductType() {
           className='select'
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
-          value={productType}
           onChange={handleChange}
           label="product-type"
+          value={'' || productType}
         >
-          <MenuItem value="NONE">
+          <MenuItem className='product-type' value="NONE">
             <em>None</em>
           </MenuItem>
 

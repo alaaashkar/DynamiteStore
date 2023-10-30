@@ -10,9 +10,8 @@ import { useProducts } from '../../../../contexts/ProductsContext';
 import { ClipLoader } from 'react-spinners';
 
 
-export default function Colour() {
+export default function Colour({ setIsFilteredModalClicked, selectedColour, setSelectedColour }) {
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedColour, setSelectedColour] = useState(''); // Store the selected color
   const {
     menOriginalProducts,
     kidsOriginalProducts,
@@ -20,9 +19,9 @@ export default function Colour() {
     setFilteredMenData,
     setFilteredKidsData,
     setFilteredBabyData,
-    filteredWomenData,
     setFilteredWomenData,
-    womenOriginalProducts
+    womenOriginalProducts,
+    colourStatusSide,
   } = useProducts();
 
   const handleChange = (event) => {
@@ -67,9 +66,12 @@ export default function Colour() {
       setIsLoading(false);
       if (typeof callback === 'function') {
         callback(); // Call the provided callback function
+        setIsFilteredModalClicked(false)
+        document.body.classList.remove('modal-open')
       }
     }, 500);
   };
+
 
   useEffect(() => {
     if (onWomanPage) {
@@ -77,28 +79,31 @@ export default function Colour() {
         let filtered = womenOriginalProducts;
 
         if (selectedColour !== 'NONE') {
-          filtered = filtered.filter(item => item.colour === selectedColour);
+          filtered = filtered.filter(item => item.colour.toLowerCase() === selectedColour.toLowerCase());
         }
 
         setFilteredWomenData(filtered);
+
+        if (selectedColour === 'NONE') {
+          setFilteredWomenData(womenOriginalProducts)
+        }
       })
 
     } else if (onManPage) {
       load(() => {
         let filtered = menOriginalProducts;
 
-        if (selectedColour !== 'NONE') {
-          filtered = filtered.filter(item => item.colour === selectedColour);
+        if (selectedColour !== 'NONE' || colourStatusSide !== '') {
+          filtered = filtered.filter(item => item.colour.toLowerCase() === selectedColour.toLowerCase());
         }
-
         setFilteredMenData(filtered)
       })
     } else if (onKidsPage) {
       load(() => {
         let filtered = kidsOriginalProducts;
 
-        if (selectedColour !== 'NONE') {
-          filtered = filtered.filter(item => item.colour === selectedColour);
+        if (selectedColour !== 'NONE' || colourStatusSide !== '') {
+          filtered = filtered.filter(item => item.colour.toLowerCase() === selectedColour.toLowerCase());
         }
 
         setFilteredKidsData(filtered)
@@ -107,8 +112,8 @@ export default function Colour() {
     } else {
       load(() => {
         let filtered = babyOriginalProducts
-        if (selectedColour !== 'NONE') {
-          filtered = filtered.filter(item => item.colour === selectedColour);
+        if (selectedColour !== 'NONE' || colourStatusSide !== '') {
+          filtered = filtered.filter(item => item.colour.toLowerCase() === selectedColour.toLowerCase());
         }
 
         setFilteredBabyData(filtered)
@@ -116,9 +121,7 @@ export default function Colour() {
     }
 
 
-  }, [selectedColour])
-
-  console.log(filteredWomenData);
+  }, [selectedColour, colourStatusSide])
 
 
   return (
@@ -134,12 +137,12 @@ export default function Colour() {
           className='select'
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
-          value={selectedColour} // Use the selected color from state
           onChange={handleChange} // Update the selected color
           label="Colour"
+          value={selectedColour}
         >
-          <MenuItem className='color-value' value={'NONE'}>
-            <span>NONE</span>
+          <MenuItem className='color-value' value='NONE'>
+            <em>None</em>
           </MenuItem>
 
           {renderedList.map((color) => (
