@@ -6,6 +6,7 @@ import SortBy from '../SortBy/SortBy';
 import Colour from '../Colour/Colour';
 import ProductType from '../ProductType/ProductType';
 import { FilterModal } from '../FilterModal/FilterModal';
+import { ClipLoader } from 'react-spinners';
 
 
 
@@ -75,7 +76,11 @@ export const FormFilter = () => {
           <span>ALL FILTERS</span>
         </fieldset>
 
-        {isLoading && <div className="backdrop" />}
+        {isFilterModalClicked && (
+          <>
+            <div className="backdrop" />
+          </>
+        )}
 
         <FilterModal
           setSelectedSortStatus={setSelectedSortStatus}
@@ -85,7 +90,7 @@ export const FormFilter = () => {
           isFilterModalClicked={isFilterModalClicked}
           setSelectedColour={setSelectedColour}
           setProductType={setProductType}
-        />
+        />~
 
 
       </div>
