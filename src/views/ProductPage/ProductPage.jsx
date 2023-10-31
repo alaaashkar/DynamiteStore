@@ -3,7 +3,7 @@ import './ProductPage.scss';
 import cn from 'classnames';
 import { useEffect, useState } from 'react';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useProducts } from '../../contexts/ProductsContext';
 import { PuffLoader } from 'react-spinners';
 
@@ -18,12 +18,17 @@ export const ProductPage = () => {
   const [isColourError, setIsColourError] = useState(false)
   const [isSizeError, setIsSizeError] = useState(false)
 
-  const initialCartItems = JSON.parse(localStorage.getItem('cartItems')) || [] //we get the converted string back to array through parse and we give it as a value to the initialCartItems variable
-  const [localCartItems, setLocalCartItems] = useState(initialCartItems) //we set it as a default state so everytime the page loads the state loads with the last updated storage data otherwise it will lose its data
+  const initialCartItems = JSON.parse(localStorage.getItem('cartItems')) || [] //we get the converted string back to array through parse and we give it as a value to the initialCartItems variable THIRD STEP !!!!
+  const [localCartItems, setLocalCartItems] = useState(initialCartItems) //we set it as a default state so everytime the page loads the state loads with the last updated storage data otherwise it will lose its data FOURTH STEP!!!!
 
   useEffect(() => {
-    localStorage.setItem('cartItems', JSON.stringify(cartItems))
-  }, [cartItems])
+    localStorage.setItem('cartItems', JSON.stringify(localCartItems)) //SECOND STEP!!!!
+  }, [localCartItems]) //we had to add the setItem method inside a useEffect everytime the localCartItems array is updated>>>the form submits..because adding this step inside the submission process will not update the localstorage correctly because setItem is synchronous operation and the state update is asynchronous operation so asynchronous will always not finish until its operation finishes so in other words here the state might take time to update so local storage will not wait at all so it will execute immediately so useeffect is the solution here because it ensures the update when the component updates so it updates the local storage
+
+
+  useEffect(() => {
+    setCartItems(localCartItems); //we add the end latest localCartItems array coming from the local storage to the global variable cartItems as an effect of everytime localCartItems changes ---> everytime a data is updated LAST STEP!!!!
+  }, [localCartItems]);
 
 
   const foundItem = productsList.find(item => item.id === itemId)
@@ -44,8 +49,7 @@ export const ProductPage = () => {
 
       setSelectedSize('')
       setSelectedColor('')
-      setLocalCartItems([...localCartItems, newItem]) //first we push to the array
-      localStorage.setItem('cartItems', JSON.stringify(localCartItems)) //then we set the array to the Local Storage
+      setLocalCartItems([...localCartItems, newItem]) //we push to the array FIRST STEP!!!!
       setIsColourError(false)
     } else if (selectedColor === '') {
       setIsColourError(true)
@@ -53,12 +57,6 @@ export const ProductPage = () => {
       setIsSizeError(true)
     }
   }
-
-  useEffect(() => {
-    setCartItems(localCartItems);
-  }, [localCartItems]);
-
-  console.log(cartItems);
 
   useEffect(() => {
     setTimeout(() => {
@@ -75,8 +73,12 @@ export const ProductPage = () => {
       </Breadcrumb > */}
       <div className='product-page'>
         <div className='column1'>
-          <img src={foundItem?.img} alt="" />
-          <img src={foundItem?.itemImg} alt="" />
+          <a href={foundItem.img}>
+            <img src={foundItem?.img} alt="product-image" />
+          </a>
+          <a href={foundItem.itemImg}>
+            <img src={foundItem?.itemImg} alt="product-preview-image" />
+          </a>
         </div>
 
         <form onSubmit={handleOnSubmit} className='column2'>
@@ -125,7 +127,7 @@ export const ProductPage = () => {
             </ul>
 
             {isSizeError && (
-              <font className="error-colour"> Please Select a Colour !</font>
+              <font className="error-colour"> Please select a size !</font>
 
             )}
           </div>

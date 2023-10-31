@@ -125,3 +125,19 @@
 .st62 {
   fill: #525250;
 }
+
+
+
+@media (max-width:700px) {
+  .bl_wrapper {
+    transform: translateY(50%);
+    margin: unset !important;
+    max-width: unset !important;
+  }
+
+  #svg_tramp {
+    display: unset !important;
+    height: unset !important;
+    margin: unset !important;
+  }
+}

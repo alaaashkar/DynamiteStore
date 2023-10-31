@@ -12,10 +12,15 @@
     display: flex;
     gap: 4px;
 
-    &>img {
-      min-width: 50%;
+    &>a {
+      min-width: 50% !important;
+    }
+
+    &>a>img {
+      min-width: 100%;
       margin: 0 !important;
     }
+
   }
 
   .column2 {
@@ -152,7 +157,7 @@
     flex-direction: column;
     gap: 4px;
 
-    &>img {
+    &>a {
       min-width: 100% !important;
       margin: 0 !important;
 
