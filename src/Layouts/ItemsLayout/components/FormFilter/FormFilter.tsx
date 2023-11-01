@@ -7,8 +7,8 @@ import Colour from '../Colour/Colour';
 import ProductType from '../ProductType/ProductType';
 import { FilterModal } from '../FilterModal/FilterModal';
 import { ClipLoader } from 'react-spinners';
-
-
+import { useProducts } from '../../../../contexts/ProductsContext';
+import { useLocation } from 'react-router-dom';
 
 
 
@@ -19,6 +19,7 @@ export const FormFilter = () => {
   const [selectedColour, setSelectedColour] = useState('')
   const [productType, setProductType] = useState(''); // Store the selected product type
   const [isLoading, setIsLoading] = useState(false);
+  const { filteredWomenData, filteredMenData, filteredKidsData, filteredBabyData } = useProducts()
 
 
 
@@ -30,6 +31,13 @@ export const FormFilter = () => {
     // Add a class to the body to disable scrolling
     document.body.classList.add('modal-open');
   };
+
+  const location = useLocation();
+  const path = location.pathname;
+  const onWomanPage = path.includes('woman');
+  const onManPage = path.includes('man');
+  const onKidsPage = path.includes('kids');
+  const onBabyPage = path.includes('baby')
 
 
   return (
@@ -96,21 +104,26 @@ export const FormFilter = () => {
       </div>
 
       <div className='right'>
-        <p className='filter-pagination'>
-          sadasd
-        </p>
 
-        <p className='filter-pagination'>
-          sadasd
-        </p>
+        {onWomanPage ? (
+          <p className='filter-pagination'>
+            {filteredWomenData.length} {filteredWomenData.length > 1 ? 'items' : 'item'}
+          </p>
+        ) : onManPage ? (
+          <p className='filter-pagination'>
+            {filteredMenData.length} {filteredMenData.length > 1 ? 'items' : 'item'}
+          </p>
+        ) : onKidsPage ? (
+          <p className='filter-pagination'>
+            {filteredKidsData.length} {filteredKidsData.length > 1 ? 'items' : 'item'}
+          </p>
+        ) : onBabyPage ? (
+          <p className='filter-pagination'>
+            {filteredBabyData.length} {filteredBabyData.length > 1 ? 'items' : 'item'}
+          </p>
+        ) : null
+        }
 
-        <p className='filter-pagination'>
-          sadasd
-        </p>
-
-        <p className='filter-pagination'>
-          sadasd
-        </p>
       </div>
     </form>
   );

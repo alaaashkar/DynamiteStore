@@ -67,23 +67,56 @@
   position: relative;
 }
 
-.cart-details {
+.cart-container .cart-details {
   position: absolute;
   opacity: 0;
-  height: 400px;
   box-sizing: border-box;
   padding: 20px 25px;
   width: 375px;
-  background-color: #959191;
-  border: 1px solid rgba(0, 0, 0, 0.023);
+  z-index: 99999;
+  background-color: white;
+  border: 5px solid rgba(0, 0, 0, 0.044);
   border-width: 2px;
   border-radius: 10px;
   left: -1000% !important;
-  z-index: 999999;
+  top: 100%;
+  display: none;
+
+  &>p {
+    font-weight: 500;
+    font-size: 12px;
+  }
 }
 
 .cart-container:hover .cart-details {
+  display: block;
   opacity: 1;
+  left: 0;
+}
+
+.cart-details {
+  &>hr {
+    margin-top: 20px;
+    opacity: 0.3;
+  }
+
+  .order-price-container {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.total-price {
+  font-weight: 700;
+}
+
+.total-order-container {
+  display: flex;
+  justify-content: space-between;
+
+  &>p:last-child {
+    font-weight: 600;
+  }
 }
 
 .cart-item {
@@ -104,7 +137,67 @@
   /* Initially, text is hidden */
   transition: left 0.3s ease, opacity 0.2s ease-in-out;
   transform: translateX(-10px) !important;
+
+  &:active {
+    color: white !important;
+  }
 }
+
+.cart-product-link {
+  text-decoration: none;
+}
+
+.cart-product-container {
+  display: flex;
+  cursor: pointer;
+  gap: 15px;
+  margin-bottom: 10px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: red;
+    text-decoration: none;
+  }
+
+  &>.col1 {
+    flex: 0.7;
+  }
+
+  &>.col2 {
+    flex: 2;
+
+    &>p {
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none !important;
+    }
+
+    .col2-container {
+      display: flex;
+      justify-content: space-between;
+      max-width: 130px;
+
+      &>p {
+        font-size: 13px;
+        font-weight: 300;
+        margin: 0px 13px 5px 10px;
+      }
+
+      &>p:first-of-type {
+        min-width: 100px;
+      }
+
+      &>p:nth-of-type(2) {
+        margin-left: -10px;
+      }
+    }
+  }
+}
+
+
 
 .cart-container:hover .cart-item {
   transform: translateX(-80px);
@@ -115,6 +208,7 @@
   left: 0;
   /* Slide the text in from the right */
   opacity: 1;
+  text-decoration: underline;
   /* Make the text visible*/
 }
 

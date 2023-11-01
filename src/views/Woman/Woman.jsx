@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import './Woman.scss';
 import { Link } from 'react-router-dom';
-
 import { useProducts } from 'contexts/ProductsContext';
 import { Button } from '../../components/Button/Button';
 import { PuffLoader, ClipLoader } from 'react-spinners';
@@ -24,14 +23,8 @@ export const Woman = () => {
       setIsLoading(false);
     }, 500);
   };
-
-  console.log(filteredWomenData);
-
   return (
     <>
-      {/* <Breadcrumb>
-          <li><Link to="">Woman</Link></li>
-        </Breadcrumb > */}
       <div className="container products-wrapper">
         {filteredWomenData.slice(0, visibleItems).map((product) => (
           <div

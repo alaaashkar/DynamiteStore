@@ -9,10 +9,13 @@ import { GlamCampaign } from './components/GlamCampaign/GlamCampaign';
 import { ElevateCampaign } from './components/ElevateCampaign/ElevateCampaign';
 import { FlowCampaign } from './components/FlowCampaign/FlowCampaign';
 import { Magazine } from './components/Magazine/Magazine';
+import Breadcrumb from '../../components/BreadCrumb/BreadCrumb';
 
 export const Home = () => {
   return (
     <>
+
+
       <div className='container home-page '>
         <WelcomeSection />
 

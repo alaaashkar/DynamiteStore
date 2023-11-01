@@ -13,6 +13,7 @@ import { Kids } from "./views/Kids/Kids";
 import { Baby } from "./views/Baby/Baby";
 import { ProductPage } from "./views/ProductPage/ProductPage";
 import { ErrorPage } from "./views/ErrorPage/ErrorPage"
+import { Cart } from "./views/Cart/Cart";
 
 const App = () => {
   const shouldRedirectToErrorPage = window.location.pathname === '/items' || window.location.pathname === '/items/'; // Redirect if the path is "/items"
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="customer-service" element={<CustomerService />} />
         <Route path="fashion-news" element={<News />} />
         <Route path="store" element={<Store />} />
+        <Route path="cart" element={<Cart />} />
         <Route path="product-page/:itemId" element={<ProductPage />} />
         <Route path="items" element={shouldRedirectToErrorPage ? <Navigate to="/not-found" /> : <ItemsLayout />}>
           <Route path="woman" element={<Woman />} />

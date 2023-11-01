@@ -12,8 +12,12 @@
     background-color: rgb(232, 232, 232);
   }
 
-  &:active {
-    color: white;
+  &:hover .text {
+    color: #222222 !important;
+  }
+
+  &:active .text {
+    color: red !important;
   }
 
   a {

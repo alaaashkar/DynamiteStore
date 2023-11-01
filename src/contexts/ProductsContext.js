@@ -56,7 +56,7 @@ export const ProductsProvider = ({ children }) => {
     filteredBabyData,
     setFilteredBabyData,
     cartItems,
-     setCartItems
+     setCartItems,
   }), [womenOriginalProducts, kidsOriginalProducts, babyOriginalProducts, menOriginalProducts, productsList, womenProducts, menProducts, kidsProducts, babyProducts, filteredWomenData, filteredMenData, filteredKidsData, filteredBabyData, cartItems]);
 
 

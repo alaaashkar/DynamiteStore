@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import Breadcrumb from '../../components/BreadCrumb/BreadCrumb';
 import './ProductPage.scss';
 import cn from 'classnames';
@@ -5,7 +6,7 @@ import { useEffect, useState } from 'react';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { useParams } from 'react-router-dom';
 import { useProducts } from '../../contexts/ProductsContext';
-import { PuffLoader } from 'react-spinners';
+import { PuffLoader, ClipLoader } from 'react-spinners';
 
 
 
@@ -17,6 +18,8 @@ export const ProductPage = () => {
   const { productsList, setCartItems, cartItems } = useProducts()
   const [isColourError, setIsColourError] = useState(false)
   const [isSizeError, setIsSizeError] = useState(false)
+  const [showLoader, setShowLoader] = useState(false)
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const initialCartItems = JSON.parse(localStorage.getItem('cartItems')) || [] //we get the converted string back to array through parse and we give it as a value to the initialCartItems variable THIRD STEP !!!!
   const [localCartItems, setLocalCartItems] = useState(initialCartItems) //we set it as a default state so everytime the page loads the state loads with the last updated storage data otherwise it will lose its data FOURTH STEP!!!!
@@ -38,18 +41,41 @@ export const ProductPage = () => {
     if (selectedColor !== '' && selectedSize !== '') {
       // const maxId = productsList.reduce((max, item) => (item.id > max ? item.id : max), 0)
       const newItem = {
-        id: cartItems.length + 1,
+        id: foundItem.id,
         img: foundItem.img,
         itemImg: foundItem.itemImg,
         name: foundItem.name,
         price: foundItem.price,
         size: selectedSize,
+        quantity: 1,
         colour: selectedColor,
       }
 
+
+
       setSelectedSize('')
       setSelectedColor('')
-      setLocalCartItems([...localCartItems, newItem]) //we push to the array FIRST STEP!!!!
+      setShowLoader(true)
+
+      setTimeout(() => {
+        const existingItem = localCartItems.find((item) => item.id === newItem.id);
+        if (existingItem) {
+          // If an item with the same ID is found, increase its quantity
+          existingItem.quantity++;
+          setLocalCartItems([...localCartItems]); // Update the localCartItems state
+        } else {
+          // If not found, add the new item to the cart
+          setLocalCartItems([...localCartItems, newItem]);
+        }
+        setShowLoader(false)
+
+        setShowSuccessMessage(true);
+
+        setTimeout(() => {
+          setShowSuccessMessage(false);
+        }, 2000);
+      }, 1000);
+
       setIsColourError(false)
     } else if (selectedColor === '') {
       setIsColourError(true)
@@ -135,12 +161,33 @@ export const ProductPage = () => {
           <button
             // disabled={buttonIsDisabled}
             type='submit'
-            className='add-button'>
-            <ShoppingBagOutlinedIcon style={{ marginRight: '8px' }} />
-            Add
+            className='add-button'
+            onClick={handleOnSubmit}
+          >
+
+            {showLoader ? (
+              <ClipLoader color="rgba(255, 255, 255, 1)" size={15} />
+            ) : (
+              <>
+                <ShoppingBagOutlinedIcon style={{ marginRight: '8px' }} />
+                Add
+              </>
+            )}
           </button>
+
+
+          {showSuccessMessage && (
+            <div className="success-message">
+              Item added successfully!
+            </div>
+          )}
+
         </form>
+
+
       </div>
+
+
 
       <div className="loader">
         <PuffLoader color="#222222" size={50} />

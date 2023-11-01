@@ -22,11 +22,17 @@
   margin: 0 auto;
 }
 
+.limited-wider {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
 .page {
   flex-grow: 1;
   min-height: 100vh;
 }
 
-.footer{
+.footer {
   // opacity: 0;
 }
