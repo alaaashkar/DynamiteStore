@@ -8,8 +8,15 @@ export const Cart = () => {
         <h1 className='cart-title'>Shopping cart</h1>
 
         <div className='cart-content'>
-          <div className='left'>1</div>
-          <div className='right'>2</div>
+          <div className='left'>
+            <h1 className='cart-title cart-content-title'>Your shopping cart is empty!</h1>
+            <font>Log in to save items to your shopping cart or access previously saved items</font>
+
+            <a className='log-in' href="/">Log in</a>
+          </div>
+          <div className='right'>
+
+          </div>
         </div>
       </div>
 
@@ -19,3 +26,5 @@ export const Cart = () => {
     </>
   )
 };
+
+

@@ -22,7 +22,7 @@ export const Header = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setTempImage(false);
-    }, 600);
+    }, 500);
 
     return () => clearTimeout(timer);
   });
@@ -92,9 +92,9 @@ export const Header = () => {
         </Link>
       </div>
 
-      <div className="headerNav__right">
+      <div className="headerNav__right" onMouseEnter={() => setTempImage(true)}>
         <ul>
-          <li className="cart-container" onMouseEnter={() => setTempImage(true)}>
+          <li className="cart-container">
             <a className="headerNav__right__button">
               <ShoppingBagOutlinedIcon className="cart-item" style={{ marginRight: '8px' }} />
               <font className="headerNav__right__button-text cart-text">Shopping Cart ({cartItems.length})</font>
