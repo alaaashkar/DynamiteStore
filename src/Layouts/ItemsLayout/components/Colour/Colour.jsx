@@ -24,7 +24,18 @@ export default function Colour({ setIsFilteredModalClicked, selectedColour, setS
   } = useProducts();
 
   const handleChange = (event) => {
-    setSelectedColour(event.target.value); // Update the selected color in state
+    const selectedColor = event.target.value;
+
+    if (selectedColour.includes(selectedColor)) {
+      // If the color is already selected, remove it
+      setSelectedColour(selectedColour.filter(color => color !== selectedColor));
+    } else if (selectedColor === 'NONE') {
+      setSelectedColour([])
+    }
+    else {
+      // If the color is not selected, add it to the array
+      setSelectedColour([...selectedColour, selectedColor]);
+    }
   };
 
   const location = useLocation();
@@ -53,11 +64,10 @@ export default function Colour({ setIsFilteredModalClicked, selectedColour, setS
   };
 
   useEffect(() => {
-    setSelectedColour('NONE');
+    setSelectedColour([]);
     // 1000 milliseconds (1 second)
   }, [path]);
 
-  const renderedList = renderColorList();
 
   const load = (callback) => {
     setIsLoading(true);
@@ -77,22 +87,18 @@ export default function Colour({ setIsFilteredModalClicked, selectedColour, setS
       load(() => {
         let filtered = womenOriginalProducts;
 
-        if (selectedColour !== 'NONE') {
-          filtered = filtered.filter(item => item.colour.toLowerCase() === selectedColour.toLowerCase());
+        if (selectedColour.length !== 0) {
+          filtered = filtered.filter(item => selectedColour.includes(item.colour));
         }
 
         setFilteredWomenData(filtered);
-
-        if (selectedColour === 'NONE') {
-          setFilteredWomenData(womenOriginalProducts)
-        }
       })
     } else if (onManPage) {
       load(() => {
         let filtered = menOriginalProducts;
 
-        if (selectedColour !== 'NONE') {
-          filtered = filtered.filter(item => item.colour.toLowerCase() === selectedColour.toLowerCase());
+        if (selectedColour.length !== 0) {
+          filtered = filtered.filter(item => selectedColour.includes(item.colour));
         }
         setFilteredMenData(filtered);
       })
@@ -100,8 +106,8 @@ export default function Colour({ setIsFilteredModalClicked, selectedColour, setS
       load(() => {
         let filtered = kidsOriginalProducts;
 
-        if (selectedColour !== 'NONE') {
-          filtered = filtered.filter(item => item.colour.toLowerCase() === selectedColour.toLowerCase());
+        if (selectedColour.length !== 0) {
+          filtered = filtered.filter(item => selectedColour.includes(item.colour));
         }
 
         setFilteredKidsData(filtered);
@@ -109,10 +115,9 @@ export default function Colour({ setIsFilteredModalClicked, selectedColour, setS
     } else {
       load(() => {
         let filtered = babyOriginalProducts;
-        if (selectedColour !== 'NONE') {
-          filtered = filtered.filter(item => item.colour?.toLowerCase() === selectedColour.toLowerCase());
+        if (selectedColour.length !== 0) {
+          filtered = filtered.filter(item => selectedColour.includes(item.colour));
         }
-
         setFilteredBabyData(filtered);
       })
     }
@@ -120,6 +125,9 @@ export default function Colour({ setIsFilteredModalClicked, selectedColour, setS
 
 
   }, [selectedColour, colourStatusSide])
+
+
+  const renderedList = renderColorList();
 
 
   return (

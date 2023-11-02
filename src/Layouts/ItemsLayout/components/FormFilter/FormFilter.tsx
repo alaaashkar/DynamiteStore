@@ -16,10 +16,16 @@ export const FormFilter = () => {
   const [isFilterModalClicked, setIsFilteredModalClicked] = useState(false);
   const [sideModalContent, setSideModalContent] = useState('default')
   const [selectedSortStatus, setSelectedSortStatus] = useState('');
-  const [selectedColour, setSelectedColour] = useState('')
+  const [selectedColour, setSelectedColour] = useState([]);
   const [productType, setProductType] = useState(''); // Store the selected product type
   const [isLoading, setIsLoading] = useState(false);
   const { filteredWomenData, filteredMenData, filteredKidsData, filteredBabyData } = useProducts()
+
+  const handleRemoveSelectedFilter = (selected) => {
+    if (Array.isArray(selectedColour)) {
+      setSelectedColour(selectedColour.filter(color => color !== selected));
+    }
+  }
 
 
 
@@ -41,90 +47,103 @@ export const FormFilter = () => {
 
 
   return (
-    <form className='filter-form'>
-      <div className='left'>
-        <fieldset>
-          <SortBy
-            setIsLoading={setIsLoading}
-            isLoading={isLoading}
-            setSelectedSortStatus={setSelectedSortStatus}
-            selectedSortStatus={selectedSortStatus}
-            setIsFilteredModalClicked={setIsFilteredModalClicked}
-            setSideModalContent={setSideModalContent}
-          />
-        </fieldset>
+    <>
+      <form className='filter-form'>
+        <div className='left'>
+          <fieldset>
+            <SortBy
+              setIsLoading={setIsLoading}
+              isLoading={isLoading}
+              setSelectedSortStatus={setSelectedSortStatus}
+              selectedSortStatus={selectedSortStatus}
+              setIsFilteredModalClicked={setIsFilteredModalClicked}
+              setSideModalContent={setSideModalContent} />
+          </fieldset>
 
-        <fieldset>
-          <Colour
-            setIsLoading={setIsLoading}
-            isLoading={isLoading}
+          <fieldset>
+            <Colour
+              setIsLoading={setIsLoading}
+              isLoading={isLoading}
+              setSelectedColour={setSelectedColour}
+              selectedColour={selectedColour}
+              setIsFilteredModalClicked={setIsFilteredModalClicked}
+              setSideModalContent={setSideModalContent} />
+          </fieldset>
+
+          <fieldset>
+            <ProductType
+              setIsLoading={setIsLoading}
+              isLoading={isLoading}
+              setSideModalContent={setSideModalContent}
+              setProductType={setProductType}
+              setIsFilteredModalClicked={setIsFilteredModalClicked}
+              productType={productType} />
+          </fieldset>
+
+          <fieldset
+            className='all-filters'
+            onClick={handleAllFiltersClick}
+          >
+            <FontAwesomeIcon size='xl' icon={faSliders} className='sliders' />
+            <span>ALL FILTERS</span>
+          </fieldset>
+
+          {isFilterModalClicked && (
+            <>
+              <div className="backdrop" />
+            </>
+          )}
+
+          <FilterModal
+            setSelectedSortStatus={setSelectedSortStatus}
+            sideModalContent={sideModalContent}
+            setSideModalContent={setSideModalContent}
+            setIsFilteredModalClicked={setIsFilteredModalClicked}
+            isFilterModalClicked={isFilterModalClicked}
             setSelectedColour={setSelectedColour}
             selectedColour={selectedColour}
-            setIsFilteredModalClicked={setIsFilteredModalClicked}
-            setSideModalContent={setSideModalContent}
-          />
-        </fieldset>
-
-        <fieldset>
-          <ProductType
-            setIsLoading={setIsLoading}
-            isLoading={isLoading}
-            setSideModalContent={setSideModalContent}
-            setProductType={setProductType}
-            setIsFilteredModalClicked={setIsFilteredModalClicked}
-            productType={productType}
-          />
-        </fieldset>
-
-        <fieldset
-          className='all-filters'
-          onClick={handleAllFiltersClick}
-        >
-          <FontAwesomeIcon size='xl' icon={faSliders} className='sliders' />
-          <span>ALL FILTERS</span>
-        </fieldset>
-
-        {isFilterModalClicked && (
-          <>
-            <div className="backdrop" />
-          </>
-        )}
-
-        <FilterModal
-          setSelectedSortStatus={setSelectedSortStatus}
-          sideModalContent={sideModalContent}
-          setSideModalContent={setSideModalContent}
-          setIsFilteredModalClicked={setIsFilteredModalClicked}
-          isFilterModalClicked={isFilterModalClicked}
-          setSelectedColour={setSelectedColour}
-          setProductType={setProductType}
-        />
+            setProductType={setProductType} />
 
 
-      </div>
+        </div>
 
-      <div className='right'>
+        <div className='right'>
 
-        {onWomanPage ? (
-          <p className='filter-pagination'>
-            {filteredWomenData.length} {filteredWomenData.length > 1 ? 'items' : 'item'}
-          </p>
-        ) : onManPage ? (
-          <p className='filter-pagination'>
-            {filteredMenData.length} {filteredMenData.length > 1 ? 'items' : 'item'}
-          </p>
-        ) : onKidsPage ? (
-          <p className='filter-pagination'>
-            {filteredKidsData.length} {filteredKidsData.length > 1 ? 'items' : 'item'}
-          </p>
-        ) : onBabyPage ? (
-          <p className='filter-pagination'>
-            {filteredBabyData.length} {filteredBabyData.length > 1 ? 'items' : 'item'}
-          </p>
-        ) : null
-        }
+          {onWomanPage ? (
+            <p className='filter-pagination'>
+              {filteredWomenData.length} {filteredWomenData.length > 1 ? 'items' : 'item'}
+            </p>
+          ) : onManPage ? (
+            <p className='filter-pagination'>
+              {filteredMenData.length} {filteredMenData.length > 1 ? 'items' : 'item'}
+            </p>
+          ) : onKidsPage ? (
+            <p className='filter-pagination'>
+              {filteredKidsData.length} {filteredKidsData.length > 1 ? 'items' : 'item'}
+            </p>
+          ) : onBabyPage ? (
+            <p className='filter-pagination'>
+              {filteredBabyData.length} {filteredBabyData.length > 1 ? 'items' : 'item'}
+            </p>
+          ) : null}
 
-      </div>
-    </form>
+        </div>
+      </form>
+      {selectedColour.length > 0 && (
+        <div className='selected-filter-container'>
+          <p className='selected-filter-title'>Selected Filters:</p>
+          <div>
+            <ul>
+              {selectedColour.map(selected => (
+                <li key={selected}>
+                  <p>{selected}</p>
+                  <button onClick={() => handleRemoveSelectedFilter(selected)} >X</button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+    </>
   );
 };

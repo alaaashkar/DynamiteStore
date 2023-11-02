@@ -6,6 +6,7 @@ import { useProducts } from 'contexts/ProductsContext';
 import { Button } from '../../components/Button/Button';
 import { PuffLoader, ClipLoader } from 'react-spinners';
 import Breadcrumb from '../../components/BreadCrumb/BreadCrumb';
+import { Heart } from '../../components/Heart/Heart';
 
 // Define the womanProductType here if needed
 
@@ -34,6 +35,7 @@ export const Woman = () => {
             key={product.id} // Ensure that product.id is unique
           >
             <a href={`/product-page/${product.id}`} className="product-link">
+              <Heart />
               {hoveredProductId === product.id ? (
                 <img src={product.itemImg} alt={product.name} />
               ) : (
@@ -48,6 +50,8 @@ export const Woman = () => {
             <font>{product.price}$</font>
 
             <font>New Product</font>
+
+            
           </div>
         ))}
       </div>

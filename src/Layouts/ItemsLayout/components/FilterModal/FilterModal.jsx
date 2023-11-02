@@ -11,7 +11,7 @@ import { useLocation } from 'react-router-dom';
 import React, { useEffect, useRef } from "react";
 
 
-export const FilterModal = ({ isFilterModalClicked, setIsFilteredModalClicked, setSideModalContent, sideModalContent, setSelectedSortStatus, setSelectedColour, setProductType }) => {
+export const FilterModal = ({ isFilterModalClicked, setIsFilteredModalClicked, setSideModalContent, sideModalContent, setSelectedSortStatus, setSelectedColour, selectedColour, setProductType }) => {
 
   const sliderRef = useRef(null);
 
@@ -114,7 +114,11 @@ export const FilterModal = ({ isFilterModalClicked, setIsFilteredModalClicked, s
   }
 
   const handleColour = (colour) => {
-    setSelectedColour(colour)
+    if (!selectedColour.includes(colour)) {
+      setSelectedColour([...selectedColour, colour]);
+    } else {
+      return
+    }
   }
 
   const handleType = (type) => {

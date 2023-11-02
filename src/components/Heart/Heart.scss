@@ -1,0 +1,19 @@
+.heart-icon {
+  position: absolute;
+  z-index: 9999;
+  color: white;
+  right: 10%;
+  bottom: 5%;
+  cursor: pointer;
+  transition: color 0.1s ease-in-out;
+
+
+
+  &:hover {
+    color: red;
+  }
+}
+
+.clicked {
+  color: red;
+}

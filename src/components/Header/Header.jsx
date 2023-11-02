@@ -34,10 +34,10 @@ export const Header = () => {
       <div className="headerNav__left">
         <ul>
           <li className="fav-container">
-            <a className="headerNav__right__button">
+            <Link className="headerNav__right__button" to="/favorites">
               <FavoriteIcon className="fav-item" style={{ color: 'black', marginRight: '8px' }} />
               <font className="headerNav__right__button-text favorites fav-text">Favorites</font>
-            </a>
+            </Link>
           </li>
 
           {isMenuClicked ? (

@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
 import './App.scss'
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { CustomerService } from "./views/CustomerService/CustomerService";
-import { News } from "./views/News/News";
-import { Store } from "./views/Store/Store";
 import { Home } from "./views/Home/Home";
 import { Woman } from "views/Woman/Woman";
 import { ItemsLayout } from "./Layouts/ItemsLayout/ItemsLayout"
@@ -15,6 +12,7 @@ import { ProductPage } from "./views/ProductPage/ProductPage";
 import { ErrorPage } from "./views/ErrorPage/ErrorPage"
 import { Cart } from "./views/Cart/Cart";
 import { useProducts } from "./contexts/ProductsContext";
+import { Favorites } from "./views/Favorites/Favorites";
 
 const App = () => {
   const shouldRedirectToErrorPage = window.location.pathname === '/items' || window.location.pathname === '/items/'; // Redirect if the path is "/items"

@@ -68,7 +68,47 @@
   font-size: 13px;
   font-family: cursive;
   transform: translateX(-40%);
-  text-decoration:overline;
+  text-decoration: overline;
+}
+
+.selected-filter-container {
+  gap: 10px;
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+
+  .selected-filter-title {
+    font-weight: 500;
+    font-size: 13px;
+    margin-left: 0;
+    font-family: "Roboto";
+  }
+
+  ul {
+    display: flex;
+    gap: 10px;
+    padding-left: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      align-items: center;
+      background-color: rgb(249, 247, 247);
+      padding: 2px;
+      padding: 0 10px;
+      border-radius: 10px;
+
+      button {
+        background-color: rgb(243, 242, 242) !important;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+
+  p {
+    font-size: 14px;
+  }
 }
 
 
