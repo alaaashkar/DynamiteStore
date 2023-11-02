@@ -7,7 +7,8 @@ import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { useParams } from 'react-router-dom';
 import { useProducts } from '../../contexts/ProductsContext';
 import { PuffLoader, ClipLoader } from 'react-spinners';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -15,13 +16,13 @@ export const ProductPage = () => {
   const [selectedColor, setSelectedColor] = useState('')
   const [selectedSize, setSelectedSize] = useState('')
   const { itemId } = useParams();
-  const { productsList, setCartItems, cartItems } = useProducts()
+  const { productsList, setCartItems, cartItems, initialCartItems } = useProducts()
   const [isColourError, setIsColourError] = useState(false)
   const [isSizeError, setIsSizeError] = useState(false)
   const [showLoader, setShowLoader] = useState(false)
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-  const initialCartItems = JSON.parse(localStorage.getItem('cartItems')) || [] //we get the converted string back to array through parse and we give it as a value to the initialCartItems variable THIRD STEP !!!!
+
   const [localCartItems, setLocalCartItems] = useState(initialCartItems) //we set it as a default state so everytime the page loads the state loads with the last updated storage data otherwise it will lose its data FOURTH STEP!!!!
 
   useEffect(() => {
@@ -29,9 +30,6 @@ export const ProductPage = () => {
   }, [localCartItems]) //we had to add the setItem method inside a useEffect everytime the localCartItems array is updated>>>the form submits..because adding this step inside the submission process will not update the localstorage correctly because setItem is synchronous operation and the state update is asynchronous operation so asynchronous will always not finish until its operation finishes so in other words here the state might take time to update so local storage will not wait at all so it will execute immediately so useeffect is the solution here because it ensures the update when the component updates so it updates the local storage
 
 
-  useEffect(() => {
-    setCartItems(localCartItems); //we add the end latest localCartItems array coming from the local storage to the global variable cartItems as an effect of everytime localCartItems changes ---> everytime a data is updated LAST STEP!!!!
-  }, [localCartItems]);
 
 
   const foundItem = productsList.find(item => item.id === itemId)
@@ -71,9 +69,7 @@ export const ProductPage = () => {
 
         setShowSuccessMessage(true);
 
-        setTimeout(() => {
-          setShowSuccessMessage(false);
-        }, 2000);
+        toast.success("Item added successfully!");
       }, 1000);
 
       setIsColourError(false)
@@ -90,6 +86,11 @@ export const ProductPage = () => {
       setIsSizeError(false)
     }, 4000);
   }, [isColourError, selectedColor, selectedSize, isSizeError])
+
+
+  useEffect(() => {
+    setCartItems(localCartItems); //we add the end latest localCartItems array coming from the local storage to the global variable cartItems as an effect of everytime localCartItems changes ---> everytime a data is updated LAST STEP!!!!
+  }, [localCartItems]);
 
 
   return (
@@ -178,7 +179,18 @@ export const ProductPage = () => {
 
           {showSuccessMessage && (
             <div className="success-message">
-              Item added successfully!
+              <ToastContainer
+                position="bottom-right"
+                autoClose={1000}
+                hideProgressBar={true}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+              />
             </div>
           )}
 

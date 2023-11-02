@@ -2,9 +2,9 @@ import './Button.scss'
 
 import React from "react";
 
-export const Button = ({ text, to, onClick, buttonStyle }) => {
+export const Button = ({ text, to, onClick, buttonStyle, disabled }) => {
   return (
-    <button className={`button ${buttonStyle}`} onClick={onClick}>
+    <button disabled={disabled} className={`button ${buttonStyle}`} onClick={onClick}>
       <a className='text' href={to}>{text}</a>
     </button>
   );

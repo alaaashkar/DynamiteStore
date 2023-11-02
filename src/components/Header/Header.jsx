@@ -17,6 +17,8 @@ export const Header = () => {
   const { cartItems } = useProducts();
   const [tempimage, setTempImage] = useState(true);
 
+  // const initialCartItems = JSON.parse(localStorage.getItem('cartItems')) || []
+
   const totalPrice = cartItems.reduce((total, item) => total + parseFloat(item.price * item.quantity), 0);
 
   useEffect(() => {
@@ -31,38 +33,10 @@ export const Header = () => {
     <header className='headerNav'>
       <div className="headerNav__left">
         <ul>
-          {/* 
-          <li>
-            <NavLink to='/customer-service'>
-              <font>Customer service</font>
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to='/fashion-news'>
-              <font>Fashion News</font>
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to='/store'>
-              <font>Find a store</font>
-            </NavLink>
-          </li>
-          */}
-
-          {/* 
-          <li>
-            <button className="horizon-icon">
-              <MoreHorizIcon></MoreHorizIcon>
-            </button>
-          </li>
-          */}
-
           <li className="fav-container">
             <a className="headerNav__right__button">
               <FavoriteIcon className="fav-item" style={{ color: 'black', marginRight: '8px' }} />
-              <font className="headerNav__right__button-text favorites fav-text">favorites</font>
+              <font className="headerNav__right__button-text favorites fav-text">Favorites</font>
             </a>
           </li>
 

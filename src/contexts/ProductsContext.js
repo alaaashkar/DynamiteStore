@@ -30,7 +30,9 @@ export const ProductsProvider = ({ children }) => {
     setBabyProducts(productsList.filter(product => product.sex === 'B'))
   }, [productsList])
 
-
+  const initialCartItems = useMemo(() => {
+    return JSON.parse(localStorage.getItem('cartItems')) || [];
+  }, []); // The empty dependency array ensures it's only calculated once
 
   const value = useMemo(() => ({
     setProductsList,
@@ -56,8 +58,9 @@ export const ProductsProvider = ({ children }) => {
     filteredBabyData,
     setFilteredBabyData,
     cartItems,
-     setCartItems,
-  }), [womenOriginalProducts, kidsOriginalProducts, babyOriginalProducts, menOriginalProducts, productsList, womenProducts, menProducts, kidsProducts, babyProducts, filteredWomenData, filteredMenData, filteredKidsData, filteredBabyData, cartItems]);
+    setCartItems,
+    initialCartItems,
+  }), [womenOriginalProducts, kidsOriginalProducts, babyOriginalProducts, menOriginalProducts, productsList, womenProducts, menProducts, kidsProducts, babyProducts, filteredWomenData, filteredMenData, filteredKidsData, filteredBabyData, cartItems, initialCartItems]);
 
 
   return (

@@ -25,4 +25,10 @@
     padding: 9px 15px;
     display: inline-block;
   }
+
+  &:disabled{
+    background-color: grey;
+    border: none;
+    pointer-events: none;
+  }
 }

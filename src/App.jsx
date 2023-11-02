@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './App.scss'
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { CustomerService } from "./views/CustomerService/CustomerService";
@@ -14,18 +14,22 @@ import { Baby } from "./views/Baby/Baby";
 import { ProductPage } from "./views/ProductPage/ProductPage";
 import { ErrorPage } from "./views/ErrorPage/ErrorPage"
 import { Cart } from "./views/Cart/Cart";
+import { useProducts } from "./contexts/ProductsContext";
 
 const App = () => {
   const shouldRedirectToErrorPage = window.location.pathname === '/items' || window.location.pathname === '/items/'; // Redirect if the path is "/items"
+  const { setCartItems, initialCartItems } = useProducts()
+
+  useEffect(() => {
+    setCartItems(initialCartItems)
+  }, [initialCartItems])
 
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
-        <Route path="customer-service" element={<CustomerService />} />
-        <Route path="fashion-news" element={<News />} />
-        <Route path="store" element={<Store />} />
         <Route path="cart" element={<Cart />} />
+        <Route path="favorites" element={<Favorites />} />
         <Route path="product-page/:itemId" element={<ProductPage />} />
         <Route path="items" element={shouldRedirectToErrorPage ? <Navigate to="/not-found" /> : <ItemsLayout />}>
           <Route path="woman" element={<Woman />} />
