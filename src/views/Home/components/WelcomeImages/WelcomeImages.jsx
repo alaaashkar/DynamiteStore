@@ -8,7 +8,7 @@ export const WelcomeImages = ({ img, title }) => {
       <img className='playing-images' src={img} alt='image1' />
       <h1 className="playing-images-title">{title}</h1>
       <font className="playing-images-description">New Products</font>
-      <Button text={'buy now'} to="/store" />
+      <Button text={'Buy Now'} to="/items/woman" />
     </>
   );
 };

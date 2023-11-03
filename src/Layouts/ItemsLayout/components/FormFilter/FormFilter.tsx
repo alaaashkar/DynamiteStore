@@ -17,7 +17,7 @@ export const FormFilter = () => {
   const [sideModalContent, setSideModalContent] = useState('default')
   const [selectedSortStatus, setSelectedSortStatus] = useState('');
   const [selectedColour, setSelectedColour] = useState([]);
-  const [productType, setProductType] = useState(''); // Store the selected product type
+  const [selectedProductType, setSelectedProductType] = useState([]); // Store the selected product type
   const [isLoading, setIsLoading] = useState(false);
   const { filteredWomenData, filteredMenData, filteredKidsData, filteredBabyData } = useProducts()
 
@@ -27,8 +27,11 @@ export const FormFilter = () => {
     }
   }
 
-
-
+  const handleRemoveSelectedType = (selected) => {
+    if (Array.isArray(selectedColour)) {
+      setSelectedProductType(selectedProductType.filter(type => type !== selected));
+    }
+  }
 
   const handleAllFiltersClick = (event) => {
     // Prevent the event from propagating to the document click event listener
@@ -44,7 +47,6 @@ export const FormFilter = () => {
   const onManPage = path.includes('man');
   const onKidsPage = path.includes('kids');
   const onBabyPage = path.includes('baby')
-
 
   return (
     <>
@@ -75,9 +77,9 @@ export const FormFilter = () => {
               setIsLoading={setIsLoading}
               isLoading={isLoading}
               setSideModalContent={setSideModalContent}
-              setProductType={setProductType}
+              setSelectedProductType={setSelectedProductType}
               setIsFilteredModalClicked={setIsFilteredModalClicked}
-              productType={productType} />
+              selectedProductType={selectedProductType} />
           </fieldset>
 
           <fieldset
@@ -102,7 +104,9 @@ export const FormFilter = () => {
             isFilterModalClicked={isFilterModalClicked}
             setSelectedColour={setSelectedColour}
             selectedColour={selectedColour}
-            setProductType={setProductType} />
+            selectedProductType={selectedProductType}
+            setSelectedProductType={setSelectedProductType}
+          />
 
 
         </div>
@@ -129,7 +133,7 @@ export const FormFilter = () => {
 
         </div>
       </form>
-      {selectedColour.length > 0 && (
+      {(selectedColour.length > 0 || selectedProductType.length > 0) && (
         <div className='selected-filter-container'>
           <p className='selected-filter-title'>Selected Filters:</p>
           <div>
@@ -140,6 +144,14 @@ export const FormFilter = () => {
                   <button onClick={() => handleRemoveSelectedFilter(selected)} >X</button>
                 </li>
               ))}
+
+              {selectedProductType.map(selected => (
+                <li key={selected}>
+                  <p>{selected}</p>
+                  <button onClick={() => handleRemoveSelectedType(selected)} >X</button>
+                </li>
+              ))}
+
             </ul>
           </div>
         </div>

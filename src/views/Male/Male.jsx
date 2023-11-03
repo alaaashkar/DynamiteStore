@@ -1,9 +1,10 @@
+/* eslint-disable react/style-prop-object */
 import React, { useState } from 'react';
 import './Male.scss';
 import { useProducts } from '../../contexts/ProductsContext';
 import { Button } from '../../components/Button/Button';
 import { ClipLoader, PuffLoader } from 'react-spinners';
-import { Link } from 'react-router-dom';
+import { Heart } from '../../components/Heart/Heart';
 
 
 export const Male = () => {
@@ -33,13 +34,17 @@ export const Male = () => {
             onMouseEnter={() => setProductId(product.id)}
             onMouseLeave={() => setProductId(0)}
           >
-            <a href={`/product-page/${product.id}`}>
-              {product.id === productId ? (
-                <img src={product.itemImg} alt="img" />
-              ) : (
-                <img src={product.img} alt="img" />
-              )}
-            </a>
+
+            <div className='heart-icon-container'>
+              <a href={`/product-page/${product.id}`}>
+                {product.id === productId ? (
+                  <img src={product.itemImg} alt="img" />
+                ) : (
+                  <img src={product.img} alt="img" />
+                )}
+              </a>
+              <Heart product={product} style='heart-icon-products' />
+            </div>
 
             <a href={`/product-page/${product.id}`} className="product-link">
               <font>{product.name}</font>

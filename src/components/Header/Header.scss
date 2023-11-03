@@ -261,9 +261,11 @@
 
 
 
-
-
 @media(max-width:700px) {
+  .cart-details {
+    display: none !important;
+  }
+
   .headerNav {
     justify-content: space-between;
   }

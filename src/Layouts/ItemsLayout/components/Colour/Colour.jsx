@@ -118,11 +118,10 @@ export default function Colour({ setIsFilteredModalClicked, selectedColour, setS
         if (selectedColour.length !== 0) {
           filtered = filtered.filter(item => selectedColour.includes(item.colour));
         }
+
         setFilteredBabyData(filtered);
       })
     }
-
-
 
   }, [selectedColour, colourStatusSide])
 
@@ -145,7 +144,7 @@ export default function Colour({ setIsFilteredModalClicked, selectedColour, setS
           id="demo-simple-select-standard"
           onChange={handleChange} // Update the selected color
           label="Colour"
-          value={selectedColour}
+          value={'NONE' || selectedColour}
         >
           <MenuItem className='color-value' value='NONE'>
             <em>None</em>

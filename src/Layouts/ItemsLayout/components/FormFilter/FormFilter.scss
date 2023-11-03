@@ -74,8 +74,14 @@
 .selected-filter-container {
   gap: 10px;
   display: flex;
+  flex-wrap: wrap;
   margin-top: 20px;
   align-items: center;
+
+  div>ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   .selected-filter-title {
     font-weight: 500;

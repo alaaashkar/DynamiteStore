@@ -6,14 +6,24 @@ $gap-size: 4px;
   flex-wrap: wrap;
   gap: 4px;
 
-  .product-link {
-    text-decoration: none;
-    transition: color 0.3s ease-in-out;
 
-    &:hover font {
-      color: red !important
+  .heart-icon-container {
+    position: relative;
+
+    .product-link {
+      text-decoration: none;
+      transition: color 0.3s ease-in-out;
+
+      &:hover font {
+        color: red !important
+      }
+    }
+
+    .heart-icon-products {
+      position: absolute;
     }
   }
+
 
   .product-card {
     flex-basis: calc(25% - #{$gap-size});
@@ -33,10 +43,11 @@ $gap-size: 4px;
 }
 
 
+
 @media (max-width:700px) {
   .products-wrapper {
     padding: 0px !important;
-      gap: 7px !important;
+    gap: 7px !important;
   }
 
   .product-card {

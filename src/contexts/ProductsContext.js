@@ -11,6 +11,7 @@ export const ProductsProvider = ({ children }) => {
   const [kidsProducts, setKidsProducts] = useState([])
   const [babyProducts, setBabyProducts] = useState([])
   const [cartItems, setCartItems] = useState([])
+  const [favoriteItems, setFavoriteItems] = useState([])
 
   const womenOriginalProducts = productsList.filter(product => product.sex === 'F')
   const menOriginalProducts = productsList.filter(product => product.sex === 'M')
@@ -33,6 +34,10 @@ export const ProductsProvider = ({ children }) => {
   const initialCartItems = useMemo(() => {
     return JSON.parse(localStorage.getItem('cartItems')) || [];
   }, []); // The empty dependency array ensures it's only calculated once
+
+  const initialFavoriteItems = useMemo(() => {
+    return JSON.parse(localStorage.getItem('favoriteItems') || [])
+  }, [])
 
   const value = useMemo(() => ({
     setProductsList,
@@ -60,7 +65,10 @@ export const ProductsProvider = ({ children }) => {
     cartItems,
     setCartItems,
     initialCartItems,
-  }), [womenOriginalProducts, kidsOriginalProducts, babyOriginalProducts, menOriginalProducts, productsList, womenProducts, menProducts, kidsProducts, babyProducts, filteredWomenData, filteredMenData, filteredKidsData, filteredBabyData, cartItems, initialCartItems]);
+    favoriteItems,
+    setFavoriteItems,
+    initialFavoriteItems,
+  }), [womenOriginalProducts, kidsOriginalProducts, babyOriginalProducts, menOriginalProducts, productsList, womenProducts, menProducts, kidsProducts, babyProducts, filteredWomenData, filteredMenData, filteredKidsData, filteredBabyData, cartItems, initialCartItems, favoriteItems, initialFavoriteItems]);
 
 
   return (

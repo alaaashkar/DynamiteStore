@@ -38,10 +38,7 @@ export const Products = ({ filteredProducts }) => {
         >
           {filteredProducts.map((newProduct) => (
             <Product
-              key={newProduct.id}
-              img={newProduct.img}
-              name={newProduct.name}
-              price={newProduct.price}
+              newProduct={newProduct}
             />
           ))}
         </Carousel>

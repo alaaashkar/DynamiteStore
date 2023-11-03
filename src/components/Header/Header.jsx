@@ -69,7 +69,7 @@ export const Header = () => {
       <div className="headerNav__right" onMouseEnter={() => setTempImage(true)}>
         <ul>
           <li className="cart-container">
-            <a className="headerNav__right__button">
+            <a href="/cart" className="headerNav__right__button">
               <ShoppingBagOutlinedIcon className="cart-item" style={{ marginRight: '8px' }} />
               <font className="headerNav__right__button-text cart-text">Shopping Cart ({cartItems.length})</font>
             </a>
@@ -140,7 +140,7 @@ export const Header = () => {
             </div>
           </li>
           <li className="fav-container mobile-fav">
-            <a className="headerNav__right__button">
+            <a href="/favorites" className="headerNav__right__button">
               <FavoriteIcon className="fav-item" style={{ color: 'black', marginRight: '8px' }} />
               <font className="headerNav__right__button-text favorites fav-text">favorites</font>
             </a>

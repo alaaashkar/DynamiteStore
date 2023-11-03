@@ -1,0 +1,128 @@
+$gap-size : 4px;
+
+.cart-title {
+  font-size: 45px;
+}
+
+.fav-item-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+
+
+  .empty-fav-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+
+    h4 {
+      font-family: "Roboto";
+      font-size: 14.5px;
+      opacity: 0.9;
+      text-align: center;
+    }
+
+    .fav-item-description {
+      width: 330px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 12px;
+      font-family: "Roboto";
+      font-weight: 500;
+      line-height: 17px;
+      margin-bottom: 10px;
+    }
+
+    .favorite {
+      width: 160px;
+    }
+  }
+
+
+  .fav-item-container {
+    display: flex;
+    flex-direction: column;
+    flex-basis:calc(25% - #{$gap-size});
+    position: relative;
+
+    a {
+      text-decoration: none;
+      font-weight: 600;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .image-wrapper {
+      position: relative;
+
+      svg {
+        cursor: pointer;
+        position: absolute;
+        padding: 10px;
+        right: 0;
+        bottom: 0;
+        transform: translateY(-15%);
+        transition: border 1s ease-in-out;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.518);
+          border-radius: 3px;
+        }
+      }
+    }
+
+
+
+
+    font:first-of-type {
+      font-weight: 600;
+    }
+
+    font:nth-of-type(2),
+    :nth-of-type(3) {
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    a>img {
+      height: 423px;
+      min-width: 100%;
+    }
+  }
+}
+
+
+
+@media (max-width:700px) {
+  .cart-title {
+    font-size: 35px;
+  }
+
+  .fav-item-container {
+    flex-basis:calc(50% - #{$gap-size}) !important;
+    margin-bottom: 20px;
+    align-self: auto;
+
+    .fav-item-name {
+      // max-width: 140px !important;
+    }
+
+    button {
+      margin-top: auto;
+    }
+
+    .color-text {
+      margin-bottom: 5px;
+    }
+
+    a>img {
+      height: 253px !important;
+      min-width: 100%;
+      object-fit: cover;
+    }
+  }
+}

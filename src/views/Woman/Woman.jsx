@@ -1,3 +1,4 @@
+/* eslint-disable react/style-prop-object */
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import './Woman.scss';
@@ -34,14 +35,18 @@ export const Woman = () => {
             onMouseLeave={() => setHoveredProductId(0)}
             key={product.id} // Ensure that product.id is unique
           >
-            <a href={`/product-page/${product.id}`} className="product-link">
-              <Heart />
-              {hoveredProductId === product.id ? (
-                <img src={product.itemImg} alt={product.name} />
-              ) : (
-                <img src={product.img} alt={product.name} />
-              )}
-            </a>
+            <div className='heart-icon-container'>
+              <a href={`/product-page/${product.id}`} className="product-link">
+
+                {hoveredProductId === product.id ? (
+                  <img src={product.itemImg} alt={product.name} />
+                ) : (
+                  <img src={product.img} alt={product.name} />
+                )}
+              </a>
+              <Heart product={product} style='heart-icon-products' />
+            </div>
+
 
             <a href={`/product-page/${product.id}`} className="product-link">
               <font>{product.name}</font>
@@ -49,9 +54,10 @@ export const Woman = () => {
 
             <font>{product.price}$</font>
 
+
             <font>New Product</font>
 
-            
+
           </div>
         ))}
       </div>

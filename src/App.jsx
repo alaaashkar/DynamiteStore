@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import './App.scss'
 import { Routes, Route, Navigate } from 'react-router-dom';
@@ -16,11 +17,15 @@ import { Favorites } from "./views/Favorites/Favorites";
 
 const App = () => {
   const shouldRedirectToErrorPage = window.location.pathname === '/items' || window.location.pathname === '/items/'; // Redirect if the path is "/items"
-  const { setCartItems, initialCartItems } = useProducts()
+  const { setCartItems, initialCartItems, setFavoriteItems, initialFavoriteItems, favoriteItems } = useProducts()
 
   useEffect(() => {
     setCartItems(initialCartItems)
-  }, [initialCartItems])
+    setFavoriteItems(initialFavoriteItems)
+  }, [initialCartItems, initialFavoriteItems])
+
+
+  console.log(favoriteItems);
 
   return (
     <Routes>

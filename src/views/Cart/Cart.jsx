@@ -6,12 +6,10 @@ import { useState } from 'react';
 
 export const Cart = () => {
   const { setCartItems, cartItems } = useProducts()
-  const [itemId, setItemId] = useState(0)
 
-  const handlerDeleteItem = (id) => {
-    setItemId(id);
+  const handlerDeleteItem = (item) => {
 
-    const updatedItems = cartItems.filter(item => item.id !== id)
+    const updatedItems = cartItems.filter(product => product.id !== item.id)
 
     setCartItems(updatedItems); //update UI
 
@@ -29,8 +27,8 @@ export const Cart = () => {
             <div className='left'>
               {cartItems.length === 0 ? (
                 <>
-                  <h1 className='cart-title cart-content-title'>Your shopping cart is empty!</h1>
-                  <p>Log in to save items to your shopping cart or access previously saved items</p>
+                  <h1 className='cart-title cart-content-title-empty'>Your shopping cart is empty!</h1>
+                  <p className='cart-content-title-description'>Log in to save items to your shopping cart or access previously saved items</p>
                   <a className='log-in' href="/">Log in</a>
                 </>
               ) : (
@@ -49,7 +47,7 @@ export const Cart = () => {
                             <a href={`/product-page/${item.id}`}>
                               <h1 className='cart-title cart-content-title item-title'>{item.name}</h1>
                             </a>
-                            <svg onClick={() => handlerDeleteItem(item.id)} className='delete-iconn' viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" height="16" width="16" class=""><path d="M6.229 1.229C6.105 1.352 6 1.577 6 2H5c0-.577.145-1.102.521-1.479C5.898.145 6.423 0 7 0h2c.577 0 1.102.145 1.479.521C10.855.898 11 1.423 11 2h-1c0-.423-.105-.648-.229-.771C9.648 1.105 9.423 1 9 1H7c-.423 0-.648.105-.771.229ZM1 2.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5ZM12 15c.423 0 .648-.105.771-.229.124-.123.229-.348.229-.771V5h1v9c0 .577-.145 1.102-.521 1.479-.377.376-.902.521-1.479.521H4c-.577 0-1.102-.145-1.479-.521C2.145 15.102 2 14.577 2 14V5h1v9c0 .423.105.648.229.771.123.124.348.229.771.229h8ZM14.5 5h-13a.5.5 0 0 1 0-1h13a.5.5 0 0 1 0 1Z M6 11.5v-3a.5.5 0 0 1 1 0v3a.5.5 0 0 1-1 0ZM9 8.5v3a.5.5 0 0 0 1 0v-3a.5.5 0 0 0-1 0Z"></path></svg>
+                            <svg onClick={() => handlerDeleteItem(item)} className='delete-iconn' viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" height="16" width="16" class=""><path d="M6.229 1.229C6.105 1.352 6 1.577 6 2H5c0-.577.145-1.102.521-1.479C5.898.145 6.423 0 7 0h2c.577 0 1.102.145 1.479.521C10.855.898 11 1.423 11 2h-1c0-.423-.105-.648-.229-.771C9.648 1.105 9.423 1 9 1H7c-.423 0-.648.105-.771.229ZM1 2.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5ZM12 15c.423 0 .648-.105.771-.229.124-.123.229-.348.229-.771V5h1v9c0 .577-.145 1.102-.521 1.479-.377.376-.902.521-1.479.521H4c-.577 0-1.102-.145-1.479-.521C2.145 15.102 2 14.577 2 14V5h1v9c0 .423.105.648.229.771.123.124.348.229.771.229h8ZM14.5 5h-13a.5.5 0 0 1 0-1h13a.5.5 0 0 1 0 1Z M6 11.5v-3a.5.5 0 0 1 1 0v3a.5.5 0 0 1-1 0ZM9 8.5v3a.5.5 0 0 0 1 0v-3a.5.5 0 0 0-1 0Z"></path></svg>
                           </div>
 
 
@@ -78,13 +76,13 @@ export const Cart = () => {
 
                               <li>
                                 <span>Total:</span>
-                                <span>{item.price}</span>
+                                <span>{item.price} $</span>
                               </li>
                             </ul>
                           </div>
 
                           <div className='row'>
-                            <button class="b395d2 fe373a dfc6c7 Actions-module--moveButton__1FKUc" type="button"><span class="fda0bc"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" height="16" width="16" class=""><path fill="#fff" d="M8 4.12C7.479 2.82 6.019 1.5 4.5 1.5c-2.478 0-4 1.45-4 3.931C.5 8.707 8 14.5 8 14.5s7.5-5.793 7.5-9.07c0-2.48-1.522-3.93-4-3.93-1.52 0-2.979 1.32-3.5 2.62Z"></path><path d="M1.222 2.177C2.027 1.392 3.164 1 4.5 1c.903 0 1.754.39 2.435.931.412.327.776.72 1.065 1.144A5.275 5.275 0 0 1 9.064 1.93C9.745 1.39 10.596 1 11.5 1c1.336 0 2.473.392 3.278 1.177.807.787 1.222 1.91 1.222 3.254 0 .982-.55 2.068-1.262 3.086-.728 1.038-1.689 2.093-2.636 3.032a45.56 45.56 0 0 1-3.709 3.278l-.064.05-.017.014-.006.004L8 14.5l-.306.396-.006-.005-.017-.013-.064-.05a45.453 45.453 0 0 1-1.101-.902c-.71-.6-1.658-1.436-2.608-2.377-.947-.939-1.908-1.994-2.636-3.032C.55 7.499 0 6.413 0 5.43c0-1.344.415-2.467 1.222-3.254ZM8 14.5l-.306.396c.18.139.432.138.612 0L8 14.5Zm0-.638.01-.007a44.575 44.575 0 0 0 3.389-3.016c.927-.92 1.84-1.927 2.52-2.896C14.612 6.953 15 6.086 15 5.431c0-1.137-.346-1.979-.92-2.538C13.505 2.333 12.642 2 11.5 2c-.617 0-1.255.27-1.814.714-.558.444-.996 1.03-1.222 1.593a.5.5 0 0 1-.928 0c-.226-.563-.665-1.15-1.223-1.593C5.754 2.27 5.116 2 4.5 2c-1.142 0-2.005.333-2.58.893-.574.56-.92 1.401-.92 2.538 0 .655.388 1.523 1.081 2.512.68.97 1.593 1.977 2.52 2.896a44.576 44.576 0 0 0 3.39 3.016l.009.007Z"></path></svg></span><span class="d86975"></span>
+                            <button className='heart-icon-fav' class="b395d2 fe373a dfc6c7 Actions-module--moveButton__1FKUc " type="button"><span class="fda0bc"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" height="16" width="16" class=""><path fill="#fff" d="M8 4.12C7.479 2.82 6.019 1.5 4.5 1.5c-2.478 0-4 1.45-4 3.931C.5 8.707 8 14.5 8 14.5s7.5-5.793 7.5-9.07c0-2.48-1.522-3.93-4-3.93-1.52 0-2.979 1.32-3.5 2.62Z"></path><path d="M1.222 2.177C2.027 1.392 3.164 1 4.5 1c.903 0 1.754.39 2.435.931.412.327.776.72 1.065 1.144A5.275 5.275 0 0 1 9.064 1.93C9.745 1.39 10.596 1 11.5 1c1.336 0 2.473.392 3.278 1.177.807.787 1.222 1.91 1.222 3.254 0 .982-.55 2.068-1.262 3.086-.728 1.038-1.689 2.093-2.636 3.032a45.56 45.56 0 0 1-3.709 3.278l-.064.05-.017.014-.006.004L8 14.5l-.306.396-.006-.005-.017-.013-.064-.05a45.453 45.453 0 0 1-1.101-.902c-.71-.6-1.658-1.436-2.608-2.377-.947-.939-1.908-1.994-2.636-3.032C.55 7.499 0 6.413 0 5.43c0-1.344.415-2.467 1.222-3.254ZM8 14.5l-.306.396c.18.139.432.138.612 0L8 14.5Zm0-.638.01-.007a44.575 44.575 0 0 0 3.389-3.016c.927-.92 1.84-1.927 2.52-2.896C14.612 6.953 15 6.086 15 5.431c0-1.137-.346-1.979-.92-2.538C13.505 2.333 12.642 2 11.5 2c-.617 0-1.255.27-1.814.714-.558.444-.996 1.03-1.222 1.593a.5.5 0 0 1-.928 0c-.226-.563-.665-1.15-1.223-1.593C5.754 2.27 5.116 2 4.5 2c-1.142 0-2.005.333-2.58.893-.574.56-.92 1.401-.92 2.538 0 .655.388 1.523 1.081 2.512.68.97 1.593 1.977 2.52 2.896a44.576 44.576 0 0 0 3.39 3.016l.009.007Z"></path></svg></span><span class="d86975"></span>
                             </button>
                           </div>
                         </div>
@@ -96,7 +94,7 @@ export const Cart = () => {
               )}
             </div>
 
-            <div className='right'>
+            <div className='right-side-container'>
               <div className='discount-container'>
                 <font>Discounts</font>
                 <a href="/">Apply discount</a>
@@ -117,7 +115,7 @@ export const Cart = () => {
 
               <Button disabled text={'Continue to payment screen'} buttonStyle={'loadMore login-btn'} />
 
-              <span>We are accepting</span>
+              <span className='we-accept'>We accept</span>
               <div className='card-payments-container'>
                 <svg className='card' viewBox="0 0 65 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mastercard-logo"><title id="mastercard-logo">Mastercard</title><path d="M52.6927 27.9936v.5397h-.0896v-.5397h-.1632v-.1099h.416v.1099h-.1632Zm.8072-.1109v.6506h-.0896v-.4917l-.1376.4245h-.0936l-.1376-.4234v.4906h-.0904v-.6506h.128l.1464.4469.1472-.4469h.1272Z" fill="#F79410"></path><path d="M38.0333 30.1333h-11.2V9.8667h11.2v20.2666Z" fill="#FF5F00"></path><path d="M27.4259 20c0-4.1808 1.9488-7.905 4.9835-10.305-2.2192-1.755-5.0201-2.8025-8.064-2.8025-7.2061 0-13.0475 5.8683-13.0475 13.1075s5.8414 13.1075 13.0475 13.1075c3.0439 0 5.8448-1.0475 8.064-2.8025-3.0347-2.4-4.9835-6.1242-4.9835-10.305Z" fill="#EB001B"></path><path d="M54.0333 20c0 7.2392-5.9217 13.1075-13.2268 13.1075-3.0858 0-5.9251-1.0475-8.1756-2.8025 3.0773-2.4 5.0528-6.1242 5.0528-10.305s-1.9755-7.905-5.0528-10.305c2.2505-1.755 5.0898-2.8025 8.1756-2.8025 7.3051 0 13.2268 5.8683 13.2268 13.1075Z" fill="#F79E1B"></path></svg>
 

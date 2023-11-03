@@ -1,28 +1,25 @@
+/* eslint-disable react/style-prop-object */
 import './Product.scss';
 import { useState } from 'react';
 import { useInView } from 'react-intersection-observer'
 import { Heart } from '../../../../components/Heart/Heart';
 
-export const Product = ({ img, name, price }) => {
-  const [heartIsClicked, setHeartIsClicked] = useState(false)
-  // const { ref: imageRef, inView: isVisible } = useInView()
-  // 
-
+export const Product = ({ newProduct }) => {
   return (
     <>
       <div className='containerr'>
         <div className='item-wrapper'  >
           <div className='image-container  ' >
             <div >
-              <img src={img} alt="item" />
+              <img src={newProduct.img} alt="item" />
             </div>
 
-            <Heart/>
+            <Heart product={newProduct} />
           </div>
 
-          <font className='animated'  >{name}</font> <br />
+          <font className='animated'  >{newProduct.name}</font> <br />
 
-          <font className= 'animated'>{price}$</font>
+          <font className='animated'>{newProduct.price}$</font>
         </div>
       </div >
 

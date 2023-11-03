@@ -11,7 +11,7 @@ import { useProducts } from '../../../../contexts/ProductsContext';
 import { ClipLoader } from 'react-spinners';
 
 
-export default function ProductType({ setProductType, productType, setIsFilteredModalClicked, setSideModalContent, setIsLoading, isLoading }) {
+export default function ProductType({ setSelectedProductType, selectedProductType, setIsFilteredModalClicked, setSideModalContent, setIsLoading, isLoading }) {
   const {
     menOriginalProducts,
     babyOriginalProducts,
@@ -24,7 +24,15 @@ export default function ProductType({ setProductType, productType, setIsFiltered
   } = useProducts();
 
   const handleChange = (event) => {
-    setProductType(event.target.value); // Update the selected product type in state
+    const selectedType = event.target.value;
+
+    if (selectedProductType.includes(selectedType)) {
+      setSelectedProductType(selectedProductType.filter(type => type !== selectedType));
+    } else if (selectedType === 'NONE') {
+      setSelectedProductType([]);
+    } else {
+      setSelectedProductType([...selectedProductType, selectedType]);
+    }
   };
 
   const load = (callback) => {
@@ -66,7 +74,7 @@ export default function ProductType({ setProductType, productType, setIsFiltered
   };
 
   useEffect(() => {
-    setProductType('NONE');
+    setSelectedProductType([]);
   }, [path]);
 
   const renderedType = renderTypeList()
@@ -76,8 +84,8 @@ export default function ProductType({ setProductType, productType, setIsFiltered
       load(() => {
         let filtered = womenOriginalProducts;
 
-        if (productType !== 'NONE') {
-          filtered = filtered.filter(item => item.type === productType);
+        if (selectedProductType.length !== 0) {
+          filtered = filtered.filter(item => selectedProductType.includes(item.type));
         }
 
         setFilteredWomenData(filtered);
@@ -87,8 +95,8 @@ export default function ProductType({ setProductType, productType, setIsFiltered
       load(() => {
         let filtered = menOriginalProducts;
 
-        if (productType !== 'NONE') {
-          filtered = filtered.filter(item => item.type === productType);
+        if (selectedProductType.length !== 0) {
+          filtered = filtered.filter(item => selectedProductType.includes(item.type));
         }
         setFilteredMenData(filtered)
 
@@ -97,9 +105,8 @@ export default function ProductType({ setProductType, productType, setIsFiltered
     } else if (onKidsPage) {
       load(() => {
         let filtered = kidsOriginalProducts;
-
-        if (productType !== 'NONE') {
-          filtered = filtered.filter(item => item.type === productType);
+        if (selectedProductType.length !== 0) {
+          filtered = filtered.filter(item => selectedProductType.includes(item.type));
         }
         setFilteredKidsData(filtered)
 
@@ -108,14 +115,14 @@ export default function ProductType({ setProductType, productType, setIsFiltered
     } else {
       load(() => {
         let filtered = babyOriginalProducts
-        if (productType !== 'NONE') {
-          filtered = filtered.filter(item => item.type === productType);
+        if (selectedProductType.length !== 0) {
+          filtered = filtered.filter(item => selectedProductType.includes(item.type));
         }
 
         setFilteredBabyData(filtered)
       })
     }
-  }, [productType])
+  }, [selectedProductType])
 
   return (
     <div>
@@ -130,7 +137,7 @@ export default function ProductType({ setProductType, productType, setIsFiltered
           id="demo-simple-select-standard"
           onChange={handleChange}
           label="product-type"
-          value={'' || productType}
+          value={'NONE' || selectedProductType}
         >
           <MenuItem className='product-type' value="NONE">
             <em>None</em>

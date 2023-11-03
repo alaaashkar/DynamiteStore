@@ -26,7 +26,7 @@ const SideBar = () => {
         </li>
 
         {sixMenItems.map(item => (
-          <li>
+          <li key={item.id}>
             <a style={{ textDecoration: "none" }} href={`/product-page/${item.id}`}> {item.name}</a>
           </li>
         ))}
@@ -36,7 +36,7 @@ const SideBar = () => {
         </li>
 
         {sixWomenItems.map(item => (
-          <li>
+          <li key={item.id}>
             <a style={{ textDecoration: "none" }} href={`/product-page/${item.id}`}> {item.name}</a>
           </li>
         ))}
@@ -47,7 +47,7 @@ const SideBar = () => {
         </li>
 
         {sixKidsItems.map(item => (
-          <li>
+          <li key={item.id}>
             <a style={{ textDecoration: "none" }} href={`/product-page/${item.id}`}> {item.name}</a>
           </li>
         ))}
@@ -58,7 +58,7 @@ const SideBar = () => {
         </li>
 
         {sixBabyItems.map(item => (
-          <li>
+          <li key={item.id}>
             <a style={{ textDecoration: "none" }} href={`/product-page/${item.id}`}> {item.name}</a>
           </li>
         ))}

@@ -150,7 +150,7 @@ export const ErrorPage = () => {
           <tspan x="0" y="31" class="text_forgiveness">Lost ?</tspan>
         </text>
       </svg>
-      <a class="btn_home" href="/"> Go HOME </a>
+      <a class="btn_home" href="/"> GO HOME </a>
     </div>
   )
 };

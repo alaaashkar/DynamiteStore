@@ -49,8 +49,6 @@ export const ProductPage = () => {
         colour: selectedColor,
       }
 
-
-
       setSelectedSize('')
       setSelectedColor('')
       setShowLoader(true)

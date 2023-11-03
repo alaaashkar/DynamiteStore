@@ -1,8 +1,10 @@
+/* eslint-disable react/style-prop-object */
 import React, { useState } from 'react'; // Import React and useState
 import { useProducts } from '../../contexts/ProductsContext';
 import './Kids.scss';
 import { PuffLoader } from 'react-spinners';
 import { Link } from 'react-router-dom';
+import { Heart } from '../../components/Heart/Heart';
 
 export const Kids = () => {
   const { kidsProducts, filteredKidsData } = useProducts();
@@ -18,13 +20,16 @@ export const Kids = () => {
             onMouseLeave={() => setHoveredProductId(0)}
             key={product.id}
           >
-            <a href={`/product-page/${product.id}`} className="product-link">
-              {hoveredProductId === product.id ? (
-                <img src={product.itemImg} alt={product.name} />
-              ) : (
-                <img src={product.img} alt={product.name} />
-              )}
-            </a>
+            <div className='heart-icon-container'>
+              <a href={`/product-page/${product.id}`} className="product-link">
+                {hoveredProductId === product.id ? (
+                  <img src={product.itemImg} alt={product.name} />
+                ) : (
+                  <img src={product.img} alt={product.name} />
+                )}
+              </a>
+              <Heart product={product} style='heart-icon-products' />
+            </div>
 
             <a href={`/product-page/${product.id}`} className="product-link">
               <font>{product.name}</font>
