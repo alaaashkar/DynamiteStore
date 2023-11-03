@@ -2,7 +2,7 @@ import './Cart.scss';
 import { PuffLoader } from 'react-spinners';
 import { Button } from '../../components/Button/Button'
 import { useProducts } from '../../contexts/ProductsContext';
-import { useState } from 'react';
+
 
 export const Cart = () => {
   const { setCartItems, cartItems } = useProducts()

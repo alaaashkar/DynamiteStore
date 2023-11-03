@@ -6,7 +6,6 @@ import SortBy from '../SortBy/SortBy';
 import Colour from '../Colour/Colour';
 import ProductType from '../ProductType/ProductType';
 import { FilterModal } from '../FilterModal/FilterModal';
-import { ClipLoader } from 'react-spinners';
 import { useProducts } from '../../../../contexts/ProductsContext';
 import { useLocation } from 'react-router-dom';
 

@@ -32,12 +32,14 @@ export const ProductsProvider = ({ children }) => {
   }, [productsList])
 
   const initialCartItems = useMemo(() => {
-    return JSON.parse(localStorage.getItem('cartItems')) || [];
-  }, []); // The empty dependency array ensures it's only calculated once
+    const storedCartItems = localStorage.getItem('cartItems');
+    return storedCartItems ? JSON.parse(storedCartItems) : [];
+  }, []);
 
   const initialFavoriteItems = useMemo(() => {
-    return JSON.parse(localStorage.getItem('favoriteItems') || [])
-  }, [])
+    const storedFavoriteItems = localStorage.getItem('favoriteItems');
+    return storedFavoriteItems ? JSON.parse(storedFavoriteItems) : [];
+  }, []);
 
   const value = useMemo(() => ({
     setProductsList,

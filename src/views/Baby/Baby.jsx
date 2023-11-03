@@ -3,7 +3,6 @@ import React, { useState } from 'react'; // Import React and useState
 import { useProducts } from '../../contexts/ProductsContext';
 import './Baby.scss';
 import { PuffLoader } from 'react-spinners';
-import { Link } from 'react-router-dom';
 import { Heart } from '../../components/Heart/Heart';
 
 export const Baby = () => {

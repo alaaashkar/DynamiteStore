@@ -25,6 +25,7 @@ export const Woman = () => {
       setIsLoading(false);
     }, 500);
   };
+
   return (
     <>
       <div className="container products-wrapper">

@@ -22,8 +22,6 @@ export const Male = () => {
     }, 500);
   };
 
-
-
   return (
     <>
       <div className='container products-wrapper'>

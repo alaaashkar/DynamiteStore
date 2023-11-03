@@ -9,7 +9,6 @@ $gap-size : 4px;
   flex-wrap: wrap;
   gap: 4px;
 
-
   .empty-fav-wrapper {
     display: flex;
     flex-direction: column;
@@ -39,7 +38,6 @@ $gap-size : 4px;
       width: 160px;
     }
   }
-
 
   .fav-item-container {
     display: flex;
@@ -75,9 +73,6 @@ $gap-size : 4px;
       }
     }
 
-
-
-
     font:first-of-type {
       font-weight: 600;
     }
@@ -94,8 +89,6 @@ $gap-size : 4px;
     }
   }
 }
-
-
 
 @media (max-width:700px) {
   .cart-title {

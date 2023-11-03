@@ -17,15 +17,13 @@ import { Favorites } from "./views/Favorites/Favorites";
 
 const App = () => {
   const shouldRedirectToErrorPage = window.location.pathname === '/items' || window.location.pathname === '/items/'; // Redirect if the path is "/items"
-  const { setCartItems, initialCartItems, setFavoriteItems, initialFavoriteItems, favoriteItems } = useProducts()
+  const { setCartItems, initialCartItems, setFavoriteItems, initialFavoriteItems } = useProducts()
 
   useEffect(() => {
     setCartItems(initialCartItems)
     setFavoriteItems(initialFavoriteItems)
   }, [initialCartItems, initialFavoriteItems])
 
-
-  console.log(favoriteItems);
 
   return (
     <Routes>

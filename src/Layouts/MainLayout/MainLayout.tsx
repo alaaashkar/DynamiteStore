@@ -22,8 +22,6 @@ export const MainLayout = () => {
 
         <Footer className="footer" />
       </div>
-
-
     </>
   );
 };

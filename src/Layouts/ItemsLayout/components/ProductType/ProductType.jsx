@@ -81,46 +81,36 @@ export default function ProductType({ setSelectedProductType, selectedProductTyp
 
   useEffect(() => {
     if (onWomanPage) {
-      load(() => {
-        let filtered = womenOriginalProducts;
+      let filtered = womenOriginalProducts;
 
-        if (selectedProductType.length !== 0) {
-          filtered = filtered.filter(item => selectedProductType.includes(item.type));
-        }
-
-        setFilteredWomenData(filtered);
-      })
+      if (selectedProductType.length !== 0) {
+        filtered = filtered.filter(item => selectedProductType.includes(item.type));
+        load(() => setFilteredWomenData(filtered))
+      }
 
     } else if (onManPage) {
-      load(() => {
-        let filtered = menOriginalProducts;
 
-        if (selectedProductType.length !== 0) {
-          filtered = filtered.filter(item => selectedProductType.includes(item.type));
-        }
-        setFilteredMenData(filtered)
+      let filtered = menOriginalProducts;
 
-      })
+      if (selectedProductType.length !== 0) {
+        filtered = filtered.filter(item => selectedProductType.includes(item.type));
+        load(() => setFilteredMenData(filtered))
+      }
 
     } else if (onKidsPage) {
-      load(() => {
-        let filtered = kidsOriginalProducts;
-        if (selectedProductType.length !== 0) {
-          filtered = filtered.filter(item => selectedProductType.includes(item.type));
-        }
-        setFilteredKidsData(filtered)
-
-      })
+      let filtered = kidsOriginalProducts;
+      if (selectedProductType.length !== 0) {
+        filtered = filtered.filter(item => selectedProductType.includes(item.type));
+        load(() => setFilteredKidsData(filtered))
+      }
 
     } else {
-      load(() => {
-        let filtered = babyOriginalProducts
-        if (selectedProductType.length !== 0) {
-          filtered = filtered.filter(item => selectedProductType.includes(item.type));
-        }
 
-        setFilteredBabyData(filtered)
-      })
+      let filtered = babyOriginalProducts
+      if (selectedProductType.length !== 0) {
+        filtered = filtered.filter(item => selectedProductType.includes(item.type));
+        load(() => setFilteredBabyData(filtered))
+      }
     }
   }, [selectedProductType])
 

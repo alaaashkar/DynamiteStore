@@ -113,7 +113,7 @@ export default function SortBy({ setIsFilteredModalClicked, setSideModalContent,
           <div className="backdrop" />
           <ClipLoader size={25} color="white" className="clip-loader" />
         </>
-      )}
+      )} 
     </div>
   );
 }

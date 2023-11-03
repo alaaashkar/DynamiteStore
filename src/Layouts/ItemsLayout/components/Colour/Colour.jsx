@@ -23,6 +23,8 @@ export default function Colour({ setIsFilteredModalClicked, selectedColour, setS
     colourStatusSide,
   } = useProducts();
 
+  console.log(isLoading);
+
   const handleChange = (event) => {
     const selectedColor = event.target.value;
 
@@ -84,45 +86,39 @@ export default function Colour({ setIsFilteredModalClicked, selectedColour, setS
 
   useEffect(() => {
     if (onWomanPage) {
-      load(() => {
-        let filtered = womenOriginalProducts;
 
-        if (selectedColour.length !== 0) {
-          filtered = filtered.filter(item => selectedColour.includes(item.colour));
-        }
+      let filtered = womenOriginalProducts;
 
-        setFilteredWomenData(filtered);
-      })
+      if (selectedColour.length !== 0) {
+        filtered = filtered.filter(item => selectedColour.includes(item.colour));
+        load(() => setFilteredWomenData(filtered))
+      }
+
     } else if (onManPage) {
-      load(() => {
-        let filtered = menOriginalProducts;
+      let filtered = menOriginalProducts;
 
-        if (selectedColour.length !== 0) {
-          filtered = filtered.filter(item => selectedColour.includes(item.colour));
-        }
-        setFilteredMenData(filtered);
-      })
+      if (selectedColour.length !== 0) {
+        filtered = filtered.filter(item => selectedColour.includes(item.colour));
+
+        load(() => setFilteredMenData(filtered))
+      }
+
     } else if (onKidsPage) {
-      load(() => {
-        let filtered = kidsOriginalProducts;
+      let filtered = kidsOriginalProducts;
 
-        if (selectedColour.length !== 0) {
-          filtered = filtered.filter(item => selectedColour.includes(item.colour));
-        }
+      if (selectedColour.length !== 0) {
+        filtered = filtered.filter(item => selectedColour.includes(item.colour));
+        load(() => setFilteredKidsData(filtered))
+      }
 
-        setFilteredKidsData(filtered);
-      })
     } else {
-      load(() => {
-        let filtered = babyOriginalProducts;
-        if (selectedColour.length !== 0) {
-          filtered = filtered.filter(item => selectedColour.includes(item.colour));
-        }
 
-        setFilteredBabyData(filtered);
-      })
+      let filtered = babyOriginalProducts;
+      if (selectedColour.length !== 0) {
+        filtered = filtered.filter(item => selectedColour.includes(item.colour));
+        load(() => setFilteredBabyData(filtered))
+      }
     }
-
   }, [selectedColour, colourStatusSide])
 
 

@@ -15,6 +15,10 @@ export const ItemsLayout = () => {
   const onManPage = path.includes('man');
   const onKidsPage = path.includes('kids');
   const onBabyPage = path.includes('baby');
+  const onProductPage = path.includes('product');
+
+
+
 
   return (
     <>
