@@ -17,7 +17,6 @@ export const MainLayout = () => {
 
         <div className='page'>
           <Outlet />
-
         </div>
 
         <Footer className="footer" />

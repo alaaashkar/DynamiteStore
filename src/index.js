@@ -9,6 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ProductsProvider } from './contexts/ProductsContext';
 import { MenuContextProvider } from './contexts/MenuContext';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>

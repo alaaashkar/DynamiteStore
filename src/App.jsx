@@ -14,6 +14,8 @@ import { ErrorPage } from "./views/ErrorPage/ErrorPage"
 import { Cart } from "./views/Cart/Cart";
 import { useProducts } from "./contexts/ProductsContext";
 import { Favorites } from "./views/Favorites/Favorites";
+import { SignIn } from "./components/auth/SignIn";
+import { SignUp } from "./components/auth/SingUp";
 
 const App = () => {
   const shouldRedirectToErrorPage = window.location.pathname === '/items' || window.location.pathname === '/items/'; // Redirect if the path is "/items"
@@ -29,6 +31,8 @@ const App = () => {
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
+        <Route path="login" element={<SignIn />} />
+        <Route path="register" element={<SignUp />} />
         <Route path="cart" element={<Cart />} />
         <Route path="favorites" element={<Favorites />} />
         <Route path="product-page/:itemId" element={<ProductPage />} />

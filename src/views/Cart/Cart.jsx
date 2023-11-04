@@ -18,6 +18,8 @@ export const Cart = () => {
 
   }
 
+  const paymentButtonIsDisabled = cartItems.length === 0;
+
   return (
     <>
       <div className='container limited-wider'>
@@ -113,7 +115,12 @@ export const Cart = () => {
                 <p>0.00 $</p>
               </div>
 
-              <Button disabled text={'Continue to payment screen'} buttonStyle={'loadMore login-btn'} />
+              <Button
+                to='/login'
+                disabled={paymentButtonIsDisabled}
+                text={'Continue to payment screen'}
+                buttonStyle={'loadMore login-btn'}
+              />
 
               <span className='we-accept'>We accept</span>
               <div className='card-payments-container'>
