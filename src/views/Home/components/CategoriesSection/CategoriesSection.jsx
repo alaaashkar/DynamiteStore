@@ -11,10 +11,10 @@ export const CategoriesSection = () => {
       <h1>Categories you may like</h1>
 
       <div className='categories'>
-        <Category img={manCategoriesIcon} text={<span dangerouslySetInnerHTML={{ __html: '\u00A0\u00A0Men<br>Clothes' }} />} />
-        <Category img={womanCategoriesIcon} text={<span dangerouslySetInnerHTML={{ __html: 'Women<br>Clothes' }} />} />
-        <Category img={childCategoriesIcon} text={<span dangerouslySetInnerHTML={{ __html: '\u00A0\u00A0Child<br>Clothes' }} />} />
-        <Category img={babyCategoriesIcon} text={<span dangerouslySetInnerHTML={{ __html: '\u00A0\u00A0Baby<br>Clothes' }} />} />
+        <Category to='/items/man' img={manCategoriesIcon} text={<span dangerouslySetInnerHTML={{ __html: '\u00A0\u00A0Men<br>Clothes' }} />} />
+        <Category to='/items/woman' img={womanCategoriesIcon} text={<span dangerouslySetInnerHTML={{ __html: 'Women<br>Clothes' }} />} />
+        <Category to='/items/kids' img={childCategoriesIcon} text={<span dangerouslySetInnerHTML={{ __html: '\u00A0\u00A0Child<br>Clothes' }} />} />
+        <Category to='/items/baby' img={babyCategoriesIcon} text={<span dangerouslySetInnerHTML={{ __html: '\u00A0\u00A0Baby<br>Clothes' }} />} />
 
       </div>
     </section>

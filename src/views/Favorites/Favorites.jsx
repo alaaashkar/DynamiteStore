@@ -20,6 +20,8 @@ export const Favorites = () => {
     const updated = favoriteItems.filter(product => product.id !== item.id)
     setFavoriteItems(updated)
     localStorage.setItem('favoriteItems', JSON.stringify(updated))
+
+    localStorage.setItem(`heartIsClicked_${item.id}`, 'false')
   }
 
 

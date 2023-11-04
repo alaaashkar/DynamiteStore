@@ -9,7 +9,7 @@ export const ElevateCampaign = () => {
     <article className='elevate-campaign limited'>
       <img src={thirdArticleImg} alt="elevate" />
       <h1 className='playing-images-title'>Elevate Your Style with DYNAM|TE</h1>
-      <Button text={'buy now'} />
+      <Button text={'Buy Now'} />
     </article>
   )
 };

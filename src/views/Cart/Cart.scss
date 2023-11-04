@@ -33,6 +33,16 @@
       display: block;
       padding-top: 24px;
     }
+
+    .cart-content-title-empty {
+      padding: 0;
+      text-align: start;
+      font-size: 25px;
+    }
+
+    .cart-content-title-description {
+      margin-left: 0;
+    }
   }
 
   .right-side-container {
@@ -187,6 +197,7 @@
         width: 58px;
         height: 46px;
         margin-top: 20px;
+        cursor: pointer;
       }
     }
   }
@@ -234,8 +245,11 @@
       font-size: 12px;
     }
 
-    .heart-icon-fav {
-      width: 100% !important;
+    .row {
+      button {
+        width: 100% !important;
+      }
+
     }
 
     .log-in {

@@ -148,7 +148,7 @@ export const ProductPage = () => {
               <li onClick={() => setSelectedSize('s')} className={cn('sizes-box', { "box-selected": selectedSize === 's' })}>S</li>
               <li onClick={() => setSelectedSize('m')} className={cn('sizes-box', { "box-selected": selectedSize === 'm' })}>M</li>
               <li onClick={() => setSelectedSize('l')} className={cn('sizes-box', { "box-selected": selectedSize === 'l' })}>L</li>
-              <li onClick={() => setSelectedSize('xl')} className={cn('sizes-box', { "box-selected": selectedSize === 'xl' })}>Xl</li>
+              <li onClick={() => setSelectedSize('xl')} className={cn('sizes-box', { "box-selected": selectedSize === 'xl' })}>XL</li>
             </ul>
 
             {isSizeError && (

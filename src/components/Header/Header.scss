@@ -51,6 +51,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  &>ul {
+    padding-left: 0;
+  }
 }
 
 .headerNav__right__button {
@@ -137,6 +141,7 @@
   /* Initially, text is hidden */
   transition: left 0.3s ease, opacity 0.2s ease-in-out;
   transform: translateX(-10px) !important;
+  pointer-events: none;
 
   &:active {
     color: white !important;

@@ -3,18 +3,25 @@
   flex-direction: column;
   align-items: center;
 
-  img {
-
+  a {
     &:last-of-type {
       margin-bottom: 6px !important;
     }
   }
 
+  img {}
 
-  font {
+
+  a>font {
     font-weight: 700;
     font-family: 'Tilt Neon', sans-serif;
     color: #222222;
     opacity: 0.8;
+    display: block;
+    text-align: center;
+
+    span {
+      text-decoration: none !important;
+    }
   }
 }

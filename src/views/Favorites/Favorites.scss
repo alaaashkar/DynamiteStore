@@ -1,4 +1,4 @@
-$gap-size : 4px;
+$gap-size : 10px;
 
 .cart-title {
   font-size: 45px;
@@ -7,7 +7,7 @@ $gap-size : 4px;
 .fav-item-wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: $gap-size;
 
   .empty-fav-wrapper {
     display: flex;
