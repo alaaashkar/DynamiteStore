@@ -16,6 +16,10 @@ import { useProducts } from "./contexts/ProductsContext";
 import { Favorites } from "./views/Favorites/Favorites";
 import { SignIn } from "./components/auth/SignIn";
 import { SignUp } from "./components/auth/SingUp";
+import { Account } from "./views/Account/Account";
+import { AccountLayout } from "./Layouts/AccountLayout/AccountLayout";
+import { Purchases } from "./Layouts/AccountLayout/components/Purchases/Purchases";
+import { Settings } from "./Layouts/AccountLayout/components/Settings/Settings";
 
 const App = () => {
   const shouldRedirectToErrorPage = window.location.pathname === '/items' || window.location.pathname === '/items/'; // Redirect if the path is "/items"
@@ -36,11 +40,19 @@ const App = () => {
         <Route path="cart" element={<Cart />} />
         <Route path="favorites" element={<Favorites />} />
         <Route path="product-page/:itemId" element={<ProductPage />} />
-        <Route path="items" element={shouldRedirectToErrorPage ? <Navigate to="/not-found" /> : <ItemsLayout />}>
+
+        <Route path="items" element={shouldRedirectToErrorPage
+          ? <Navigate to="/not-found" />
+          : <ItemsLayout />}>
           <Route path="woman" element={<Woman />} />
           <Route path="man" element={<Male />} />
           <Route path="kids" element={<Kids />} />
           <Route path="baby" element={<Baby />} />
+        </Route>
+
+        <Route path="account" element={<AccountLayout />}>
+          <Route path="purchases" element={<Purchases />} />
+          <Route path="settings" element={<Settings />} />
         </Route>
       </Route>
       <Route path="not-found" element={<ErrorPage />} />

@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
 import './Header.scss';
+import cn from 'classnames';
 import dynamite from './../../assets/images/logo.png';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faX, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Button } from '../../components/Button/Button';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,13 +12,16 @@ import { Link } from 'react-router-dom';
 import { useMenu } from "contexts/MenuContext";
 import { useProducts } from "../../contexts/ProductsContext";
 import Skeleton from '@mui/material/Skeleton';
+import { useAuth } from "../../contexts/AuthContext";
+
 
 export const Header = () => {
   const { setIsMenuClicked, isMenuClicked } = useMenu();
   const { cartItems } = useProducts();
   const [tempimage, setTempImage] = useState(true);
+  const [cartisHovered, setCartIsHovered] = useState(false)
+  const { authUser } = useAuth()
 
-  // const initialCartItems = JSON.parse(localStorage.getItem('cartItems')) || []
 
   const totalPrice = cartItems.reduce((total, item) => total + parseFloat(item.price * item.quantity), 0);
 
@@ -28,6 +32,11 @@ export const Header = () => {
 
     return () => clearTimeout(timer);
   });
+
+  const handlerContainer = () => {
+    setTempImage(true)
+    setCartIsHovered(true)
+  }
 
   return (
     <header className='headerNav'>
@@ -66,13 +75,35 @@ export const Header = () => {
         </Link>
       </div>
 
-      <div className="headerNav__right" onMouseEnter={() => setTempImage(true)}>
+      <div className="headerNav__right" >
         <ul>
-          <li className="cart-container">
+          {authUser ? (
+            <li>
+              <a href="/account/purchases" className={cn("login-link", { "disappear": cartisHovered })}>
+                <FontAwesomeIcon icon={faUser} className="login-icon" />
+                <font className="login-text">
+                  My Account
+                </font>
+              </a>
+            </li>
+          ) : (
+            <li>
+              <a href="/login" className={cn("login-link", { "disappear": cartisHovered })}>
+                <FontAwesomeIcon icon={faUser} className="login-icon" />
+                <font className="login-text">
+                  Log in
+                </font>
+              </a>
+            </li>
+          )}
+
+          <li className="cart-container" onMouseEnter={handlerContainer}
+            onMouseLeave={() => setCartIsHovered(false)}>
             <a href="/cart" className="headerNav__right__button">
               <ShoppingBagOutlinedIcon className="cart-item" style={{ marginRight: '8px' }} />
               <font className="headerNav__right__button-text cart-text">Shopping Cart ({cartItems.length})</font>
             </a>
+
             <div className="cart-details">
               {tempimage ? (
                 <Skeleton animation='wave' variant="rectangular" width={210} height={118} />
@@ -146,7 +177,7 @@ export const Header = () => {
             </a>
           </li>
         </ul>
-      </div>
-    </header>
+      </div >
+    </header >
   );
 };

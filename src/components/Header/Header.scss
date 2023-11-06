@@ -143,10 +143,10 @@
   text-wrap: nowrap;
   font-weight: 500;
   top: 26% !important;
+  pointer-events: none;
   /* Initially, text is hidden */
   transition: left 0.3s ease, opacity 0.2s ease-in-out;
   transform: translateX(-10px) !important;
-  pointer-events: none;
   font-family: 'Poppins', sans-serif;
   font-size: 12px;
 
@@ -213,7 +213,40 @@
   }
 }
 
+.login-link {
+  text-decoration: none;
+  margin-right: 10px;
 
+  &>svg {
+    margin: 0;
+    margin-right: 8px;
+  }
+}
+
+.login-icon {
+  font-size: 18.5px;
+  margin-right: 50px;
+  transform: translateY(2px);
+  // margin-top: 8px;
+
+
+}
+
+.login-link,
+.cart-details {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.login-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+}
+
+.disappear {
+  opacity: 0;
+  pointer-events: none;
+}
 
 .cart-container:hover .cart-item {
   transform: translateX(-80px) !important;
@@ -224,6 +257,7 @@
   left: 0;
   /* Slide the text in from the right */
   opacity: 1;
+  pointer-events: all;
   text-decoration: underline;
   /* Make the text visible*/
 }
@@ -256,10 +290,12 @@
   display: flex;
   list-style-type: none;
   gap: 15px;
+  align-items: center;
 }
 
 .headerNav__right>ul>li {
   text-decoration: none;
+
 
   &>a>.favorites {
     margin-bottom: 2.65px;
@@ -308,13 +344,21 @@
 
   .headerNav__middle>a>.logo {
     width: 95px;
-    transform: translateX(30%);
+    transform: translateX(23%);
   }
 
   .headerNav__right {
     display: flex;
     transform: translateX(10%);
     align-items: center;
+  }
+
+  .headerNav__right>ul {
+    gap: 0;
+  }
+
+  .login-icon {
+    transform: translateY(-0.3px);
   }
 
   .headerNav__right__button>svg {
@@ -325,6 +369,14 @@
   .headerNav__right__button-text {
     display: none;
 
+  }
+
+  .login-link {
+    margin-right: 5px;
+  }
+
+  .login-text {
+    display: none;
   }
 
   .burger-menu {

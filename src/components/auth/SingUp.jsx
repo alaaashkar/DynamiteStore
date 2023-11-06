@@ -6,11 +6,15 @@ import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { Button } from "../Button/Button";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from "react";
 
 export const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showToast, setShowToast] = useState(false)
+  const navigate = useNavigate(); // Use useNavigate
 
   const signUp = async (e) => {
     e.preventDefault();
@@ -21,6 +25,7 @@ export const SignUp = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       console.log(userCredential);
       toast.success('Your account has been successfully created !');
+      setShowToast(true)
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
         toast.error('Email is already in use. Please use a different email.');
@@ -31,6 +36,14 @@ export const SignUp = () => {
       setIsLoading(false); // Set isLoading back to false after the request is complete
     }
   };
+
+  useEffect(() => {
+    if (showToast) {
+      setTimeout(() => {
+        navigate('/login')
+      }, 2000);
+    }
+  }, [showToast])
 
   return (
     <>

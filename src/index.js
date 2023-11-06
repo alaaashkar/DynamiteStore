@@ -8,16 +8,19 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
 import { ProductsProvider } from './contexts/ProductsContext';
 import { MenuContextProvider } from './contexts/MenuContext';
+import { AuthProvider } from './contexts/AuthContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <ProductsProvider>
-      <MenuContextProvider>
-        <App />
-      </MenuContextProvider>
-    </ProductsProvider>
+    <AuthProvider>
+      <ProductsProvider>
+        <MenuContextProvider>
+          <App />
+        </MenuContextProvider>
+      </ProductsProvider>
+    </AuthProvider>
   </BrowserRouter>
 );
 

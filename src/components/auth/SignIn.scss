@@ -32,11 +32,28 @@ header {
 }
 
 .sign-in-container {
+  form {
+    width: 100%;
+
+    .label-wrapper {
+      margin-bottom: 20px;
+    }
+  }
+
   padding: 24px 48px;
   display: flex;
   justify-content: center;
   max-width: 444px;
   margin: 0 auto;
+
+  .error-input {
+    border-color: red;
+  }
+
+  .email-error-texts {
+    color: red !important;
+    display: block;
+  }
 
   button {
     margin-bottom: 5px;
@@ -50,7 +67,6 @@ header {
     text-align: left;
     width: 100%;
     margin-top: 5px;
-    margin-bottom: 20px;
     font-weight: 300;
     padding: 13px;
     box-sizing: border-box;
@@ -58,6 +74,7 @@ header {
     box-shadow: 0 1px 8px 0 rgba(61, 78, 97, 0.1);
     outline: none;
   }
+
 
   input[type="checkbox"] {
     width: unset !important;
@@ -80,11 +97,24 @@ header {
 
 
   .register {
-    background-color: white;
+    background-color: white !important;
 
     &>a {
       color: #222222 !important;
     }
   }
 
+  .eye-label {
+    position: relative;
+
+    .eye-button {
+      position: absolute;
+      border: 0;
+      background: 0 0;
+      top: 52%;
+      right: 10px;
+      padding: 10px;
+      cursor: pointer;
+    }
+  }
 }
