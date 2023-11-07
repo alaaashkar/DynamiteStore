@@ -23,7 +23,7 @@ export const Header = () => {
   const { authUser } = useAuth()
 
 
-  const totalPrice = cartItems.reduce((total, item) => total + parseFloat(item.price * item.quantity), 0);
+  const totalPrice = cartItems.reduce((total, item) => total + parseFloat(item.price * item.quantity), 0).toFixed(2);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -74,110 +74,112 @@ export const Header = () => {
           <img className="logo" src={dynamite} alt="express" />
         </Link>
       </div>
+      <div className="headerNav__right__container">
+        <div className="headerNav__right" >
+          <ul>
+            {authUser ? (
+              <li>
+                <a href="/account/purchases" className={cn("login-link", { "disappear": cartisHovered })}>
+                  <FontAwesomeIcon icon={faUser} className="login-icon" />
+                  <font className="login-text">
+                    My Account
+                  </font>
+                </a>
+              </li>
+            ) : (
+              <li>
+                <a href="/login" className={cn("login-link", { "disappear": cartisHovered })}>
+                  <FontAwesomeIcon icon={faUser} className="login-icon" />
+                  <font className="login-text">
+                    Log in
+                  </font>
+                </a>
+              </li>
+            )}
 
-      <div className="headerNav__right" >
-        <ul>
-          {authUser ? (
-            <li>
-              <a href="/account/purchases" className={cn("login-link", { "disappear": cartisHovered })}>
-                <FontAwesomeIcon icon={faUser} className="login-icon" />
-                <font className="login-text">
-                  My Account
-                </font>
+            <li className="cart-container" onMouseEnter={handlerContainer}
+              onMouseLeave={() => setCartIsHovered(false)}>
+              <a href="/cart" className="headerNav__right__button">
+                <ShoppingBagOutlinedIcon className="cart-item" style={{ marginRight: '8px' }} />
+                <font className="headerNav__right__button-text cart-text">Shopping Cart ({cartItems.length})</font>
               </a>
-            </li>
-          ) : (
-            <li>
-              <a href="/login" className={cn("login-link", { "disappear": cartisHovered })}>
-                <FontAwesomeIcon icon={faUser} className="login-icon" />
-                <font className="login-text">
-                  Log in
-                </font>
-              </a>
-            </li>
-          )}
 
-          <li className="cart-container" onMouseEnter={handlerContainer}
-            onMouseLeave={() => setCartIsHovered(false)}>
-            <a href="/cart" className="headerNav__right__button">
-              <ShoppingBagOutlinedIcon className="cart-item" style={{ marginRight: '8px' }} />
-              <font className="headerNav__right__button-text cart-text">Shopping Cart ({cartItems.length})</font>
-            </a>
-
-            <div className="cart-details">
-              {tempimage ? (
-                <Skeleton animation='wave' variant="rectangular" width={210} height={118} />
-              ) : (
-                cartItems.length === 0 ? (
-                  <>
-                    <p>Your Shopping Cart is Empty</p>
-                    <hr />
-                    <div className="order-price-container">
-                      <p>Order Price</p>
-                      <p>0.00 $</p>
-                    </div>
-                    <hr />
-                    <div className="order-price-container total-price">
-                      <p>Total</p>
-                      <p>0.00 $</p>
-                    </div>
-                  </>
+              <div className="cart-details">
+                {tempimage ? (
+                  <Skeleton animation='wave' variant="rectangular" width={210} height={118} />
                 ) : (
-                  cartItems.map(item => (
+                  cartItems.length === 0 ? (
                     <>
-                      <a className="cart-product-link" href={`/product-page/${item.id}`} key={item.id}>
-                        <div className="cart-product-container">
-                          <div className="col1">
-                            <img src={item.itemImg} alt="" />
-                          </div>
-                          <div className="col2">
-                            <p>{item.name}</p>
-                            <p>{item.price} $</p>
-                            <div className="col2-container">
-                              <p>quantity:</p>
-                              <p>{item.quantity}</p>
-                            </div>
-                            <div className="col2-container">
-                              <p>Colour: </p>
-                              <p>{item.colour}</p>
-                            </div>
-                            <div className="col2-container">
-                              <p>Size: </p>
-                              <p>{item.size}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </a>
+                      <p>Your Shopping Cart is Empty</p>
+                      <hr />
+                      <div className="order-price-container">
+                        <p>Order Price</p>
+                        <p>0.00 $</p>
+                      </div>
+                      <hr />
+                      <div className="order-price-container total-price">
+                        <p>Total</p>
+                        <p>0.00 $</p>
+                      </div>
                     </>
-                  ))
-                )
-              )}
+                  ) : (
+                    cartItems.map(item => (
+                      <>
+                        <a className="cart-product-link" href={`/product-page/${item.id}`} key={item.id}>
+                          <div className="cart-product-container">
+                            <div className="col1">
+                              <img src={item.itemImg} alt="" />
+                            </div>
+                            <div className="col2">
+                              <p>{item.name}</p>
+                              <p>{item.price} $</p>
+                              <div className="col2-container">
+                                <p>quantity:</p>
+                                <p>{item.quantity}</p>
+                              </div>
+                              <div className="col2-container">
+                                <p>Colour: </p>
+                                <p>{item.colour}</p>
+                              </div>
+                              <div className="col2-container">
+                                <p>Size: </p>
+                                <p>{item.size}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </>
+                    ))
+                  )
+                )}
 
-              {!tempimage && (
-                <>
-                  <hr />
-                  <div className="total-order-container">
-                    <p>Total Order:</p>
-                    <p>{totalPrice.toFixed(2)} $</p>
-                  </div>
-                  <Button text="Pay" buttonStyle="loadMore" />
+                {!tempimage && (
+                  <>
+                    <hr />
+                    <div className="total-order-container">
+                      <p>Total Order:</p>
+                      <p>{totalPrice} $</p>
+                    </div>
+                    <Button text="Pay" buttonStyle="loadMore" />
 
-                  <a href="/cart">
-                    <Button text="Shopping Cart" buttonStyle="loadMore shopping-cart-btn" />
-                  </a>
-                </>
-              )}
+                    <a href="/cart">
+                      <Button text="Shopping Cart" buttonStyle="loadMore shopping-cart-btn" />
+                    </a>
+                  </>
+                )}
 
-            </div>
-          </li>
-          <li className="fav-container mobile-fav">
-            <a href="/favorites" className="headerNav__right__button">
-              <FavoriteIcon className="fav-item" style={{ color: 'black', marginRight: '8px' }} />
-              <font className="headerNav__right__button-text favorites fav-text">favorites</font>
-            </a>
-          </li>
-        </ul>
-      </div >
+              </div>
+            </li>
+            <li className="fav-container mobile-fav">
+              <a href="/favorites" className="headerNav__right__button">
+                <FavoriteIcon className="fav-item" style={{ color: 'black', marginRight: '8px' }} />
+                <font className="headerNav__right__button-text favorites fav-text">favorites</font>
+              </a>
+            </li>
+          </ul>
+        </div >
+      </div>
+
     </header >
   );
 };

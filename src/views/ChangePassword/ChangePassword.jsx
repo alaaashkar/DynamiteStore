@@ -1,32 +1,40 @@
 import { useState } from 'react';
-import { Button } from '../../../../components/Button/Button';
+import { Button } from '../../components/Button/Button';
 import './ChangePassword.scss';
 import { ToastContainer, toast } from 'react-toastify';
-import { auth } from '../../../../firebase';
+import { auth } from '../../firebase';
 import { PuffLoader } from 'react-spinners';
-
+import { getAuth, updatePassword, reauthenticateWithCredential, EmailAuthProvider } from "firebase/auth";
+import { useAuth } from '../../contexts/AuthContext';
 
 export const ChangePassword = () => {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  // const [confirmPassword, setConfirmPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+  const auth = getAuth();
+  const user = auth.currentUser;
 
   const handleChangePassword = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    try {
-      const user = auth.currentUser;
-
-      if (user) {
-        await user.updatePassword(newPassword);
+    if (newPassword.length < 6) {
+      toast.error('Password must be more than 6 characters')
+    } else {
+      setIsLoading(true);
+      const credential = EmailAuthProvider.credential(user.email, currentPassword);
+      try {
+        await reauthenticateWithCredential(user, credential)
+        await updatePassword(user, newPassword)
+          .then(() => {
+            toast.success('Password has been updated')
+          })
+      } catch (error) {
+        toast.error('Entered Password is wrong')
+        console.log(error);
+      } finally {
+        setIsLoading(false)
       }
-    } catch (error) {
-      console.log(error);
-      setIsLoading(false);
-      // Handle error
-    } finally {
-      setIsLoading(false)
     }
   };
 
@@ -70,9 +78,10 @@ export const ChangePassword = () => {
           </label>
         </div> */}
 
-        <Button onClick={handleChangePassword} text="Change Password" buttonStyle="loadMore" />
-        <Button to="/account/purchases" text="Cancel" buttonStyle="loadMore cancel-btn" />
+        <Button type="submit" text="Change Password" buttonStyle="loadMore" />
+        <Button type="button" to="/account/purchases" text="Cancel" buttonStyle="loadMore cancel-btn" />
       </form>
+
 
       {isLoading && (
         <>

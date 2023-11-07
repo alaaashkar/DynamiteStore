@@ -41,10 +41,16 @@
   display: none;
 }
 
+.headerNav__middle {}
+
 .headerNav__middle>a>.logo {
   width: 120px;
-  transform: translateX(10%);
+  transform: translateX(20%);
 
+}
+
+.headerNav__right__container {
+  width: 160px;
 }
 
 .headerNav__right {
@@ -112,6 +118,12 @@
 
 .total-price {
   font-weight: 700;
+
+  &>p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+  }
+
 }
 
 .total-order-container {

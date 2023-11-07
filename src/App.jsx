@@ -16,12 +16,12 @@ import { useProducts } from "./contexts/ProductsContext";
 import { Favorites } from "./views/Favorites/Favorites";
 import { SignIn } from "./components/auth/SignIn";
 import { SignUp } from "./components/auth/SingUp";
-import { Account } from "./views/Account/Account";
 import { AccountLayout } from "./Layouts/AccountLayout/AccountLayout";
-import { Purchases } from "./Layouts/AccountLayout/components/Purchases/Purchases";
-import { Settings } from "./Layouts/AccountLayout/components/Settings/Settings";
-import { ChangePassword } from "./Layouts/AccountLayout/components/ChangePassword/ChangePassword";
-import { ForgotPassword } from "./Layouts/AccountLayout/components/ForgotPassword/ForgotPassword";
+import { ChangePassword } from "./views/ChangePassword/ChangePassword";
+import { Settings } from "./views/Settings/Settings";
+import { ForgotPassword } from "./views/ForgotPassword/ForgotPassword";
+import { Checkout } from "./views/Checkout/Checkout";
+import { Purchases } from "./views/Purchases/Purchases";
 
 const App = () => {
   const shouldRedirectToErrorPage = window.location.pathname === '/items' || window.location.pathname === '/items/'; // Redirect if the path is "/items"
@@ -35,6 +35,7 @@ const App = () => {
 
   return (
     <Routes>
+      <Route path="checkout" element={<Checkout />} />
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
         <Route path="login" element={<SignIn />} />

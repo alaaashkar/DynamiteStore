@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './ForgotPassword.scss';
-import { Button } from '../../../../components/Button/Button';
+import { Button } from '../../components/Button/Button';
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 import { ToastContainer, toast } from 'react-toastify';
 import { PuffLoader } from 'react-spinners';

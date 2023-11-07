@@ -55,6 +55,19 @@ font {
   font-family: 'Poppins', sans-serif;
 }
 
+select {
+  -webkit-appearance: none;
+  /* Safari and Chrome */
+  -moz-appearance: none;
+  /* Firefox */
+  appearance: none;
+  background-image: none;
+  /* Remove the default arrow */
+  /* You can also add a custom background image if needed */
+  font-family: 'Poppins', sans-serif;
+  margin-top: 3px;
+}
+
 
 // $gap-size: 4px;
 

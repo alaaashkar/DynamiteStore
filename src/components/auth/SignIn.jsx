@@ -50,7 +50,7 @@ export const SignIn = () => {
           : browserSessionPersistence
         await setPersistence(auth, persistence)
         await signInWithEmailAndPassword(auth, email, password);
-        toast.success('You logged in successfully!');
+        // toast.success('You logged in successfully!');
         setSignInIsSuccessful(true);
 
       } catch (error) {

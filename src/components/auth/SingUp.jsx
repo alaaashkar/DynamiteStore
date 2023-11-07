@@ -29,7 +29,7 @@ export const SignUp = () => {
         : browserSessionPersistence
       await setPersistence(auth, persistence)
       await sendEmailVerification(auth.currentUser)
-      toast.success('Your account has been successfully created !');
+      // toast.success('Your account has been successfully created !');
       setShowToast(true)
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {

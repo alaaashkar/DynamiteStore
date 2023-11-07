@@ -1,0 +1,154 @@
+.checkout-page {
+  .form-header {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+
+    .down-arrow {
+      cursor: pointer;
+    }
+  }
+
+  .headerNav__middle {
+    display: flex;
+    justify-content: center;
+  }
+
+  .left-column-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  select {
+    padding: 13px;
+    width: 100%;
+  }
+
+  .left {
+    flex: 0;
+
+    .checkout-form {
+      transition: max-height 0.3s ease-in-out;
+    }
+
+    .checkout-form-closed {
+      overflow: hidden;
+      max-height: 0px;
+    }
+
+    .checkout-form-open {
+      max-height: 500px;
+      overflow: hidden;
+    }
+  }
+
+  .left-2 {
+    padding: 32px;
+    background-color: rgba(245, 245, 245, 0.524);
+    margin-right: 24px;
+
+    .checkout-form {
+      transition: max-height 0.3s ease-in-out;
+    }
+
+    .checkout-form-open {
+      max-height: 500px;
+      overflow: hidden;
+    }
+
+    .checkout-form-closed {
+      overflow: hidden;
+      max-height: 0px;
+    }
+  }
+
+  .first-last {
+    animation: fadeIn 1s ease;
+  }
+
+  .block-element {
+    display: block;
+  }
+
+  .right-side-container {
+    align-self: flex-start;
+  }
+
+  .checkout-content {
+    .checkout-title {
+      font-size: 28px;
+    }
+
+    h3 {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      text-align: left;
+    }
+
+    label {
+
+      &>span {
+        text-align: left;
+        display: block;
+      }
+    }
+
+    .checkout-container {
+      max-width: 100% !important;
+      padding: 0;
+      margin: unset;
+      margin-top: 30px;
+
+      .name-wrapper {
+        display: flex;
+        gap: 20px;
+
+        &>.label-wrapper {
+          flex: 1;
+        }
+      }
+
+      .phone-wrapper {
+        .react-tel-input {
+
+          .form-control {
+            width: 100% !important;
+            height: 44px;
+            margin-top: 3px !important;
+          }
+
+          .flag-dropdown {
+            background-color: unset;
+            width: 0px;
+            height: 0px;
+          }
+
+          .selected-flag {
+
+            .flag {
+              margin-top: 19px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .confirm {
+    display: flex;
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  .checkout-btn {
+    width: 50% !important;
+    display: block;
+    margin: 40px auto 0 auto;
+    height: 40px;
+
+    &:disabled {
+      cursor: pointer;
+    }
+  }
+}

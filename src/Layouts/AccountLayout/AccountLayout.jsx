@@ -22,7 +22,7 @@ export const AccountLayout = () => {
     setIsLoading(true);
     try {
       await signOut(auth);
-      toast.success('You have been successfully logged out');
+      // toast.success('You have been successfully logged out');
       setSignOutIsSuccessful(true)
     } catch (error) {
       console.error('Sign out failed:', error);

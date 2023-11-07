@@ -22,6 +22,8 @@ export const Cart = () => {
 
   const paymentButtonIsDisabled = cartItems.length === 0;
 
+  const totalPrice = cartItems.reduce((total, item) => total + parseFloat(item.price * item.quantity), 0).toFixed(2);
+
   return (
     <>
       <div className='container limited-wider'>
@@ -123,11 +125,11 @@ export const Cart = () => {
 
               <div className="order-price-container total-price  total-flx">
                 <p>Total</p>
-                <p>0.00 $</p>
+                <p>{totalPrice} $</p>
               </div>
 
               <Button
-                to='/login'
+                to='/checkout'
                 disabled={paymentButtonIsDisabled}
                 text={'Continue to payment screen'}
                 buttonStyle={'loadMore login-btn'}
