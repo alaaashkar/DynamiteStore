@@ -79,30 +79,30 @@ export const Header = () => {
           <ul>
             {authUser ? (
               <li>
-                <a href="/account/purchases" className={cn("login-link", { "disappear": cartisHovered })}>
+                <Link to="/account/purchases" className={cn("login-link", { "disappear": cartisHovered })}>
                   <FontAwesomeIcon icon={faUser} className="login-icon" />
                   <font className="login-text">
                     My Account
                   </font>
-                </a>
+                </Link>
               </li>
             ) : (
               <li>
-                <a href="/login" className={cn("login-link", { "disappear": cartisHovered })}>
+                <Link to="/login" className={cn("login-link", { "disappear": cartisHovered })}>
                   <FontAwesomeIcon icon={faUser} className="login-icon" />
                   <font className="login-text">
                     Log in
                   </font>
-                </a>
+                </Link>
               </li>
             )}
 
             <li className="cart-container" onMouseEnter={handlerContainer}
               onMouseLeave={() => setCartIsHovered(false)}>
-              <a href="/cart" className="headerNav__right__button">
+              <Link to="/cart" className="headerNav__right__button">
                 <ShoppingBagOutlinedIcon className="cart-item" style={{ marginRight: '8px' }} />
                 <font className="headerNav__right__button-text cart-text">Shopping Cart ({cartItems.length})</font>
-              </a>
+              </Link>
 
               <div className="cart-details">
                 {tempimage ? (

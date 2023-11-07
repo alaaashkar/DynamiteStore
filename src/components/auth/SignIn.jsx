@@ -156,6 +156,14 @@ export const SignIn = () => {
         position="top-center"
         theme="dark"
       />
+
+
+      <div className="loader">
+        <PuffLoader color="#222222" size={50} />
+      </div>
     </>
   )
 };
+
+
+

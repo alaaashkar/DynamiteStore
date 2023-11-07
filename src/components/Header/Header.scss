@@ -337,6 +337,11 @@
 
   .mobile-fav {
     display: block;
+    transform: translateY(-1.5px);
+  }
+
+  .cart-item {
+    transform: translateY(-1.5px);
   }
 
   .cart-container:hover .cart-item {

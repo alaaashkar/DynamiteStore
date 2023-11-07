@@ -5,7 +5,7 @@ import 'animate.css'
 import 'react-typist/dist/Typist.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { ProductsProvider } from './contexts/ProductsContext';
 import { MenuContextProvider } from './contexts/MenuContext';
 import { AuthProvider } from './contexts/AuthContext';
@@ -13,7 +13,7 @@ import { AuthProvider } from './contexts/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
+  <HashRouter>
     <AuthProvider>
       <ProductsProvider>
         <MenuContextProvider>
@@ -21,7 +21,7 @@ root.render(
         </MenuContextProvider>
       </ProductsProvider>
     </AuthProvider>
-  </BrowserRouter>
+  </HashRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

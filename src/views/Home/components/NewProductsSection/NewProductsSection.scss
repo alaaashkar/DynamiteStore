@@ -36,6 +36,12 @@
     .new-products {
       &>ul {
         justify-content: center;
+
+        &>li>button {
+          width: 80px;
+        }
       }
+
+
     }
   }
