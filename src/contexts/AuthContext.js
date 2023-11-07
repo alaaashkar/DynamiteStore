@@ -7,11 +7,16 @@ const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
   const [authUser, setAuthUser] = useState(null)
+  const [password, setPassword] = useState('');
 
   const value = {
     authUser,
-    setAuthUser
+    setAuthUser,
+    password,
+    setPassword
   }
+
+  console.log(authUser);
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {

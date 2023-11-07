@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './SignUp.scss';
 import { auth } from '../../firebase'
 import { PuffLoader } from 'react-spinners';
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { browserLocalPersistence, browserSessionPersistence, createUserWithEmailAndPassword, getAuth, sendEmailVerification, setPersistence } from 'firebase/auth';
 import { Button } from "../Button/Button";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,6 +14,7 @@ export const SignUp = () => {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showToast, setShowToast] = useState(false)
+  const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate(); // Use useNavigate
 
   const signUp = async (e) => {
@@ -22,8 +23,12 @@ export const SignUp = () => {
     setIsLoading(true); // Set isLoading to true when starting the API request
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      console.log(userCredential);
+      await createUserWithEmailAndPassword(auth, email, password);
+      const persistence = rememberMe
+        ? browserLocalPersistence
+        : browserSessionPersistence
+      await setPersistence(auth, persistence)
+      await sendEmailVerification(auth.currentUser)
       toast.success('Your account has been successfully created !');
       setShowToast(true)
     } catch (error) {
@@ -74,7 +79,12 @@ export const SignUp = () => {
 
             <label htmlFor="rememberMe">
               <div className="remember-me">
-                <input type="checkbox" id="rememberMe" name="rememberMe" value="1" />
+                <input
+                  type="checkbox"
+                  id="rememberMe"
+                  name="rememberMe"
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)} />
                 <span>Remember me</span>
               </div>
             </label>

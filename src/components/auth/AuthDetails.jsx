@@ -6,6 +6,7 @@ import { useAuth } from "../../contexts/AuthContext";
 export const AuthDetails = () => {
   const { authUser, setAuthUser } = useAuth()
 
+
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {

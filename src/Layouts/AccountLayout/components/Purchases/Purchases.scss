@@ -1,0 +1,22 @@
+.shopping-container-purchase {
+  display: flex;
+  align-items: center;
+
+  &>font {
+    font-weight: 400;
+    margin-left: 5px;
+  }
+}
+
+shopping-container-bag {
+  display: flex;
+  align-items: center;
+
+  .shopping-icon {
+    margin-right: 10px;
+    font-size: 20px !important;
+    opacity: 0.7;
+  }
+
+
+}

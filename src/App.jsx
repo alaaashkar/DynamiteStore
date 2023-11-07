@@ -20,6 +20,8 @@ import { Account } from "./views/Account/Account";
 import { AccountLayout } from "./Layouts/AccountLayout/AccountLayout";
 import { Purchases } from "./Layouts/AccountLayout/components/Purchases/Purchases";
 import { Settings } from "./Layouts/AccountLayout/components/Settings/Settings";
+import { ChangePassword } from "./Layouts/AccountLayout/components/ChangePassword/ChangePassword";
+import { ForgotPassword } from "./Layouts/AccountLayout/components/ForgotPassword/ForgotPassword";
 
 const App = () => {
   const shouldRedirectToErrorPage = window.location.pathname === '/items' || window.location.pathname === '/items/'; // Redirect if the path is "/items"
@@ -41,6 +43,10 @@ const App = () => {
         <Route path="favorites" element={<Favorites />} />
         <Route path="product-page/:itemId" element={<ProductPage />} />
 
+        <Route path="/password/forgot-password" element={<ForgotPassword />}>
+
+        </Route>
+
         <Route path="items" element={shouldRedirectToErrorPage
           ? <Navigate to="/not-found" />
           : <ItemsLayout />}>
@@ -52,7 +58,9 @@ const App = () => {
 
         <Route path="account" element={<AccountLayout />}>
           <Route path="purchases" element={<Purchases />} />
-          <Route path="settings" element={<Settings />} />
+          <Route path="settings" element={<Settings />}>
+            <Route path="change-password" element={<ChangePassword />} />
+          </Route>
         </Route>
       </Route>
       <Route path="not-found" element={<ErrorPage />} />

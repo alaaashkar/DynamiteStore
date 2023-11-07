@@ -34,7 +34,7 @@ export const AccountLayout = () => {
   useEffect(() => {
     setTimeout(() => {
       if (signOutIsSuccessful) {
-        navigate('/')
+        navigate('/login')
       }
     }, 2000);
   }, [navigate, signOutIsSuccessful])
@@ -82,7 +82,6 @@ export const AccountLayout = () => {
             onClick={userSignOut}>
             <FontAwesomeIcon icon={faArrowRightFromBracket} />
             <font>Sign Out</font>
-            <FontAwesomeIcon className="right-arrow" icon={faAngleRight} />
           </NavLink>
         </div>
 

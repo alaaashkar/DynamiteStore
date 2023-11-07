@@ -3,10 +3,12 @@ import { PuffLoader } from 'react-spinners';
 import { Button } from '../../components/Button/Button'
 import { useProducts } from '../../contexts/ProductsContext';
 import { HeartButton } from '../../components/HeartButton/HeartButton';
+import { useAuth } from '../../contexts/AuthContext';
 
 
 export const Cart = () => {
   const { setCartItems, cartItems } = useProducts()
+  const { authUser } = useAuth()
 
   const handlerDeleteItem = (item) => {
 
@@ -31,8 +33,12 @@ export const Cart = () => {
               {cartItems.length === 0 ? (
                 <>
                   <h1 className='cart-title cart-content-title-empty'>Your shopping cart is empty!</h1>
-                  <p className='cart-content-title-description'>Log in to save items to your shopping cart or access previously saved items</p>
-                  <a className='log-in' href="/">Log in</a>
+                  {!authUser && (
+                    <>
+                      <p className='cart-content-title-description'>Log in to save items to your shopping cart or access previously saved items</p>
+                      <a className='log-in' href="/">Log in</a>
+                    </>
+                  )}
                 </>
               ) : (
                 <>
@@ -97,18 +103,23 @@ export const Cart = () => {
             </div>
 
             <div className='right-side-container'>
-              <div className='discount-container'>
-                <font>Discounts</font>
-                <a href="/">Apply discount</a>
-              </div>
+              {!authUser && (
+                <>
+                  <div className='discount-container'>
+                    <font>Discounts</font>
 
-              <font className='log-in-special-offers'>Log in for special offers!</font>
+                    <a href="/">Apply discount</a>
+                  </div>
 
-              <Button text={'LOGIN'} buttonStyle={'loadMore login-btn'} />
+                  <font className='log-in-special-offers'>Log in for special offers!</font>
 
-              <hr />
+                  <Button to="/login" text={'LOGIN'} buttonStyle={'loadMore login-btn'} />
 
-              <hr className='hr-2' />
+                  <hr />
+
+                  <hr className='hr-2' />
+                </>
+              )}
 
               <div className="order-price-container total-price  total-flx">
                 <p>Total</p>

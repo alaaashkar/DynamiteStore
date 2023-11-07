@@ -3,23 +3,27 @@ import './SignIn.scss';
 import { useState } from "react";
 import { auth } from '../../firebase';
 import { PuffLoader } from 'react-spinners';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { browserLocalPersistence, browserSessionPersistence, setPersistence, signInWithEmailAndPassword } from 'firebase/auth';
 import { Button } from "../Button/Button";
 import { ToastContainer, toast } from 'react-toastify';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from "react-router-dom";
 import cn from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useAuth } from "../../contexts/AuthContext";
 
 export const SignIn = () => {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { password, setPassword } = useAuth()
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [signInIsSucessful, setSignInIsSuccessful] = useState(false);
   const [passwordIsError, setPasswordIsError] = useState(false);
   const [emailIsError, setEmailIsError] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false)
   const navigate = useNavigate();
+
+  console.log(password);
 
   const handlerShowPassword = () => {
     setShowPassword(!showPassword);
@@ -41,10 +45,14 @@ export const SignIn = () => {
     } else {
       setIsLoading(true);
       try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const persistence = rememberMe
+          ? browserLocalPersistence
+          : browserSessionPersistence
+        await setPersistence(auth, persistence)
+        await signInWithEmailAndPassword(auth, email, password);
         toast.success('You logged in successfully!');
         setSignInIsSuccessful(true);
-        console.log(userCredential);
+
       } catch (error) {
         if (error.code === 'auth/invalid-login-credentials') {
           toast.error('Wrong email or password');
@@ -88,7 +96,6 @@ export const SignIn = () => {
                 />
                 {emailIsError && <font className="email-error-texts">Please enter a valid email address</font>}
               </label>
-
             </div>
 
             <div className="label-wrapper">
@@ -114,12 +121,23 @@ export const SignIn = () => {
               </label>
             </div>
 
-            <label htmlFor="rememberMe">
-              <div className="remember-me">
-                <input type="checkbox" id="rememberMe" name="rememberMe" value="1" />
-                <span>Remember me</span>
-              </div>
-            </label>
+            <div className="forgot-password-container">
+              <label htmlFor="rememberMe">
+                <div className="remember-me">
+                  <input
+                    type="checkbox"
+                    id="rememberMe"
+                    name="rememberMe"
+                    checked={rememberMe}
+                    onChange={(e) => setRememberMe(e.target.checked)} />
+                  <span>Remember me</span>
+                </div>
+              </label>
+
+              <a href="/password/forgot-password">Did you forget your password?</a>
+            </div>
+
+
             <Button onClick={signIn} text="Log in" buttonStyle={'loadMore login-btn'} />
             <Button to="/register" text="Become a Dynamite Member" buttonStyle={'loadMore login-btn register'} />
           </form>
