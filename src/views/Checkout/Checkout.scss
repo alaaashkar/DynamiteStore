@@ -12,12 +12,40 @@
   .headerNav__middle {
     display: flex;
     justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .child1 {
+      flex: 0 0 auto;
+    }
+
+    .return-wrapper {
+      position: absolute;
+      left: 25px;
+      gap: 10px;
+      display: flex;
+      align-items: center;
+      font-family: serif;
+
+      .return-text-link {
+        font-family: 'Poppins', sans-serif;
+        text-decoration: none;
+        font-size: 12px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+    }
   }
 
   .left-column-wrapper {
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+
   }
 
   select {
@@ -149,6 +177,29 @@
 
     &:disabled {
       cursor: pointer;
+    }
+  }
+}
+
+
+@media (max-width:700px) {
+  .headerNav__middle>a>.logo {
+    width: 95px;
+    transform: translateX(0%);
+  }
+
+
+  .return-wrapper {
+    left: 0 !important;
+
+    .return-text-link {
+      font-family: 'Poppins', sans-serif;
+      text-decoration: none;
+      font-size: 10px !important;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

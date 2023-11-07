@@ -5,7 +5,7 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import { useState } from 'react';
 import cn from 'classnames'
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown, faArrowLeftLong } from '@fortawesome/free-solid-svg-icons'
 import { ClipLoader } from 'react-spinners';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getAuth } from 'firebase/auth';
@@ -66,7 +66,15 @@ export const Checkout = () => {
   return (
     <div className="checkout-page container">
       <header>
+
         <div className="headerNav__middle">
+          <div className='return-wrapper' >
+            <FontAwesomeIcon icon={faArrowLeftLong} />
+            <Link className='return-text-link' to='/cart'>
+              Shopping cart
+            </Link>
+          </div>
+
           <Link to="/">
             <img className="logo" src={dynamite} alt="express" />
           </Link>

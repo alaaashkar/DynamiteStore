@@ -359,6 +359,10 @@
     transform: translateX(23%);
   }
 
+  .headerNav__right__container {
+    width: unset;
+  }
+
   .headerNav__right {
     display: flex;
     transform: translateX(10%);

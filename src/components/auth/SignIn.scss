@@ -124,3 +124,10 @@ header {
     }
   }
 }
+
+
+@media (max-width:700px) {
+  .forgot-password-container {
+    display: block !important;
+  }
+}

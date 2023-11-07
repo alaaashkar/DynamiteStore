@@ -9,6 +9,7 @@ $gap-size : 10px;
   display: flex;
   flex-wrap: wrap;
   gap: $gap-size;
+  justify-content: space-between;
 
   .empty-fav-wrapper {
     display: flex;
