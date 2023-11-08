@@ -131,7 +131,7 @@ export const SignIn = () => {
                     name="rememberMe"
                     checked={rememberMe}
                     onChange={(e) => setRememberMe(e.target.checked)} />
-                  <span>Remember me</span>
+                  <span className="remember-me-text">Remember me</span>
                 </div>
               </label>
 
