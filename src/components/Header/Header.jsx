@@ -49,149 +49,145 @@ export const Header = () => {
 
   return (
     <header className='headerNav'>
-      <div className="header-wrapper">
-        <div className="headerNav__left">
-          <ul>
-            <li className="fav-container">
-              <Link className="headerNav__right__button" to="/favorites">
-                <FavoriteIcon className="fav-item" style={{ color: 'black', marginRight: '8px' }} />
-                <font className="headerNav__right__button-text favorites fav-text">Favorites</font>
-              </Link>
-            </li>
+      <div className="headerNav__left">
+        <ul>
+          <li className="fav-container">
+            <Link className="headerNav__right__button" to="/favorites">
+              <FavoriteIcon className="fav-item" style={{ color: 'black', marginRight: '8px' }} />
+              <font className="headerNav__right__button-text favorites fav-text">Favorites</font>
+            </Link>
+          </li>
 
-            {isMenuClicked ? (
+          {isMenuClicked ? (
+            <li>
+              <FontAwesomeIcon
+                icon={faX}
+                className="close-menu"
+                onClick={() => setIsMenuClicked(false)}
+              />
+            </li>
+          ) : (
+            <li>
+              <FontAwesomeIcon
+                icon={faBars}
+                className="burger-menu"
+                onClick={() => setIsMenuClicked(true)}
+              />
+            </li>
+          )}
+        </ul>
+      </div>
+
+      <div className="headerNav__middle">
+        <Link to='/'>
+          <img className="logo" src={dynamite} alt="express" />
+        </Link>
+      </div>
+      <div className="headerNav__right__container">
+        <div className="headerNav__right" >
+          <ul>
+            {authUser ? (
               <li>
-                <FontAwesomeIcon
-                  icon={faX}
-                  className="close-menu"
-                  onClick={() => setIsMenuClicked(false)}
-                />
+                <Link to="/account/purchases" className={cn("login-link", { "disappear": cartisHovered && !smallScreen })}>
+                  <FontAwesomeIcon icon={faUser} className="login-icon" />
+                  <font className="login-text">
+                    My Account
+                  </font>
+                </Link>
               </li>
             ) : (
               <li>
-                <FontAwesomeIcon
-                  icon={faBars}
-                  className="burger-menu"
-                  onClick={() => setIsMenuClicked(true)}
-                />
+                <Link to="/login" className={cn("login-link", { "disappear": cartisHovered && !smallScreen })}>
+                  <FontAwesomeIcon icon={faUser} className="login-icon" />
+                  <font className="login-text">
+                    Log in
+                  </font>
+                </Link>
               </li>
             )}
-          </ul>
-        </div>
 
-        <div className="headerNav__middle">
-          <Link to='/'>
-            <img className="logo" src={dynamite} alt="express" />
-          </Link>
-        </div>
-        <div className="headerNav__right__container">
-          <div className="headerNav__right" >
-            <ul>
-              {authUser ? (
-                <li>
-                  <Link to="/account/purchases" className={cn("login-link", { "disappear": cartisHovered && !smallScreen })}>
-                    <FontAwesomeIcon icon={faUser} className="login-icon" />
-                    <font className="login-text">
-                      My Account
-                    </font>
-                  </Link>
-                </li>
-              ) : (
-                <li>
-                  <Link to="/login" className={cn("login-link", { "disappear": cartisHovered && !smallScreen })}>
-                    <FontAwesomeIcon icon={faUser} className="login-icon" />
-                    <font className="login-text">
-                      Log in
-                    </font>
-                  </Link>
-                </li>
-              )}
+            <li className="cart-container" onMouseEnter={handlerContainer}
+              onMouseLeave={() => setCartIsHovered(false)}>
+              <Link to="/cart" className="headerNav__right__button">
+                <ShoppingBagOutlinedIcon className="cart-item" style={{ marginRight: '8px' }} />
+                <font className="headerNav__right__button-text cart-text">Shopping Cart ({cartItems.length})</font>
+              </Link>
 
-              <li className="cart-container" onMouseEnter={handlerContainer}
-                onMouseLeave={() => setCartIsHovered(false)}>
-                <Link to="/cart" className="headerNav__right__button">
-                  <ShoppingBagOutlinedIcon className="cart-item" style={{ marginRight: '8px' }} />
-                  <font className="headerNav__right__button-text cart-text">Shopping Cart ({cartItems.length})</font>
-                </Link>
-
-                <div className="cart-details">
-                  {tempimage ? (
-                    <Skeleton animation='wave' variant="rectangular" width={210} height={118} />
+              <div className="cart-details">
+                {tempimage ? (
+                  <Skeleton animation='wave' variant="rectangular" width={210} height={118} />
+                ) : (
+                  cartItems.length === 0 ? (
+                    <>
+                      <p>Your Shopping Cart is Empty</p>
+                      <hr />
+                      <div className="order-price-container">
+                        <p>Order Price</p>
+                        <p>0.00 $</p>
+                      </div>
+                      <hr />
+                      <div className="order-price-container total-price">
+                        <p>Total</p>
+                        <p>0.00 $</p>
+                      </div>
+                    </>
                   ) : (
-                    cartItems.length === 0 ? (
+                    cartItems.map(item => (
                       <>
-                        <p>Your Shopping Cart is Empty</p>
-                        <hr />
-                        <div className="order-price-container">
-                          <p>Order Price</p>
-                          <p>0.00 $</p>
-                        </div>
-                        <hr />
-                        <div className="order-price-container total-price">
-                          <p>Total</p>
-                          <p>0.00 $</p>
-                        </div>
-                      </>
-                    ) : (
-                      cartItems.map(item => (
-                        <>
-                          <Link className="cart-product-link" to={`/product-page/${item.id}`} key={item.id}>
-                            <div className="cart-product-container">
-                              <div className="col1">
-                                <img src={item.itemImg} alt="" />
+                        <Link className="cart-product-link" to={`/product-page/${item.id}`} key={item.id}>
+                          <div className="cart-product-container">
+                            <div className="col1">
+                              <img src={item.itemImg} alt="" />
+                            </div>
+                            <div className="col2">
+                              <p>{item.name}</p>
+                              <p>{item.price} $</p>
+                              <div className="col2-container">
+                                <p>quantity:</p>
+                                <p>{item.quantity}</p>
                               </div>
-                              <div className="col2">
-                                <p>{item.name}</p>
-                                <p>{item.price} $</p>
-                                <div className="col2-container">
-                                  <p>quantity:</p>
-                                  <p>{item.quantity}</p>
-                                </div>
-                                <div className="col2-container">
-                                  <p>Colour: </p>
-                                  <p>{item.colour}</p>
-                                </div>
-                                <div className="col2-container">
-                                  <p>Size: </p>
-                                  <p>{item.size}</p>
-                                </div>
+                              <div className="col2-container">
+                                <p>Colour: </p>
+                                <p>{item.colour}</p>
+                              </div>
+                              <div className="col2-container">
+                                <p>Size: </p>
+                                <p>{item.size}</p>
                               </div>
                             </div>
-                          </Link>
-                        </>
-                      ))
-                    )
-                  )}
+                          </div>
+                        </Link>
+                      </>
+                    ))
+                  )
+                )}
 
-                  {!tempimage && (
-                    <>
-                      <hr />
-                      <div className="total-order-container">
-                        <p>Total Order:</p>
-                        <p>{totalPrice} $</p>
-                      </div>
-                      <Button text="Pay" buttonStyle="loadMore" />
+                {!tempimage && (
+                  <>
+                    <hr />
+                    <div className="total-order-container">
+                      <p>Total Order:</p>
+                      <p>{totalPrice} $</p>
+                    </div>
+                    <Button text="Pay" buttonStyle="loadMore" />
 
-                      <Link to="/cart">
-                        <Button text="Shopping Cart" buttonStyle="loadMore shopping-cart-btn" />
-                      </Link>
-                    </>
-                  )}
+                    <Link to="/cart">
+                      <Button text="Shopping Cart" buttonStyle="loadMore shopping-cart-btn" />
+                    </Link>
+                  </>
+                )}
 
-                </div>
-              </li>
-              <li className="fav-container mobile-fav">
-                <Link to="/favorites" className="headerNav__right__button">
-                  <FavoriteIcon className="fav-item" style={{ color: 'black', marginRight: '8px' }} />
-                  <font className="headerNav__right__button-text favorites fav-text">favorites</font>
-                </Link>
-              </li>
-            </ul>
-          </div >
-        </div>
-
+              </div>
+            </li>
+            <li className="fav-container mobile-fav">
+              <Link to="/favorites" className="headerNav__right__button">
+                <FavoriteIcon className="fav-item" style={{ color: 'black', marginRight: '8px' }} />
+                <font className="headerNav__right__button-text favorites fav-text">favorites</font>
+              </Link>
+            </li>
+          </ul>
+        </div >
       </div>
-
     </header >
   );
 };

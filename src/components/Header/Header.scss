@@ -1,4 +1,4 @@
-.header-wrapper {
+.headerNav {
   display: flex;
   padding: 16px 32px;
   justify-content: space-between;
@@ -331,16 +331,8 @@
     display: none !important;
   }
 
-  .header-wrapper {
-    padding-bottom: 0;
-  }
-
   .headerNav {
     justify-content: space-between;
-    position: fixed;
-    width: 100%;
-    background-color: white;
-    z-index: 1000;
   }
 
   .mobile-fav {
