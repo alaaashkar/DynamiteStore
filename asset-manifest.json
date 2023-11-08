@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/dynamitestore/static/css/main.174b2c47.css",
+    "main.css": "/dynamitestore/static/css/main.5a677cab.css",
     "main.js": "/dynamitestore/static/js/main.e93c2eb7.js",
     "static/js/787.28cb0dcd.chunk.js": "/dynamitestore/static/js/787.28cb0dcd.chunk.js",
     "static/media/img5.jpg": "/dynamitestore/static/media/img5.5182e34e61bb10f9e75b.jpg",
@@ -17,12 +17,12 @@
     "static/media/Poppins-Regular.woff2": "/dynamitestore/static/media/Poppins-Regular.b78525ba2b4b274fac00.woff2",
     "static/media/woman.jpg": "/dynamitestore/static/media/woman.8f0eb6d6d9b383c68e8c.jpg",
     "index.html": "/dynamitestore/index.html",
-    "main.174b2c47.css.map": "/dynamitestore/static/css/main.174b2c47.css.map",
+    "main.5a677cab.css.map": "/dynamitestore/static/css/main.5a677cab.css.map",
     "main.e93c2eb7.js.map": "/dynamitestore/static/js/main.e93c2eb7.js.map",
     "787.28cb0dcd.chunk.js.map": "/dynamitestore/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.174b2c47.css",
+    "static/css/main.5a677cab.css",
     "static/js/main.e93c2eb7.js"
   ]
 }
