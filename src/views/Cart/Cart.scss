@@ -73,6 +73,10 @@
     .login-btn {
       margin-top: 15px;
       margin-bottom: 16px;
+
+      &:hover{
+        color: #fff;
+      }
     }
 
     .hr-2 {
@@ -116,6 +120,9 @@
   .left-side {
     flex: 1;
     max-height: 168px;
+
+    &>a>img {
+    }
   }
 
   .right-side {
@@ -249,6 +256,7 @@
     .row {
       button {
         width: 100% !important;
+        border: 1px solid black;
       }
 
     }

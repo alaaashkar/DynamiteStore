@@ -89,7 +89,7 @@ export const SignUp = () => {
               </div>
             </label>
 
-            <Button text="Sign Up" buttonStyle={'loadMore login-btn'} disabled={isLoading} />
+            <Button onClick={signUp} text="Sign Up" buttonStyle={'loadMore login-btn'} disabled={isLoading} />
           </form>
         </div>
       </div>

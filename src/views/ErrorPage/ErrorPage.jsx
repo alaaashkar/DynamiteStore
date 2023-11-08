@@ -1,4 +1,5 @@
 import './ErrorPage.scss'
+import {Link} from 'react-router-dom';
 
 export const ErrorPage = () => {
   return (
@@ -150,7 +151,7 @@ export const ErrorPage = () => {
           <tspan x="0" y="31" class="text_forgiveness">Lost ?</tspan>
         </text>
       </svg>
-      <a class="btn_home" href="/"> GO HOME </a>
+      <Link class="btn_home" to="/"> GO HOME </Link>
     </div>
   )
 };

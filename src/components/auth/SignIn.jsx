@@ -8,6 +8,7 @@ import { Button } from "../Button/Button";
 import { ToastContainer, toast } from 'react-toastify';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAuth } from "../../contexts/AuthContext";
@@ -134,7 +135,7 @@ export const SignIn = () => {
                 </div>
               </label>
 
-              <a href="/password/forgot-password">Did you forget your password?</a>
+              <Link to="/password/forgot-password">Did you forget your password?</Link>
             </div>
 
 

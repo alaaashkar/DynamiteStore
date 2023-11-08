@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import { useProducts } from '../../contexts/ProductsContext';
 import { PuffLoader, ClipLoader } from 'react-spinners';
 import { ToastContainer, toast } from 'react-toastify';
+import {Link} from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -98,12 +99,12 @@ export const ProductPage = () => {
       </Breadcrumb > */}
       <div className='product-page'>
         <div className='column1'>
-          <a href={foundItem.img}>
+          <Link to={foundItem.img}>
             <img src={foundItem?.img} alt="product-image" />
-          </a>
-          <a href={foundItem.itemImg}>
+          </Link>
+          <Link to={foundItem.itemImg}>
             <img src={foundItem?.itemImg} alt="product-preview-image" />
-          </a>
+          </Link>
         </div>
 
         <form onSubmit={handleOnSubmit} className='column2'>
@@ -185,7 +186,6 @@ export const ProductPage = () => {
                 closeOnClick
                 rtl={false}
                 pauseOnFocusLoss
-                draggable
                 pauseOnHover
                 theme="dark"
               />

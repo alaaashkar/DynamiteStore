@@ -49,9 +49,9 @@ export const Woman = () => {
             </div>
 
 
-            <a href={`/product-page/${product.id}`} className="product-link">
+            <Link to={`/product-page/${product.id}`} className="product-link">
               <font>{product.name}</font>
-            </a>
+            </Link>
 
             <font>{product.price}$</font>
 

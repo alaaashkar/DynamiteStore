@@ -186,6 +186,7 @@ export const Checkout = () => {
                       <label htmlFor="confirm">
                         <div className="confirm">
                           <input
+                            className='agree-checkbox'
                             type="checkbox"
                             id="confirm"
                             name="confirm"
@@ -325,7 +326,7 @@ export const Checkout = () => {
               <div className='discount-container'>
                 <font>Discounts</font>
 
-                <a href="/">Apply discount</a>
+                <Link to="/">Apply discount</Link>
               </div>
 
               <hr className='hr-2' />

@@ -4,6 +4,7 @@ import { Button } from '../../components/Button/Button'
 import { useProducts } from '../../contexts/ProductsContext';
 import { HeartButton } from '../../components/HeartButton/HeartButton';
 import { useAuth } from '../../contexts/AuthContext';
+import { Link } from 'react-router-dom';
 
 
 export const Cart = () => {
@@ -38,7 +39,7 @@ export const Cart = () => {
                   {!authUser && (
                     <>
                       <p className='cart-content-title-description'>Log in to save items to your shopping cart or access previously saved items</p>
-                      <a className='log-in' href="/">Log in</a>
+                      <Link className='log-in' to="/login">Log in</Link>
                     </>
                   )}
                 </>
@@ -47,17 +48,17 @@ export const Cart = () => {
                   {cartItems.map(item => (
                     <div className='shopping-product-container'>
                       <div className='left-side'>
-                        <a href={`/product-page/${item.id}`}>
+                        <Link to={`/product-page/${item.id}`}>
                           <img src={item.itemImg} alt="item-img" />
-                        </a>
+                        </Link>
                       </div>
 
                       <div className='right-side'>
                         <div className='right-side-content'>
                           <div className='first-row'>
-                            <a href={`/product-page/${item.id}`}>
+                            <Link to={`/product-page/${item.id}`}>
                               <h1 className='cart-title cart-content-title item-title'>{item.name}</h1>
-                            </a>
+                            </Link>
                             <svg onClick={() => handlerDeleteItem(item)} className='delete-iconn' viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" height="16" width="16" class=""><path d="M6.229 1.229C6.105 1.352 6 1.577 6 2H5c0-.577.145-1.102.521-1.479C5.898.145 6.423 0 7 0h2c.577 0 1.102.145 1.479.521C10.855.898 11 1.423 11 2h-1c0-.423-.105-.648-.229-.771C9.648 1.105 9.423 1 9 1H7c-.423 0-.648.105-.771.229ZM1 2.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5ZM12 15c.423 0 .648-.105.771-.229.124-.123.229-.348.229-.771V5h1v9c0 .577-.145 1.102-.521 1.479-.377.376-.902.521-1.479.521H4c-.577 0-1.102-.145-1.479-.521C2.145 15.102 2 14.577 2 14V5h1v9c0 .423.105.648.229.771.123.124.348.229.771.229h8ZM14.5 5h-13a.5.5 0 0 1 0-1h13a.5.5 0 0 1 0 1Z M6 11.5v-3a.5.5 0 0 1 1 0v3a.5.5 0 0 1-1 0ZM9 8.5v3a.5.5 0 0 0 1 0v-3a.5.5 0 0 0-1 0Z"></path></svg>
                           </div>
 
@@ -110,7 +111,7 @@ export const Cart = () => {
                   <div className='discount-container'>
                     <font>Discounts</font>
 
-                    <a href="/">Apply discount</a>
+                    <Link to="/">Apply discount</Link>
                   </div>
 
                   <font className='log-in-special-offers'>Log in for special offers!</font>

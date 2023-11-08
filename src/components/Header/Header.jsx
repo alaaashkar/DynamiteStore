@@ -134,7 +134,7 @@ export const Header = () => {
                   ) : (
                     cartItems.map(item => (
                       <>
-                        <a className="cart-product-link" href={`/product-page/${item.id}`} key={item.id}>
+                        <Link className="cart-product-link" to={`/product-page/${item.id}`} key={item.id}>
                           <div className="cart-product-container">
                             <div className="col1">
                               <img src={item.itemImg} alt="" />
@@ -156,7 +156,7 @@ export const Header = () => {
                               </div>
                             </div>
                           </div>
-                        </a>
+                        </Link>
                       </>
                     ))
                   )
@@ -171,9 +171,9 @@ export const Header = () => {
                     </div>
                     <Button text="Pay" buttonStyle="loadMore" />
 
-                    <a href="/cart">
+                    <Link to="/cart">
                       <Button text="Shopping Cart" buttonStyle="loadMore shopping-cart-btn" />
-                    </a>
+                    </Link>
                   </>
                 )}
 

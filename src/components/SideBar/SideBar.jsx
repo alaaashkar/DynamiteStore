@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import './SideBar.scss'
+import {Link} from 'react-router-dom';
 import { useProducts } from 'contexts/ProductsContext';
 
 const SideBar = () => {
@@ -27,7 +28,7 @@ const SideBar = () => {
 
         {sixMenItems.map(item => (
           <li key={item.id}>
-            <a style={{ textDecoration: "none" }} href={`/product-page/${item.id}`}> {item.name}</a>
+            <Link style={{ textDecoration: "none" }} to={`/product-page/${item.id}`}> {item.name}</Link>
           </li>
         ))}
 
@@ -37,7 +38,7 @@ const SideBar = () => {
 
         {sixWomenItems.map(item => (
           <li key={item.id}>
-            <a style={{ textDecoration: "none" }} href={`/product-page/${item.id}`}> {item.name}</a>
+            <Link style={{ textDecoration: "none" }} to={`/product-page/${item.id}`}> {item.name}</Link>
           </li>
         ))}
 
@@ -48,7 +49,7 @@ const SideBar = () => {
 
         {sixKidsItems.map(item => (
           <li key={item.id}>
-            <a style={{ textDecoration: "none" }} href={`/product-page/${item.id}`}> {item.name}</a>
+            <Link style={{ textDecoration: "none" }} to={`/product-page/${item.id}`}> {item.name}</Link>
           </li>
         ))}
 
@@ -59,7 +60,7 @@ const SideBar = () => {
 
         {sixBabyItems.map(item => (
           <li key={item.id}>
-            <a style={{ textDecoration: "none" }} href={`/product-page/${item.id}`}> {item.name}</a>
+            <Link style={{ textDecoration: "none" }} to={`/product-page/${item.id}`}> {item.name}</Link>
           </li>
         ))}
       </ul>

@@ -2,22 +2,16 @@
   position: absolute;
   bottom: 6%;
   background-color: white;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 1.4rem;
   border: none;
   cursor: pointer;
-
-  .text {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: 700 !important;
-  }
 
   &:hover {
     background-color: rgb(232, 232, 232);
   }
 
   &:hover .text {
-    color: #222222 !important;
+    // color: #222222 !important;
   }
 
   &:active .text {
@@ -26,8 +20,9 @@
 
   a {
     text-decoration: none;
-    padding: 9px 15px;
+    padding: 9px 0;
     display: inline-block;
+    width: 100%;
   }
 
   &:disabled {

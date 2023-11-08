@@ -48,10 +48,10 @@
 
   }
 
-  select {
-    padding: 13px;
-    width: 100%;
-  }
+  // select {
+  //   padding: 13px;
+  //   width: 100%;
+  // }
 
   .left {
     flex: 0;
@@ -172,8 +172,9 @@
   .checkout-btn {
     width: 50% !important;
     display: block;
-    margin: 40px auto 0 auto;
+    margin: 20px auto;
     height: 40px;
+    margin-bottom: 10px;
 
     &:disabled {
       cursor: pointer;
@@ -188,6 +189,22 @@
     transform: translateX(0%);
   }
 
+  .confirm {
+    .agree-checkbox {
+      width: 40px !important;
+    }
+  }
+
+
+
+  .left {
+    padding: 10px !important;
+  }
+
+  .left-2 {
+    padding: 10px !important;
+    margin: 0 !important;
+  }
 
   .return-wrapper {
     left: 0 !important;

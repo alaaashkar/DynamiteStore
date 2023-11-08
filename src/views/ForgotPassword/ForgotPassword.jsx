@@ -42,7 +42,7 @@ export const ForgotPassword = () => {
               className="big-search"
               type="email"
             />
-            <Button text="Send" buttonStyle="loadMore send-btn" />
+            <Button onClick={handleForgotPassword} text="Send" buttonStyle="loadMore send-btn" />
           </label>
         </div>
       </form>
