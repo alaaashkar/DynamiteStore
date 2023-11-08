@@ -36,7 +36,7 @@ export const WelcomeSection = () => {
 
         {isTypingCompleted2 && (
           <li>
-            <TypingAnimation text={'Download our app'} />
+            <TypingAnimation className='download-our-app' text={'Download our app'} />
           </li>
         )}
       </ul>

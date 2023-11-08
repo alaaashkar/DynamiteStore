@@ -37,7 +37,7 @@ export const Kids = () => {
 
             <font>{product.price}$</font>
 
-            <font>New Product</font>
+            <font className="last-font">New Product</font>
           </div>
         ))}
       </div>

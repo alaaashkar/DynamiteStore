@@ -337,15 +337,16 @@
 
   .mobile-fav {
     display: block;
-    transform: translateY(-1.5px);
+    transform: translateY(-1px) !important;
   }
 
   .cart-item {
-    transform: translateY(-1.5px);
+    transform: translateY(-2px) !important;
   }
 
   .cart-container:hover .cart-item {
-    transform: unset !important;
+    transform: translateX(0px) !important;
+    transform: translateY(-2px) !important;
     /* Move the icon to the left on hover */
   }
 
@@ -362,6 +363,7 @@
   .headerNav__middle>a>.logo {
     width: 95px;
     transform: translateX(23%);
+    transform: translateY(1px) !important;
   }
 
   .headerNav__right__container {
@@ -381,6 +383,8 @@
   .login-icon {
     transform: translateY(-0.3px);
   }
+
+  .headerNav__right__button {}
 
   .headerNav__right__button>svg {
     font-size: 2rem;

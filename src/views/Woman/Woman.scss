@@ -21,6 +21,7 @@ $gap-size: 4px;
 
     .heart-icon-products {
       position: absolute;
+      bottom: 20px;
     }
   }
 
@@ -38,6 +39,10 @@ $gap-size: 4px;
       max-width: 100% !important;
       object-fit: cover;
       margin-bottom: 10px !important;
+    }
+
+    .last-font {
+      margin-top: auto;
     }
   }
 }
