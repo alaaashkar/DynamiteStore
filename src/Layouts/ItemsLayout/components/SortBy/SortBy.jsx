@@ -5,7 +5,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useProducts } from '../../../../contexts/ProductsContext';
 import './SortBy.scss';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { ClipLoader } from 'react-spinners';
@@ -19,6 +19,7 @@ export default function SortBy({ setIsFilteredModalClicked, setSideModalContent,
   };
 
   const location = useLocation();
+  const navigate = useNavigate();
   const onWomanPage = location.pathname.includes('woman');
   const onManPage = location.pathname.includes('man');
   const onKidsPage = location.pathname.includes('kids');
@@ -39,6 +40,18 @@ export default function SortBy({ setIsFilteredModalClicked, setSideModalContent,
   };
 
   useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+
+    if (selectedSortStatus) {
+      searchParams.set("sort", selectedSortStatus.toLowerCase());
+    }
+
+    // Replace the current URL without triggering a new navigation
+    navigate({
+      pathname: location.pathname,
+      search: searchParams.toString(),
+    });
+
     if (onWomanPage) {
       load(() => {
         if (selectedSortStatus === 'LOWEST') {
@@ -113,7 +126,7 @@ export default function SortBy({ setIsFilteredModalClicked, setSideModalContent,
           <div className="backdrop" />
           <ClipLoader size={25} color="white" className="clip-loader" />
         </>
-      )} 
+      )}
     </div>
   );
 }
