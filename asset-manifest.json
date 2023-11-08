@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/dynamitestore/static/css/main.fc1b4381.css",
+    "main.css": "/dynamitestore/static/css/main.91b5f292.css",
     "main.js": "/dynamitestore/static/js/main.d4b3b67c.js",
     "static/js/787.28cb0dcd.chunk.js": "/dynamitestore/static/js/787.28cb0dcd.chunk.js",
     "static/media/img5.jpg": "/dynamitestore/static/media/img5.5182e34e61bb10f9e75b.jpg",
@@ -16,12 +16,12 @@
     "static/media/child.jpg": "/dynamitestore/static/media/child.2953af16848ae6c6569f.jpg",
     "static/media/woman.jpg": "/dynamitestore/static/media/woman.8f0eb6d6d9b383c68e8c.jpg",
     "index.html": "/dynamitestore/index.html",
-    "main.fc1b4381.css.map": "/dynamitestore/static/css/main.fc1b4381.css.map",
+    "main.91b5f292.css.map": "/dynamitestore/static/css/main.91b5f292.css.map",
     "main.d4b3b67c.js.map": "/dynamitestore/static/js/main.d4b3b67c.js.map",
     "787.28cb0dcd.chunk.js.map": "/dynamitestore/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fc1b4381.css",
+    "static/css/main.91b5f292.css",
     "static/js/main.d4b3b67c.js"
   ]
 }
