@@ -128,13 +128,14 @@ export const Cart = () => {
                 <p>Total</p>
                 <p>{totalPrice} $</p>
               </div>
-
-              <Button
-                to='/checkout'
-                disabled={paymentButtonIsDisabled}
-                text={'Continue to payment screen'}
-                buttonStyle={'loadMore login-btn'}
-              />
+              {cartItems.length !== 0 && (
+                <Button
+                  to='/checkout'
+                  disabled={paymentButtonIsDisabled}
+                  text={'Continue to payment screen'}
+                  buttonStyle={'loadMore login-btn'}
+                />
+              )}
 
               <span className='we-accept'>We accept</span>
               <div className='card-payments-container'>
