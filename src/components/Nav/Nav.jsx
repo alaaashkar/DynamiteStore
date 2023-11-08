@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 export const Nav = () => {
-  const { isMenuClicked } = useMenu()
+  const { isMenuClicked, setIsMenuClicked } = useMenu()
   const [addVisibilityToNav, setAddVisibilityToNav] = useState(true)
 
 
@@ -22,7 +22,7 @@ export const Nav = () => {
 
       return () => clearTimeout(timer);
     }
-  }, []);
+  }, [addVisibilityToNav]);
 
 
   return (
@@ -35,28 +35,28 @@ export const Nav = () => {
         { 'mobile-hide': !isMenuClicked }
       )}>
         <li>
-          <Link to='/items/woman'>
+          <Link onClick={() => setIsMenuClicked(false)} to='/items/woman'>
             Woman
           </Link>
           <FontAwesomeIcon className='icon' icon={faVenus} />
         </li>
 
         <li>
-          <Link to='/items/man'>
+          <Link onClick={() => setIsMenuClicked(false)} to='/items/man'>
             Man
           </Link>
           <FontAwesomeIcon className='icon' icon={faMars} />
         </li>
 
         <li>
-          <Link to='/items/kids'>
+          <Link onClick={() => setIsMenuClicked(false)} to='/items/kids'>
             Kids
           </Link>
           <FontAwesomeIcon className='icon' icon={faChild} />
         </li>
 
         <li>
-          <Link to='/items/baby'>
+          <Link onClick={() => setIsMenuClicked(false)} to='/items/baby'>
             Baby
           </Link>
           <FontAwesomeIcon className='icon' icon={faBaby} />

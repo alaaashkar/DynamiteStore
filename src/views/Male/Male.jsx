@@ -5,6 +5,7 @@ import { useProducts } from '../../contexts/ProductsContext';
 import { Button } from '../../components/Button/Button';
 import { ClipLoader, PuffLoader } from 'react-spinners';
 import { Heart } from '../../components/Heart/Heart';
+import {Link} from 'react-router-dom';
 
 
 export const Male = () => {
@@ -34,13 +35,13 @@ export const Male = () => {
           >
 
             <div className='heart-icon-container'>
-              <a href={`/product-page/${product.id}`}>
+              <Link to={`/product-page/${product.id}`}>
                 {product.id === productId ? (
                   <img src={product.itemImg} alt="img" />
                 ) : (
                   <img src={product.img} alt="img" />
                 )}
-              </a>
+              </Link>
               <Heart product={product} style='heart-icon-products' />
             </div>
 

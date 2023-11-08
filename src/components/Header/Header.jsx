@@ -21,6 +21,15 @@ export const Header = () => {
   const [tempimage, setTempImage] = useState(true);
   const [cartisHovered, setCartIsHovered] = useState(false)
   const { authUser } = useAuth()
+  const [smallScreen, setSmallScreen] = useState(false)
+
+  useEffect(() => {
+    if (window.innerWidth <= 700) {
+      setSmallScreen(true)
+    } else {
+      setSmallScreen(false)
+    }
+  }, [smallScreen])
 
 
   const totalPrice = cartItems.reduce((total, item) => total + parseFloat(item.price * item.quantity), 0).toFixed(2);
@@ -79,7 +88,7 @@ export const Header = () => {
           <ul>
             {authUser ? (
               <li>
-                <Link to="/account/purchases" className={cn("login-link", { "disappear": cartisHovered })}>
+                <Link to="/account/purchases" className={cn("login-link", { "disappear": cartisHovered && !smallScreen })}>
                   <FontAwesomeIcon icon={faUser} className="login-icon" />
                   <font className="login-text">
                     My Account
@@ -88,7 +97,7 @@ export const Header = () => {
               </li>
             ) : (
               <li>
-                <Link to="/login" className={cn("login-link", { "disappear": cartisHovered })}>
+                <Link to="/login" className={cn("login-link", { "disappear": cartisHovered && !smallScreen })}>
                   <FontAwesomeIcon icon={faUser} className="login-icon" />
                   <font className="login-text">
                     Log in
@@ -171,10 +180,10 @@ export const Header = () => {
               </div>
             </li>
             <li className="fav-container mobile-fav">
-              <a href="/favorites" className="headerNav__right__button">
+              <Link to="/favorites" className="headerNav__right__button">
                 <FavoriteIcon className="fav-item" style={{ color: 'black', marginRight: '8px' }} />
                 <font className="headerNav__right__button-text favorites fav-text">favorites</font>
-              </a>
+              </Link>
             </li>
           </ul>
         </div >

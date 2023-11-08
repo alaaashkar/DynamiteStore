@@ -4,6 +4,7 @@ import { useProducts } from '../../contexts/ProductsContext';
 import './Baby.scss';
 import { PuffLoader } from 'react-spinners';
 import { Heart } from '../../components/Heart/Heart';
+import {Link} from 'react-router-dom';
 
 export const Baby = () => {
   const { babyProducts, filteredBabyData } = useProducts();
@@ -21,13 +22,13 @@ export const Baby = () => {
           >
 
             <div className='heart-icon-container'>
-              <a href={`/product-page/${product.id}`} className="product-link">
+              <Link to={`/product-page/${product.id}`} className="product-link">
                 {hoveredProductId === product.id ? (
                   <img src={product.itemImg} alt={product.name} />
                 ) : (
                   <img src={product.img} alt={product.name} />
                 )}
-              </a>
+              </Link>
               <Heart product={product} style='heart-icon-products' />
             </div>
 
