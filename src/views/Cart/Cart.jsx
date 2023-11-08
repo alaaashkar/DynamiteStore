@@ -123,11 +123,12 @@ export const Cart = () => {
                   <hr className='hr-2' />
                 </>
               )}
-
-              <div className="order-price-container total-price  total-flx">
-                <p>Total</p>
-                <p>{totalPrice} $</p>
-              </div>
+              {cartItems.length !== 0 && (
+                <div className="order-price-container total-price  total-flx">
+                  <p>Total</p>
+                  <p>{totalPrice} $</p>
+                </div>
+              )}
               {cartItems.length !== 0 && (
                 <Button
                   to='/checkout'
