@@ -5,11 +5,12 @@ import { signOut } from "firebase/auth";
 import { Link } from 'react-router-dom';
 import { auth } from "../../firebase"; // Import the 'auth' object
 import { ToastContainer, toast } from 'react-toastify';
+import { PuffLoader } from 'react-spinners';
 import { useEffect, useState } from "react";
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
-
 import { PuffLoader } from 'react-spinners'; // Import PuffLoader
 import { useNavigate } from "react-router-dom";
+
 
 export const Account = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -69,7 +70,6 @@ export const Account = () => {
             <ShoppingBagOutlinedIcon className="cart-item shopping-icon" />
             <h3>Product not purchased</h3>
           </div>
-
         </div>
       </div>
 
@@ -87,6 +87,9 @@ export const Account = () => {
         position="top-center"
         theme="dark"
       />
+      <div className="loader">
+        <PuffLoader color="#222222" size={50} />
+      </div>
     </>
   );
 };

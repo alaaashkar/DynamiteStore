@@ -1,6 +1,6 @@
 import React from "react";
-import './WelcomeImages.scss'
-import { Button } from "components/Button/Button";
+import './WelcomeImages.scss';
+import { Button } from "../../../../components/Button/Button";
 
 export const WelcomeImages = ({ img, title }) => {
   return (
@@ -8,7 +8,7 @@ export const WelcomeImages = ({ img, title }) => {
       <img className='playing-images' src={img} alt='image1' />
       <h1 className="playing-images-title">{title}</h1>
       <font className="playing-images-description">New Products</font>
-      <Button text={'Buy Now'} to="/items/woman" />
+      <Button text={'Buy Now'} to="/items/woman" buttonStyle='loadMore welcome-btn'/>
     </>
   );
 };

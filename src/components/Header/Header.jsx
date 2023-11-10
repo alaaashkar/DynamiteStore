@@ -169,11 +169,9 @@ export const Header = () => {
                       <p>Total Order:</p>
                       <p>{totalPrice} $</p>
                     </div>
-                    <Button text="Pay" buttonStyle="loadMore" />
+                    <Button to='/checkout' text="Pay" buttonStyle="loadMore" />
 
-                    <Link to="/cart">
-                      <Button text="Shopping Cart" buttonStyle="loadMore shopping-cart-btn" />
-                    </Link>
+                    <Button to="/cart" text="Shopping Cart" buttonStyle="loadMore shopping-cart-btn" />
                   </>
                 )}
 

@@ -14,6 +14,8 @@
   position: static;
   margin: 0;
   margin-bottom: 10px;
+  font-size: 2.5rem;
+  font-weight: 600;
 }
 
 .filter-form {
@@ -71,8 +73,7 @@
     display: block;
   }
 
-  .filter-form {
-  }
+  .filter-form {}
 
   .products-timeline {
     flex: 0 !important;
@@ -90,12 +91,11 @@
   }
 
   .loadMore {
-    all: unset !important;
     height: 40px !important;
     border: 1px solid black !important;
     border-radius: 4px !important;
     margin-top: 10px !important;
-    width: 100% !important;
+    // width: 100% !important;
     background-color: #222222 !important;
     display: flex !important;
     justify-content: center !important;
