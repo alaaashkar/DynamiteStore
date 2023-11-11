@@ -86,6 +86,8 @@ export default function ProductType({ setSelectedProductType, selectedProductTyp
       if (selectedProductType.length !== 0) {
         filtered = filtered.filter(item => selectedProductType.includes(item.type));
         load(() => setFilteredWomenData(filtered))
+      } else {
+        load(() => setFilteredWomenData(womenOriginalProducts))
       }
 
     } else if (onManPage) {
@@ -95,6 +97,8 @@ export default function ProductType({ setSelectedProductType, selectedProductTyp
       if (selectedProductType.length !== 0) {
         filtered = filtered.filter(item => selectedProductType.includes(item.type));
         load(() => setFilteredMenData(filtered))
+      } else {
+        load(() => setFilteredMenData(menOriginalProducts))
       }
 
     } else if (onKidsPage) {
@@ -102,6 +106,8 @@ export default function ProductType({ setSelectedProductType, selectedProductTyp
       if (selectedProductType.length !== 0) {
         filtered = filtered.filter(item => selectedProductType.includes(item.type));
         load(() => setFilteredKidsData(filtered))
+      } else {
+        load(() => setFilteredKidsData(kidsOriginalProducts))
       }
 
     } else {
@@ -110,6 +116,8 @@ export default function ProductType({ setSelectedProductType, selectedProductTyp
       if (selectedProductType.length !== 0) {
         filtered = filtered.filter(item => selectedProductType.includes(item.type));
         load(() => setFilteredBabyData(filtered))
+      } else {
+        load(() => setFilteredBabyData(kidsOriginalProducts))
       }
     }
   }, [selectedProductType])

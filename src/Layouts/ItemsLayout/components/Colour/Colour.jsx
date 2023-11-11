@@ -92,6 +92,8 @@ export default function Colour({ setIsFilteredModalClicked, selectedColour, setS
       if (selectedColour.length !== 0) {
         filtered = filtered.filter(item => selectedColour.includes(item.colour));
         load(() => setFilteredWomenData(filtered))
+      } else {
+        load(() => setFilteredWomenData(womenOriginalProducts))
       }
 
     } else if (onManPage) {
@@ -101,6 +103,8 @@ export default function Colour({ setIsFilteredModalClicked, selectedColour, setS
         filtered = filtered.filter(item => selectedColour.includes(item.colour));
 
         load(() => setFilteredMenData(filtered))
+      } else {
+        load(() => setFilteredMenData(menOriginalProducts))
       }
 
     } else if (onKidsPage) {
@@ -109,14 +113,17 @@ export default function Colour({ setIsFilteredModalClicked, selectedColour, setS
       if (selectedColour.length !== 0) {
         filtered = filtered.filter(item => selectedColour.includes(item.colour));
         load(() => setFilteredKidsData(filtered))
+      } else {
+        load(() => setFilteredKidsData(kidsOriginalProducts))
       }
 
     } else {
-
       let filtered = babyOriginalProducts;
       if (selectedColour.length !== 0) {
         filtered = filtered.filter(item => selectedColour.includes(item.colour));
         load(() => setFilteredBabyData(filtered))
+      } else {
+        load(() => setFilteredBabyData(babyOriginalProducts))
       }
     }
   }, [selectedColour, colourStatusSide])

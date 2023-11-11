@@ -18,7 +18,8 @@ export const FormFilter = () => {
   const [selectedColour, setSelectedColour] = useState([]);
   const [selectedProductType, setSelectedProductType] = useState([]); // Store the selected product type
   const [isLoading, setIsLoading] = useState(false);
-  const { filteredWomenData, filteredMenData, filteredKidsData, filteredBabyData } = useProducts()
+  const { filteredWomenData, filteredMenData, filteredKidsData, filteredBabyData,
+  } = useProducts()
 
   const handleRemoveSelectedFilter = (selected) => {
     if (Array.isArray(selectedColour)) {
@@ -27,7 +28,7 @@ export const FormFilter = () => {
   }
 
   const handleRemoveSelectedType = (selected) => {
-    if (Array.isArray(selectedColour)) {
+    if (Array.isArray(selectedProductType)) {
       setSelectedProductType(selectedProductType.filter(type => type !== selected));
     }
   }
@@ -46,6 +47,7 @@ export const FormFilter = () => {
   const onManPage = path.includes('man');
   const onKidsPage = path.includes('kids');
   const onBabyPage = path.includes('baby')
+  
 
   return (
     <>
