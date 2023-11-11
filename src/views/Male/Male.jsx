@@ -5,7 +5,7 @@ import { useProducts } from '../../contexts/ProductsContext';
 import { Button } from '../../components/Button/Button';
 import { ClipLoader, PuffLoader } from 'react-spinners';
 import { Heart } from '../../components/Heart/Heart';
-import {Link} from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 
 export const Male = () => {
@@ -60,18 +60,22 @@ export const Male = () => {
         <PuffLoader color="#222222" size={50} />
       </div>
 
-      {isLoading && (
-        <>
-          <div className="backdrop" />
-          <ClipLoader size={20} color="black" className='clip-loader' />
-        </>
-      )}
+      {
+        isLoading && (
+          <>
+            <div className="backdrop" />
+            <ClipLoader size={20} color="black" className='clip-loader' />
+          </>
+        )
+      }
 
-      {visibleItems < menProducts.length && (
-        <div className='loadMore-container'>
-          <Button text={'Load More'} onClick={handleLoadMore} buttonStyle={'loadMore'} />
-        </div>
-      )}
+      {
+        visibleItems < menProducts.length && (
+          <div className='loadMore-container'>
+            <Button text={'Load More'} onClick={handleLoadMore} buttonStyle={'loadMore'} />
+          </div>
+        )
+      }
     </>
 
   )

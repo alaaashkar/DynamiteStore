@@ -23,8 +23,6 @@ export default function Colour({ setIsFilteredModalClicked, selectedColour, setS
     colourStatusSide,
   } = useProducts();
 
-  console.log(isLoading);
-
   const handleChange = (event) => {
     const selectedColor = event.target.value;
 
@@ -96,16 +94,16 @@ export default function Colour({ setIsFilteredModalClicked, selectedColour, setS
         load(() => setFilteredWomenData(womenOriginalProducts))
       }
 
-    } else if (onManPage) {
-      let filtered = menOriginalProducts;
+    // } else if (onManPage) {
+    //   let filtered = menOriginalProducts;
 
-      if (selectedColour.length !== 0) {
-        filtered = filtered.filter(item => selectedColour.includes(item.colour));
+    //   if (selectedColour.length !== 0) {
+    //     filtered = filtered.filter(item => selectedColour.includes(item.colour));
 
-        load(() => setFilteredMenData(filtered))
-      } else {
-        load(() => setFilteredMenData(menOriginalProducts))
-      }
+    //     load(() => setFilteredMenData(filtered))
+    //   } else {
+    //     load(() => setFilteredMenData(menOriginalProducts))
+    //   }
 
     } else if (onKidsPage) {
       let filtered = kidsOriginalProducts;

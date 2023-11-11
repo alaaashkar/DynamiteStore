@@ -7,19 +7,23 @@ import Colour from '../Colour/Colour';
 import ProductType from '../ProductType/ProductType';
 import { FilterModal } from '../FilterModal/FilterModal';
 import { useProducts } from '../../../../contexts/ProductsContext';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 
 
 export const FormFilter = () => {
   const [isFilterModalClicked, setIsFilteredModalClicked] = useState(false);
   const [sideModalContent, setSideModalContent] = useState('default')
-  const [selectedSortStatus, setSelectedSortStatus] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams()
+  const sort = searchParams.get('sort')
+  const [selectedSortStatus, setSelectedSortStatus] = useState(sort);
   const [selectedColour, setSelectedColour] = useState([]);
   const [selectedProductType, setSelectedProductType] = useState([]); // Store the selected product type
   const [isLoading, setIsLoading] = useState(false);
   const { filteredWomenData, filteredMenData, filteredKidsData, filteredBabyData,
   } = useProducts()
+
+
 
   const handleRemoveSelectedFilter = (selected) => {
     if (Array.isArray(selectedColour)) {
@@ -47,7 +51,6 @@ export const FormFilter = () => {
   const onManPage = path.includes('man');
   const onKidsPage = path.includes('kids');
   const onBabyPage = path.includes('baby')
-  
 
   return (
     <>
@@ -55,6 +58,8 @@ export const FormFilter = () => {
         <div className='left'>
           <fieldset>
             <SortBy
+              setSearchParams={setSearchParams}
+              sort={sort}
               setIsLoading={setIsLoading}
               isLoading={isLoading}
               setSelectedSortStatus={setSelectedSortStatus}

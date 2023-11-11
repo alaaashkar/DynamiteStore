@@ -5,25 +5,47 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useProducts } from '../../../../contexts/ProductsContext';
 import './SortBy.scss';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useState } from 'react';
 import { ClipLoader } from 'react-spinners';
 
 
 export default function SortBy({ setIsFilteredModalClicked, setSideModalContent, setSelectedSortStatus, selectedSortStatus, setIsLoading, isLoading }) {
+
   const { filteredWomenData, setFilteredWomenData, setFilteredMenData, setFilteredKidsData, setFilteredBabyData, filteredMenData, filteredKidsData, filteredBabyData, womenOriginalProducts, menOriginalProducts, kidsOriginalProducts, babyOriginalProducts } = useProducts();
 
-  const handleChange = (event) => {
-    setSelectedSortStatus(event.target.value);
-  };
+
 
   const location = useLocation();
-  const navigate = useNavigate();
+  const path = location.pathname;
   const onWomanPage = location.pathname.includes('woman');
   const onManPage = location.pathname.includes('man');
   const onKidsPage = location.pathname.includes('kids');
   const onBabyPage = location.pathname.includes('baby');
+  const [search, setSearch] = useSearchParams()
+  const sortParam = search.get('sort');
+
+
+  const handleChange = (event) => {
+    setSelectedSortStatus(event.target.value);
+    setSearch({ sort: event.target.value })
+  };
+
+
+  useEffect(() => {
+    if (sortParam !== 'none') {
+      setSelectedSortStatus(sortParam)
+    } else {
+      setSelectedSortStatus('')
+      setSearch({})
+    }
+  }, [sortParam, selectedSortStatus]);
+
+  useEffect(() => {
+    setSelectedSortStatus([]);
+  }, [path]);
+
+  console.log(sortParam);
 
   const load = (callback) => {
     setIsLoading(true);
@@ -39,65 +61,50 @@ export default function SortBy({ setIsFilteredModalClicked, setSideModalContent,
     }, 500);
   };
 
+
   useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-
-    if (selectedSortStatus) {
-      searchParams.set("sort", selectedSortStatus.toLowerCase());
-    }
-
-    // Replace the current URL without triggering a new navigation
-    navigate({
-      pathname: location.pathname,
-      search: searchParams.toString(),
-    });
-
     if (onWomanPage) {
       load(() => {
-        if (selectedSortStatus === 'LOWEST') {
+        if (selectedSortStatus === 'lowest') {
           setFilteredWomenData([...filteredWomenData].sort((a, b) => a.price - b.price));
-        } else if (selectedSortStatus === 'HIGHEST') {
+        } else if (selectedSortStatus === 'highest') {
           setFilteredWomenData([...filteredWomenData].sort((a, b) => b.price - a.price));
-        } else if (selectedSortStatus === 'NONE') {
+        } else if (selectedSortStatus === 'none') {
           setFilteredWomenData(womenOriginalProducts)
         }
       });
     } else if (onManPage) {
       load(() => {
-        if (selectedSortStatus === 'LOWEST') {
+        if (selectedSortStatus === 'lowest') {
           setFilteredMenData([...filteredMenData].sort((a, b) => a.price - b.price));
-        } else if (selectedSortStatus === 'HIGHEST') {
+        } else if (selectedSortStatus === 'highest') {
           setFilteredMenData([...filteredMenData].sort((a, b) => b.price - a.price));
-        } else if (selectedSortStatus === 'NONE') {
+        } else if (selectedSortStatus === 'none') {
           setFilteredMenData(menOriginalProducts)
         }
       });
     } else if (onKidsPage) {
       load(() => {
-        if (selectedSortStatus === 'LOWEST') {
+        if (selectedSortStatus === 'lowest') {
           setFilteredKidsData([...filteredKidsData].sort((a, b) => a.price - b.price));
-        } else if (selectedSortStatus === 'HIGHEST') {
+        } else if (selectedSortStatus === 'highest') {
           setFilteredKidsData([...filteredKidsData].sort((a, b) => b.price - a.price));
-        } else if (selectedSortStatus === 'NONE') {
+        } else if (selectedSortStatus === 'none') {
           setFilteredKidsData(kidsOriginalProducts);
         }
       });
     } else if (onBabyPage) {
       load(() => {
-        if (selectedSortStatus === 'LOWEST') {
+        if (selectedSortStatus === 'lowest') {
           setFilteredBabyData([...filteredBabyData].sort((a, b) => a.price - b.price));
-        } else if (selectedSortStatus === 'HIGHEST') {
+        } else if (selectedSortStatus === 'highest') {
           setFilteredBabyData([...filteredBabyData].sort((a, b) => b.price - a.price));
-        } else if (selectedSortStatus === 'NONE') {
+        } else if (selectedSortStatus === 'none') {
           setFilteredBabyData(babyOriginalProducts);
         }
       });
     }
   }, [selectedSortStatus]);
-
-
-
-
 
 
   return (
@@ -115,9 +122,9 @@ export default function SortBy({ setIsFilteredModalClicked, setSideModalContent,
           onChange={handleChange}
           label="SortStatus"
         >
-          <MenuItem className='value' value="NONE"> <em>None</em></MenuItem>
-          <MenuItem className='value' value={'LOWEST'}>Lowest price</MenuItem>
-          <MenuItem className='value' value={'HIGHEST'}>Highest price</MenuItem>
+          <MenuItem className='value' value="none"> <em>None</em></MenuItem>
+          <MenuItem className='value' value={'lowest'}>Lowest price</MenuItem>
+          <MenuItem className='value' value={'highest'}>Highest price</MenuItem>
         </Select>
       </FormControl>
 
