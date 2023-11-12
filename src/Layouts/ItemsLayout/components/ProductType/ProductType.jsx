@@ -90,16 +90,16 @@ export default function ProductType({ setSelectedProductType, selectedProductTyp
         load(() => setFilteredWomenData(womenOriginalProducts))
       }
 
-    // } else if (onManPage) {
+    } else if (onManPage) {
 
-    //   let filtered = menOriginalProducts;
+      let filtered = menOriginalProducts;
 
-    //   if (selectedProductType.length !== 0) {
-    //     filtered = filtered.filter(item => selectedProductType.includes(item.type));
-    //     load(() => setFilteredMenData(filtered))
-    //   } else {
-    //     load(() => setFilteredMenData(menOriginalProducts))
-    //   }
+      if (selectedProductType.length !== 0) {
+        filtered = filtered.filter(item => selectedProductType.includes(item.type));
+        load(() => setFilteredMenData(filtered))
+      } else {
+        load(() => setFilteredMenData(menOriginalProducts))
+      }
 
     } else if (onKidsPage) {
       let filtered = kidsOriginalProducts;

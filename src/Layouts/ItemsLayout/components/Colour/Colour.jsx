@@ -1,16 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import './Colour.scss';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { useProducts } from '../../../../contexts/ProductsContext';
 import { ClipLoader } from 'react-spinners';
 
-
-export default function Colour({ setIsFilteredModalClicked, selectedColour, setSelectedColour, setIsLoading, isLoading }) {
+export default function Colour({
+  setIsFilteredModalClicked,
+  selectedColour,
+  setSelectedColour,
+  setIsLoading,
+  isLoading
+}) {
   const {
     menOriginalProducts,
     kidsOriginalProducts,
@@ -23,20 +28,62 @@ export default function Colour({ setIsFilteredModalClicked, selectedColour, setS
     colourStatusSide,
   } = useProducts();
 
-  const handleChange = (event) => {
-    const selectedColor = event.target.value;
+  const [search, setSearch] = useSearchParams();
 
-    if (selectedColour.includes(selectedColor)) {
-      // If the color is already selected, remove it
-      setSelectedColour(selectedColour.filter(color => color !== selectedColor));
-    } else if (selectedColor === 'NONE') {
+  const colourParam = search.get('colours');
+
+  useEffect(() => {
+    const arrayed = colourParam;
+    if (arrayed !== null) {
+      const finalArary = arrayed.split(' ')
+      setSelectedColour(finalArary);
+    } else {
       setSelectedColour([])
+      setSearch([])
     }
-    else {
+  }, [colourParam]);
+
+  const setSearchCallback = useCallback(setSearch, [setSearch]);
+
+  useEffect(() => {
+    if (selectedColour.length > 0) {
+      // Update the URL with the selected colors
+      const newSearch = new URLSearchParams(search);
+      newSearch.set('colours', selectedColour.join(' '));
+      setSearch(newSearch.toString());
+    } else {
+      //   // Handle the case when no colors are selected
+      const newSearch = new URLSearchParams(search);
+      newSearch.delete('colours');
+      setSearch(newSearch.toString());
+      // }
+    }
+  }, [selectedColour, setSearchCallback, search]);
+
+
+  const handleChange = (event) => {
+    const selected = event.target.value;
+
+    // Use the state updater function to ensure we have the most recent state
+    setSelectedColour(prevColors => {
+      // If 'NONE' is selected, return an empty array
+      if (selected === 'NONE') {
+        return [];
+      }
+
+      // Check if the color is already selected (case-insensitive)
+      const isColorSelected = prevColors.some(color => color.toLowerCase() === selected.toLowerCase());
+
+      // If the color is already selected, remove it
+      if (isColorSelected) {
+        return prevColors.filter(color => color.toLowerCase() !== selected.toLowerCase());
+      }
+
       // If the color is not selected, add it to the array
-      setSelectedColour([...selectedColour, selectedColor]);
-    }
+      return [...prevColors, selected];
+    });
   };
+
 
   const location = useLocation();
   const path = location.pathname;
@@ -45,8 +92,54 @@ export default function Colour({ setIsFilteredModalClicked, selectedColour, setS
   const onKidsPage = path.includes('kids');
   const onBabyPage = path.includes('baby');
 
-  // Reset the selected color when the route changes
+  useEffect(() => {
+    setSelectedColour([]);
+    // 1000 milliseconds (1 second)
+  }, [path]);
 
+  const load = (callback) => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      if (typeof callback === 'function') {
+        callback(); // Call the provided callback function
+        setIsFilteredModalClicked(false)
+        document.body.classList.remove('modal-open')
+      }
+    }, 500);
+  };
+
+  useEffect(() => {
+    if (selectedColour.length > 0) {
+      let filtered = [];
+
+      if (onWomanPage) {
+        filtered = womenOriginalProducts.filter(item => selectedColour.includes(item.colour));
+        load(() => setFilteredWomenData(filtered))
+      } else if (onManPage) {
+        filtered = menOriginalProducts.filter(item => selectedColour.includes(item.colour));
+        load(() => setFilteredMenData(filtered))
+      } else if (onKidsPage) {
+        filtered = kidsOriginalProducts.filter(item => selectedColour.includes(item.colour));
+        load(() => setFilteredKidsData(filtered))
+      } else {
+        filtered = babyOriginalProducts.filter(item => selectedColour.includes(item.colour));
+        load(() => setFilteredBabyData(filtered))
+      }
+    } else {
+      load(() => {
+        if (onWomanPage) {
+          setFilteredWomenData(womenOriginalProducts);
+        } else if (onManPage) {
+          setFilteredMenData(menOriginalProducts);
+        } else if (onKidsPage) {
+          setFilteredKidsData(kidsOriginalProducts);
+        } else {
+          setFilteredBabyData(babyOriginalProducts);
+        }
+      });
+    }
+  }, [selectedColour, colourStatusSide, onWomanPage, onManPage, onKidsPage, onBabyPage]);
 
   const renderColorList = () => {
     if (onWomanPage) {
@@ -63,72 +156,7 @@ export default function Colour({ setIsFilteredModalClicked, selectedColour, setS
     return ['NONE'];
   };
 
-  useEffect(() => {
-    setSelectedColour([]);
-    // 1000 milliseconds (1 second)
-  }, [path]);
-
-
-  const load = (callback) => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      if (typeof callback === 'function') {
-        callback(); // Call the provided callback function
-        setIsFilteredModalClicked(false)
-        document.body.classList.remove('modal-open')
-      }
-    }, 500);
-  };
-
-
-  useEffect(() => {
-    if (onWomanPage) {
-
-      let filtered = womenOriginalProducts;
-
-      if (selectedColour.length !== 0) {
-        filtered = filtered.filter(item => selectedColour.includes(item.colour));
-        load(() => setFilteredWomenData(filtered))
-      } else {
-        load(() => setFilteredWomenData(womenOriginalProducts))
-      }
-
-    // } else if (onManPage) {
-    //   let filtered = menOriginalProducts;
-
-    //   if (selectedColour.length !== 0) {
-    //     filtered = filtered.filter(item => selectedColour.includes(item.colour));
-
-    //     load(() => setFilteredMenData(filtered))
-    //   } else {
-    //     load(() => setFilteredMenData(menOriginalProducts))
-    //   }
-
-    } else if (onKidsPage) {
-      let filtered = kidsOriginalProducts;
-
-      if (selectedColour.length !== 0) {
-        filtered = filtered.filter(item => selectedColour.includes(item.colour));
-        load(() => setFilteredKidsData(filtered))
-      } else {
-        load(() => setFilteredKidsData(kidsOriginalProducts))
-      }
-
-    } else {
-      let filtered = babyOriginalProducts;
-      if (selectedColour.length !== 0) {
-        filtered = filtered.filter(item => selectedColour.includes(item.colour));
-        load(() => setFilteredBabyData(filtered))
-      } else {
-        load(() => setFilteredBabyData(babyOriginalProducts))
-      }
-    }
-  }, [selectedColour, colourStatusSide])
-
-
   const renderedList = renderColorList();
-
 
   return (
     <div>
@@ -145,7 +173,7 @@ export default function Colour({ setIsFilteredModalClicked, selectedColour, setS
           id="demo-simple-select-standard"
           onChange={handleChange} // Update the selected color
           label="Colour"
-          value={'NONE' || selectedColour}
+          value={selectedColour.length === 0 ? 'NONE' : selectedColour}
         >
           <MenuItem className='color-value' value='NONE'>
             <em>None</em>

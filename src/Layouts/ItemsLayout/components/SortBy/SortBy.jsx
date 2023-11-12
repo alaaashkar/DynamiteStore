@@ -14,21 +14,22 @@ export default function SortBy({ setIsFilteredModalClicked, setSideModalContent,
 
   const { filteredWomenData, setFilteredWomenData, setFilteredMenData, setFilteredKidsData, setFilteredBabyData, filteredMenData, filteredKidsData, filteredBabyData, womenOriginalProducts, menOriginalProducts, kidsOriginalProducts, babyOriginalProducts } = useProducts();
 
-
-
   const location = useLocation();
   const path = location.pathname;
   const onWomanPage = location.pathname.includes('woman');
   const onManPage = location.pathname.includes('man');
   const onKidsPage = location.pathname.includes('kids');
   const onBabyPage = location.pathname.includes('baby');
+
   const [search, setSearch] = useSearchParams()
   const sortParam = search.get('sort');
 
 
   const handleChange = (event) => {
     setSelectedSortStatus(event.target.value);
-    setSearch({ sort: event.target.value })
+    const newSearchParams = new URLSearchParams(search)
+    newSearchParams.set('sort', event.target.value)
+    setSearch(newSearchParams)
   };
 
 
@@ -41,11 +42,12 @@ export default function SortBy({ setIsFilteredModalClicked, setSideModalContent,
     }
   }, [sortParam, selectedSortStatus]);
 
+
   useEffect(() => {
     setSelectedSortStatus([]);
+    setFilteredMenData(menOriginalProducts)
   }, [path]);
 
-  console.log(sortParam);
 
   const load = (callback) => {
     setIsLoading(true);
